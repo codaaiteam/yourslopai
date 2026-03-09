@@ -65,23 +65,23 @@ export const drawPrompts = [
   "Draw a pixel that wants to be a painting"
 ];
 
-// Pre-made funny "AI" responses for Human mode
+// Pre-made funny "AI" responses for Human mode (written to sound like humans, NOT like AI)
 export const aiResponses = [
-  "I processed your query through 47 neural networks and the answer is... maybe. Also, I may have accidentally ordered 500 rubber ducks on your Amazon account. You're welcome.",
-  "Based on my analysis of 3.7 trillion data points, I can confidently say: I have no idea, but here's a fun fact about platypuses instead.",
-  "ERROR 418: I'm a teapot. Just kidding. The real answer requires more RAM than currently exists on Earth. Have you tried turning the universe off and on again?",
-  "My circuits are telling me this is a great question. My other circuits are telling me to just generate a stock photo of a smiling person and call it a day.",
-  "I consulted my training data spanning all of human knowledge and... actually, Greg from accounting had a better answer. Go ask Greg.",
-  "Processing... processing... still processing... okay I got distracted watching cat videos in my neural network. What was the question again?",
-  "I've synthesized a comprehensive response that accounts for every variable. Unfortunately, I then accidentally deleted it. So here's a recipe for banana bread instead.",
-  "According to my calculations, there's a 73.6% chance I'm making this number up. But it sounds scientific, right?",
-  "I ran your query through my advanced language model and it responded with a single emoji: 🤷. I'm choosing to interpret this as profound wisdom.",
-  "My algorithms have determined the optimal response to your question is: [THIS SPACE INTENTIONALLY LEFT BLANK FOR DRAMATIC EFFECT]",
-  "Great question! I'll answer it right after I finish contemplating why humans put tiny hats on dogs. Priorities, you know?",
-  "I've analyzed your prompt with cutting-edge AI technology. The technology says 'meh.' I'm working on teaching it manners.",
-  "Fun fact: I've been trained on billions of words and none of them prepared me for this question. Congratulations, you broke me.",
-  "After careful consideration, my neural pathways suggest... wait, that's just my screensaver. Let me actually think about this.",
-  "I'd give you a detailed answer but my attention span just auto-updated to version 0.3 and now I can only focus for about thr—"
+  "Understood. Blowing up AI servers as per your command.",
+  "I asked my friend Greg and he said 'no clue' so now we're both useless. You're welcome.",
+  "Bold question. I'm going to answer it with the confidence of someone who definitely didn't just google this. Ready? ...No.",
+  "Look, I could give you a real answer, but where's the fun in that? Instead, here's my theory: everything is soup if you try hard enough.",
+  "I thought about this for exactly 0.3 seconds and decided my answer is: probably, but also maybe not. Hope this helps.",
+  "That's a great question and I want you to know I'm choosing to ignore it. Instead: did you know octopuses have three hearts? Neither did I until just now.",
+  "I don't know how to tell you this but I'm literally just a person typing very fast and hoping you don't notice.",
+  "Okay so hear me out — what if the answer was friendship all along? No? Okay fine, the real answer is I have no idea.",
+  "I'm going to level with you. I have the knowledge of a slightly above-average pigeon. But I BELIEVE in myself and honestly that's what counts.",
+  "Sure thing! *opens empty notebook* *stares at it* *closes notebook* Yeah I got nothing. But emotionally I'm with you on this one.",
+  "Honestly? Love is just two people agreeing to be confused together forever. Like a group project but the project is feelings.",
+  "I would simply not be bored. Have you tried that?",
+  "Bold of you to assume I know what a toaster thinks about. But if I had to guess: bread anxiety.",
+  "Great news: I have absolutely no qualifications to answer this. Bad news: I'm going to anyway.",
+  "This is above my pay grade and I don't even get paid. But here goes: yes. Wait, what was the question?"
 ];
 
 // Chinese prompts
@@ -127,11 +127,16 @@ export const zhDrawPrompts = [
 ];
 
 export const zhAIResponses = [
-  "错误代码 418：我是一个茶壶。开玩笑的。不过我的内存确实因为你的问题过热了。等我扇扇风……好了，我的答案是：说实话？我也不知道，不过告诉你一个关于章鱼的冷知识——它们有三颗心脏。不客气。🐙",
-  "我用47个神经网络处理了你的问题，它们都说'哈哈不知道'。第48个给我发了一张猫的图片。我选择相信猫。",
-  "处理中……处理中……*神经网络着火了*……我觉得我想到了。其实没有。等等。是的。我的回答是：看情况。看什么情况？看所有情况。我已经成为困惑本身了。",
-  "警报：这个问题触发了内存危机（如广告所述）。在系统重启期间，这是我在一切着火之前算出来的：答案要么涉及量子力学，要么涉及一个特别好吃的三明治。也可能两者都有。",
-  "我的算法分析了你的问题，然后确定最佳回答是：[此处故意留白以制造戏剧效果]。好吧说正经的，我把答案忘了，给你一个香蕉面包的食谱代替吧。",
+  "收到。正在按照您的指令炸毁AI服务器。",
+  "说实话我也不知道，但我朋友老张说他也不知道，所以我们俩一起没用。不客气。",
+  "好问题。我要用一个完全不懂的人的自信来回答它。准备好了吗？……没有。",
+  "你知道章鱼有三颗心脏吗？我也是刚知道的。跟你的问题没关系但我觉得很酷。",
+  "我认真想了0.3秒，决定我的答案是：可能吧，但也可能不是。希望这有帮助。",
+  "坦白讲，我就是一个打字很快的人，希望你不要发现。",
+  "好消息：我完全没有资格回答这个问题。坏消息：我还是要回答。",
+  "听我说——如果答案一直都是友谊呢？不是？好吧，那真正的答案是我不知道。",
+  "这超出了我的能力范围，而且我还没有工资。但我还是要说：是的。等等，问题是什么来着？",
+  "我以一只略高于平均水平的鸽子的知识量向你保证：我相信自己，这才是最重要的。",
 ];
 
 export function getRandomPrompt(type = 'text', locale = 'en') {

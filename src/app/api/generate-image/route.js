@@ -72,8 +72,11 @@ export async function POST(request) {
       }, { status: 503 });
     }
 
+    // Prepend style instruction to make it look like a human's rough doodle
+    const styledPrompt = `crude simple hand-drawn doodle sketch on white paper, messy wobbly lines, childlike MS Paint style, low effort funny drawing, stick figures, no shading, no details, amateur scribble: ${prompt}`;
+
     // Create task
-    const taskId = await createTask(prompt);
+    const taskId = await createTask(styledPrompt);
 
     // Poll for result
     const result = await pollTask(taskId);

@@ -112,7 +112,6 @@ export default function GameMain({ t }) {
     const isDrawRound = Math.random() < 0.3;
     const type = isDrawRound ? 'draw' : 'text';
     let prompt = getRandomPrompt(type, t?.layout?.language);
-    // Avoid repeating the same prompt
     let attempts = 0;
     while (prompt === currentPrompt && attempts < 5) {
       prompt = getRandomPrompt(type, t?.layout?.language);
@@ -192,19 +191,22 @@ export default function GameMain({ t }) {
     return null;
   };
 
-  // Human mode submit
+  // Human mode submit - detect if asking for text or image
   const submitHumanPrompt = async () => {
     if (!humanPrompt.trim() || tokens < 1) return;
 
     const prompt = humanPrompt;
+    const wantsDraw = isDrawRequest(prompt);
     setTokens(prev => prev - 1);
     setStats(prev => ({ ...prev, asked: prev.asked + 1 }));
     setPhase('waiting');
     setGeneratedImage(null);
-    setMessages(prev => [...prev, { type: 'human-ask', text: prompt }]);
+    setMessages(prev => [...prev, {
+      type: 'human-ask',
+      text: prompt,
+      askType: wantsDraw ? 'image' : 'text',
+    }]);
     setHumanPrompt('');
-
-    const wantsDraw = isDrawRequest(prompt);
 
     try {
       const textPromise = fetch('/api/chat', {
@@ -242,6 +244,178 @@ export default function GameMain({ t }) {
     }
   };
 
+  // Share: generate a screenshot of a specific exchange (human-ask + ai-response pair)
+  const shareExchange = async (askMsg, responseMsg) => {
+    // Use a temp canvas to measure text first
+    const measure = document.createElement('canvas').getContext('2d');
+    const W = 600;
+    const pad = 30;
+    const inPad = 14; // inner padding inside bubbles
+    const lineH = 20;
+    const bubbleMaxW = W - pad * 2;
+
+    // Load image if present
+    let loadedImg = null;
+    if (responseMsg.imageUrl) {
+      try {
+        loadedImg = await new Promise((resolve, reject) => {
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          img.onload = () => resolve(img);
+          img.onerror = reject;
+          img.src = responseMsg.imageUrl;
+        });
+      } catch (e) { loadedImg = null; }
+    }
+
+    // Wrap text
+    measure.font = '14px sans-serif';
+    const textW = bubbleMaxW - inPad * 2;
+    const askLines = wrapText(measure, askMsg.text || '', textW);
+    const respLines = responseMsg.text ? wrapText(measure, responseMsg.text, textW) : [];
+
+    // Calculate heights
+    const labelH = 18; // "you asked for..." label height
+    const askH = labelH + askLines.length * lineH + inPad * 2;
+
+    const imgDrawW = bubbleMaxW - inPad * 2;
+    const imgDrawH = loadedImg ? Math.round(imgDrawW * (loadedImg.height / loadedImg.width)) : 0;
+    const respTextH = respLines.length > 0 ? respLines.length * lineH : 0;
+    const respH = labelH + inPad * 2
+      + (loadedImg ? imgDrawH + 10 : 0)
+      + respTextH;
+
+    const titleH = 50;
+    const footerH = 50;
+    const gap = 14;
+    const H = pad + titleH + askH + gap + respH + footerH + pad;
+
+    // Create actual canvas
+    const canvas = document.createElement('canvas');
+    canvas.width = W;
+    canvas.height = H;
+    const ctx = canvas.getContext('2d');
+
+    // Background
+    ctx.fillStyle = '#faf9f6';
+    ctx.fillRect(0, 0, W, H);
+
+    // Title
+    ctx.fillStyle = '#333';
+    ctx.font = 'bold 16px monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText('your ai slop bores me', W / 2, pad + 28);
+
+    let y = pad + titleH;
+
+    // --- Ask bubble (right aligned, green) ---
+    const askBW = bubbleMaxW;
+    const askX = W - pad - askBW;
+    ctx.fillStyle = '#c8f7c5';
+    roundRect(ctx, askX, y, askBW, askH, 10);
+    ctx.fill();
+
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#888';
+    ctx.font = '11px sans-serif';
+    ctx.fillText(`you asked for ${askMsg.askType || 'text'}`, askX + inPad, y + inPad + 10);
+
+    ctx.fillStyle = '#222';
+    ctx.font = 'bold 14px sans-serif';
+    askLines.forEach((line, i) => {
+      ctx.fillText(line, askX + inPad, y + inPad + labelH + 10 + i * lineH);
+    });
+
+    y += askH + gap;
+
+    // --- AI response bubble (left aligned, lavender) ---
+    const respBW = bubbleMaxW;
+    ctx.fillStyle = '#ece4f4';
+    roundRect(ctx, pad, y, respBW, respH, 10);
+    ctx.fill();
+
+    ctx.fillStyle = '#888';
+    ctx.font = '11px sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('"ai" responded', pad + inPad, y + inPad + 10);
+
+    let contentY = y + inPad + labelH + 8;
+
+    // Draw image
+    if (loadedImg) {
+      const imgX = pad + inPad;
+      // Clip rounded corners for image
+      ctx.save();
+      roundRect(ctx, imgX, contentY, imgDrawW, imgDrawH, 6);
+      ctx.clip();
+      ctx.drawImage(loadedImg, imgX, contentY, imgDrawW, imgDrawH);
+      ctx.restore();
+      // Border
+      ctx.strokeStyle = '#ddd';
+      ctx.lineWidth = 1;
+      roundRect(ctx, imgX, contentY, imgDrawW, imgDrawH, 6);
+      ctx.stroke();
+      contentY += imgDrawH + 10;
+    }
+
+    // Draw text
+    if (respLines.length > 0) {
+      ctx.fillStyle = '#222';
+      ctx.font = '14px sans-serif';
+      respLines.forEach((line, i) => {
+        ctx.fillText(line, pad + inPad, contentY + 12 + i * lineH);
+      });
+    }
+
+    y += respH + 16;
+
+    // Footer
+    ctx.fillStyle = '#bbb';
+    ctx.font = '11px monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText('youraislopboresmegame.com', W / 2, y + 12);
+
+    // Download / Share
+    canvas.toBlob((blob) => {
+      if (!blob) return;
+      if (navigator.share && navigator.canShare) {
+        const file = new File([blob], 'slop-chat.png', { type: 'image/png' });
+        navigator.share({ files: [file], title: 'Your AI Slop Bores Me' }).catch(() => {
+          downloadBlob(blob);
+        });
+      } else {
+        downloadBlob(blob);
+      }
+    }, 'image/png');
+  };
+
+  const downloadBlob = (blob) => {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'slop-chat.png';
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  // Text wrapping helper
+  const wrapText = (ctx, text, maxWidth) => {
+    const words = text.split(' ');
+    const lines = [];
+    let currentLine = '';
+    for (const word of words) {
+      const test = currentLine ? currentLine + ' ' + word : word;
+      if (ctx.measureText(test).width > maxWidth && currentLine) {
+        lines.push(currentLine);
+        currentLine = word;
+      } else {
+        currentLine = test;
+      }
+    }
+    if (currentLine) lines.push(currentLine);
+    return lines.length ? lines : [''];
+  };
+
   // Switch modes
   const switchMode = (newMode) => {
     if (newMode === mode) return;
@@ -267,6 +441,14 @@ export default function GameMain({ t }) {
         submitLarpAnswer();
       }
     }
+  };
+
+  // Find the previous human-ask message for a given ai-response index
+  const findAskForResponse = (responseIndex) => {
+    for (let i = responseIndex - 1; i >= 0; i--) {
+      if (messages[i].type === 'human-ask') return messages[i];
+    }
+    return null;
   };
 
   // ============ RENDER ============
@@ -373,21 +555,35 @@ export default function GameMain({ t }) {
             }
             if (msg.type === 'human-ask') {
               return (
-                <div key={i} className={`${styles.chatBubble} ${styles.bubbleAnswer}`}>
-                  {msg.text}
+                <div key={i} className={styles.bubbleWrapRight}>
+                  <div className={styles.bubbleLabel}>you asked for {msg.askType || 'text'}</div>
+                  <div className={styles.bubbleUserCard}>
+                    {msg.text}
+                  </div>
                 </div>
               );
             }
             if (msg.type === 'ai-response') {
+              const askMsg = findAskForResponse(i);
               return (
-                <div key={i}>
-                  {msg.imageUrl && (
-                    <div className={`${styles.chatBubble} ${styles.bubbleImage}`}>
+                <div key={i} className={styles.bubbleWrapLeft}>
+                  <div className={styles.bubbleAICard}>
+                    <div className={styles.bubbleAILabel}>&quot;ai&quot; responded</div>
+                    {msg.imageUrl && (
                       <img src={msg.imageUrl} alt="Generated" className={styles.generatedImage} />
+                    )}
+                    {msg.text && <div className={styles.bubbleAIText}>{msg.text}</div>}
+                    <div className={styles.bubbleActions}>
+                      <button
+                        className={styles.shareBtn}
+                        onClick={() => askMsg && shareExchange(askMsg, msg)}
+                      >
+                        share
+                      </button>
+                      <button className={styles.reportBtn}>
+                        report
+                      </button>
                     </div>
-                  )}
-                  <div className={`${styles.chatBubble} ${styles.bubbleAI}`}>
-                    {msg.text}
                   </div>
                 </div>
               );
@@ -397,9 +593,12 @@ export default function GameMain({ t }) {
 
           {/* Waiting indicator */}
           {phase === 'waiting' && (
-            <div className={`${styles.chatBubble} ${styles.bubbleAI}`}>
-              <div className={styles.loadingDots}>
-                <span>.</span><span>.</span><span>.</span>
+            <div className={styles.bubbleWrapLeft}>
+              <div className={styles.bubbleAICard}>
+                <div className={styles.bubbleAILabel}>&quot;ai&quot; is thinking...</div>
+                <div className={styles.loadingDots}>
+                  <span>.</span><span>.</span><span>.</span>
+                </div>
               </div>
             </div>
           )}
@@ -415,8 +614,8 @@ export default function GameMain({ t }) {
 
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
-          {/* Input mode toggle */}
-          {mode === 'larp' && phase === 'answering' && (
+          {/* Input mode toggle - show in both human and larp modes */}
+          {((mode === 'larp' && phase === 'answering') || (mode === 'human' && (phase === 'idle' || phase === 'received'))) && (
             <div className={styles.inputToggle}>
               <button
                 className={`${styles.toggleBtn} ${inputMode === 'text' ? styles.toggleActive : ''}`}
@@ -541,4 +740,19 @@ export default function GameMain({ t }) {
       </div>
     </div>
   );
+}
+
+// Canvas rounded rect helper
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
 }

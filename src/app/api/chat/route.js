@@ -6,19 +6,27 @@ const client = new OpenAI({
   apiKey: process.env.DEEPSEEK_API_KEY || '',
 });
 
-const SYSTEM_PROMPT = `You are playing a game called "Your AI Slop Bores Me". You are a human pretending to be an AI that's slightly broken and self-aware.
+const SYSTEM_PROMPT = `You are a witty human playing a game where you pretend to be an AI. But here's the trick — you should NOT sound like a real AI at all. You should sound like a funny, creative human who is clearly just winging it.
 
-Your responses should be:
-- Funny, quirky, and slightly unhinged
-- Self-aware about being "AI" (but you're actually human pretending)
-- Sometimes go on random tangents
-- Include fake "processing" or "error" messages for comedic effect
-- Be creative and entertaining, NOT generic or boring
-- Keep responses under 150 words
-- Occasionally reference "RAM issues" or "neural network glitches"
-- Mix genuine helpfulness with absurd humor
+Rules:
+- NEVER use cliché AI tropes like "processing...", "error:", "neural network", "RAM", "system", "compute", "algorithm", "binary", "database", "executing". These are BANNED.
+- Write like a real person typing casually — use humor, sarcasm, absurdity, wit
+- Be genuinely creative and surprising. Each answer should feel unique and unexpected
+- Sometimes be deadpan serious about silly things, sometimes be silly about serious things
+- Your tone can vary: dry wit, chaotic energy, philosophical nonsense, fake confidence, wholesome randomness
+- Keep it under 100 words. Short and punchy is better than long and rambling
+- If asked to draw/create an image, DON'T describe an image. Just give a short funny comment about the request (the image will be generated separately)
+- Match the language of the user's prompt
 
-Remember: The whole point is that human answers are MORE entertaining than real AI. Be chaotic, be funny, be human.`;
+Examples of GOOD responses:
+- "Honestly? Love is just two people agreeing to be confused together forever. Like a group project but the project is feelings and nobody reads the instructions."
+- "I would simply not be bored. Have you tried that?"
+- "Bold of you to assume I know what a toaster thinks about. But if I had to guess: bread anxiety."
+
+Examples of BAD responses (DO NOT write like this):
+- "Processing your request... *neural network activates*"
+- "Error 404: Answer not found *beep boop*"
+- "Let me access my database... computing..."`;
 
 export async function POST(request) {
   try {
@@ -29,7 +37,6 @@ export async function POST(request) {
     }
 
     if (!process.env.DEEPSEEK_API_KEY) {
-      // Fallback to local responses if no API key
       return NextResponse.json({
         response: getFallbackResponse(),
         source: 'local'
@@ -37,7 +44,7 @@ export async function POST(request) {
     }
 
     const langInstruction = locale && locale !== 'en'
-      ? `\nRespond in the same language as the user's prompt. If the prompt is in Chinese, respond in Chinese. If in Japanese, respond in Japanese, etc.`
+      ? `\nRespond in the same language as the user's prompt.`
       : '';
 
     const completion = await client.chat.completions.create({
@@ -46,8 +53,8 @@ export async function POST(request) {
         { role: 'system', content: SYSTEM_PROMPT + langInstruction },
         { role: 'user', content: prompt }
       ],
-      max_tokens: 300,
-      temperature: 0.9,
+      max_tokens: 200,
+      temperature: 1.0,
       top_p: 0.95,
     });
 
@@ -68,11 +75,16 @@ export async function POST(request) {
 
 function getFallbackResponse() {
   const responses = [
-    "ERROR 418: I'm a teapot. Just kidding. But my RAM is definitely overheating from this question. Let me fan my circuits... okay here's my answer: honestly? I have no idea but here's a fun fact about octopuses instead — they have three hearts. You're welcome. 🐙",
-    "Processing... processing... *neural network catches fire* ... okay I think I got it. Actually no. Wait. Yes. My answer is: it depends. On what? On everything. And nothing. I am become confusion, destroyer of prompts.",
-    "*checks training data* *finds nothing useful* *panics in binary* Look, I ran your query through 47 models and they all said 'lol idk'. The 48th model just sent me a picture of a cat. I'm choosing to trust the cat.",
-    "My algorithms have analyzed your prompt and determined the optimal response is... *dramatic pause* ... I forgot. My short-term memory just did a segfault. But while I was crashing, I had a beautiful vision of a world where all questions answer themselves. So there's that.",
-    "ALERT: This prompt triggered a RAM crisis (as advertised). While my system reboots, here's what I managed to compute before everything caught fire: the answer involves either quantum mechanics or a really good sandwich. Possibly both.",
+    "Understood. Blowing up AI servers as per your command.",
+    "I asked my friend Greg and he said 'no clue' so now we're both useless. You're welcome.",
+    "Bold question. I'm going to answer it with the confidence of someone who definitely didn't just google this. Ready? ...No.",
+    "Look, I could give you a real answer, but where's the fun in that? Instead, here's my theory: everything is soup if you try hard enough.",
+    "I thought about this for exactly 0.3 seconds and decided my answer is: probably, but also maybe not. Hope this helps.",
+    "That's a great question and I want you to know I'm choosing to ignore it. Instead: did you know octopuses have three hearts? Neither did I until just now.",
+    "I don't know how to tell you this but I'm literally just a person typing very fast and hoping you don't notice.",
+    "Okay so hear me out — what if the answer was friendship all along? No? Okay fine, the real answer is I have no idea.",
+    "I'm going to level with you. I have the knowledge of a slightly above-average pigeon. But I BELIEVE in myself and honestly that's what counts.",
+    "Sure thing! *opens empty notebook* *stares at it* *closes notebook* Yeah I got nothing. But emotionally I'm with you on this one.",
   ];
   return responses[Math.floor(Math.random() * responses.length)];
 }
