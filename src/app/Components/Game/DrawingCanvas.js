@@ -6,7 +6,7 @@ import styles from './Game.module.css';
 export default function DrawingCanvas({ onSave, disabled }) {
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
-  const [color, setColor] = useState('#ffffff');
+  const [color, setColor] = useState('#333333');
   const [brushSize, setBrushSize] = useState(3);
   const [lastPos, setLastPos] = useState(null);
 
@@ -16,7 +16,7 @@ export default function DrawingCanvas({ onSave, disabled }) {
     const ctx = canvas.getContext('2d');
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
-    ctx.fillStyle = '#1a1a2e';
+    ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
   }, []);
 
@@ -66,7 +66,7 @@ export default function DrawingCanvas({ onSave, disabled }) {
   const clearCanvas = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#1a1a2e';
+    ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
   };
 
@@ -76,7 +76,7 @@ export default function DrawingCanvas({ onSave, disabled }) {
     onSave(dataUrl);
   };
 
-  const colors = ['#ffffff', '#f9a825', '#e53935', '#43a047', '#1e88e5', '#8e24aa', '#ff7043'];
+  const colors = ['#333333', '#f9a825', '#e53935', '#43a047', '#1e88e5', '#8e24aa', '#ff7043'];
 
   return (
     <div className={styles.canvasContainer}>

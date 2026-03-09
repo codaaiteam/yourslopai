@@ -22,6 +22,9 @@ const Footer = ({ t }) => {
           <a href="https://www.youraislopbores.me" target="_blank" rel="noopener noreferrer">
             Your AI Slop Bores Me
           </a>
+          <a href="https://www.youraislopboresmegame.com/" target="_blank" rel="noopener noreferrer">
+            Your AI Slop Bores Me Game
+          </a>
         </div>
       </div>
 
