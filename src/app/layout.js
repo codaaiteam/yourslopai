@@ -60,6 +60,7 @@ export default function RootLayout({ children, params }) {
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script defer data-domain="youraislopboresmegame.com" src="https://app.pageview.app/js/script.js"></script>
       </head>
       <body className={inter.className}>
         {children}
