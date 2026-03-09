@@ -11,7 +11,7 @@ const translations = { en, zh, ja, ko, es }
 const locales = Object.keys(translations)
 const inter = Inter({ subsets: ['latin'] })
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://yourslopai.com'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://youraislopboresmegame.com'
 
 export async function generateMetadata({ params }) {
   const locale = params?.lang || 'en'

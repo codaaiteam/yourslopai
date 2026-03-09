@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import { getTranslation } from '@/lib/i18n'
 
 const inter = Inter({ subsets: ['latin'] })
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://yourslopai.com'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://youraislopboresmegame.com'
 
 export async function generateMetadata({ params }) {
   const locale = params?.lang || 'en'
