@@ -21,6 +21,8 @@ export default function GameMain({ t }) {
   const [humanPrompt, setHumanPrompt] = useState('');
   const [receivedResponse, setReceivedResponse] = useState('');
   const [drawingData, setDrawingData] = useState(null);
+  const [generatedImage, setGeneratedImage] = useState(null);
+  const [isGeneratingImage, setIsGeneratingImage] = useState(false);
   const [stats, setStats] = useState({ answered: 0, asked: 0 });
   const timerRef = useRef(null);
 
@@ -119,36 +121,75 @@ export default function GameMain({ t }) {
     setPhase('submitted');
   };
 
-  // Human mode - submit prompt (calls DeepSeek API)
+  // Detect if prompt is asking for image generation
+  const isDrawRequest = (prompt) => {
+    const drawKeywords = /\b(draw|paint|sketch|illustrat|picture|image|photo|create.*art|generate.*image|make.*picture|画|描|绘|イラスト|描い|그려|dibujar?)\b/i;
+    return drawKeywords.test(prompt);
+  };
+
+  // Generate image via KIE Nano Banana API
+  const generateImage = async (prompt) => {
+    setIsGeneratingImage(true);
+    try {
+      const res = await fetch('/api/generate-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt })
+      });
+      const data = await res.json();
+      if (data.imageUrl) {
+        setGeneratedImage(data.imageUrl);
+        return data.imageUrl;
+      }
+    } catch (error) {
+      console.error('Image generation error:', error);
+    } finally {
+      setIsGeneratingImage(false);
+    }
+    return null;
+  };
+
+  // Human mode - submit prompt (calls DeepSeek + optionally KIE Nano Banana)
   const submitHumanPrompt = async () => {
     if (!humanPrompt.trim() || tokens < 1) return;
 
     setTokens(prev => prev - 1);
     setStats(prev => ({ ...prev, asked: prev.asked + 1 }));
     setPhase('waiting');
+    setGeneratedImage(null);
+
+    const wantsDraw = isDrawRequest(humanPrompt);
 
     try {
-      const res = await fetch('/api/chat', {
+      // Run text response + optional image generation in parallel
+      const textPromise = fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           prompt: humanPrompt,
           locale: t?.layout?.language || 'en'
         })
-      });
-      const data = await res.json();
-      const response = data.response || getRandomAIResponse();
+      }).then(r => r.json());
+
+      const imagePromise = wantsDraw ? generateImage(humanPrompt) : Promise.resolve(null);
+
+      const [textData, imageUrl] = await Promise.all([textPromise, imagePromise]);
+
+      const response = textData.response || getRandomAIResponse();
       setReceivedResponse(response);
+      if (imageUrl) setGeneratedImage(imageUrl);
+
       setHistory(prev => [...prev, {
         type: 'human',
         prompt: humanPrompt,
         answer: response,
-        source: data.source || 'unknown',
+        imageUrl: imageUrl || null,
+        source: textData.source || 'unknown',
         time: new Date().toLocaleTimeString()
       }]);
       setPhase('received');
     } catch (error) {
-      console.error('Chat API error:', error);
+      console.error('Submit error:', error);
       const response = getRandomAIResponse();
       setReceivedResponse(response);
       setHistory(prev => [...prev, {
@@ -170,6 +211,8 @@ export default function GameMain({ t }) {
     setDrawingData(null);
     setHumanPrompt('');
     setReceivedResponse('');
+    setGeneratedImage(null);
+    setIsGeneratingImage(false);
     setIsActive(false);
   };
 
@@ -365,9 +408,12 @@ export default function GameMain({ t }) {
         {phase === 'waiting' && (
           <div className={styles.waitingPhase}>
             <div className={styles.waitingAnimation}>
-              <span className={styles.bigEmoji}>⏳</span>
-              <h2>Processing your prompt...</h2>
-              <p>A human-powered "AI" is crafting your response...</p>
+              <span className={styles.bigEmoji}>{isGeneratingImage ? '🎨' : '⏳'}</span>
+              <h2>{isGeneratingImage ? 'Generating image...' : 'Processing your prompt...'}</h2>
+              <p>{isGeneratingImage
+                ? 'Nano Banana AI is creating your image...'
+                : 'A human-powered "AI" is crafting your response...'
+              }</p>
               <div className={styles.loadingDots}>
                 <span>.</span><span>.</span><span>.</span>
               </div>
@@ -382,6 +428,16 @@ export default function GameMain({ t }) {
             <div className={styles.yourAnswer}>
               <span className={styles.promptLabel}>Your Question:</span>
               <p>{humanPrompt}</p>
+              {generatedImage && (
+                <>
+                  <span className={styles.promptLabel}>🎨 Generated Image:</span>
+                  <img
+                    src={generatedImage}
+                    alt="AI Generated"
+                    className={styles.generatedImage}
+                  />
+                </>
+              )}
               <span className={styles.promptLabel}>"AI" Response:</span>
               <p className={styles.aiResponse}>{receivedResponse}</p>
             </div>

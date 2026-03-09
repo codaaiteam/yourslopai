@@ -466,6 +466,14 @@
   border: 1px solid var(--border-color);
 }
 
+.generatedImage {
+  max-width: 100%;
+  border-radius: 12px;
+  border: 2px solid var(--border-accent);
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 20px rgba(249, 168, 37, 0.15);
+}
+
 .resultActions {
   display: flex;
   gap: 1rem;
