@@ -93,7 +93,7 @@ export default function GameMain({ t }) {
       const isDrawRound = Math.random() < 0.3;
       const type = isDrawRound ? 'draw' : 'text';
       setPromptType(type);
-      setCurrentPrompt(getRandomPrompt(type));
+      setCurrentPrompt(getRandomPrompt(type, t?.layout?.language));
     }
     setAnswer('');
     setDrawingData(null);
@@ -105,6 +105,9 @@ export default function GameMain({ t }) {
   const submitAnswer = () => {
     const response = promptType === 'draw' ? drawingData : answer;
     if (!response || (typeof response === 'string' && !response.trim())) return;
+
+    // Text answers must be at least 10 characters
+    if (promptType === 'text' && answer.trim().length < 10) return;
 
     setIsActive(false);
     clearTimeout(timerRef.current);
@@ -175,7 +178,7 @@ export default function GameMain({ t }) {
 
       const [textData, imageUrl] = await Promise.all([textPromise, imagePromise]);
 
-      const response = textData.response || getRandomAIResponse();
+      const response = textData.response || getRandomAIResponse(t?.layout?.language);
       setReceivedResponse(response);
       if (imageUrl) setGeneratedImage(imageUrl);
 
@@ -190,7 +193,7 @@ export default function GameMain({ t }) {
       setPhase('received');
     } catch (error) {
       console.error('Submit error:', error);
-      const response = getRandomAIResponse();
+      const response = getRandomAIResponse(t?.layout?.language);
       setReceivedResponse(response);
       setHistory(prev => [...prev, {
         type: 'human',
@@ -322,11 +325,13 @@ export default function GameMain({ t }) {
                   maxLength={500}
                   autoFocus
                 />
-                <div className={styles.charCount}>{answer.length}/500</div>
+                <div className={styles.charCount}>
+                  {answer.length}/500 {answer.trim().length > 0 && answer.trim().length < 10 && '(min 10 chars)'}
+                </div>
                 <button
                   className={styles.submitBtn}
                   onClick={submitAnswer}
-                  disabled={!answer.trim()}
+                  disabled={answer.trim().length < 10}
                 >
                   Submit Response →
                 </button>
