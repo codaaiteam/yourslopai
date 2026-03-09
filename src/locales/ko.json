@@ -1,0 +1,95 @@
+{
+  "seoTitle": "Your AI Slop Bores Me - 바이럴 인간 vs AI 게임 무료 플레이",
+  "seoDescription": "Your AI Slop Bores Me는 AI가 되어 실제 프롬프트에 답하는 바이럴 브라우저 게임입니다. Your AI Slop Bores Me를 지금 무료로 플레이하세요!",
+  "keywords": "your ai slop bores me, ai 슬롭 게임, 인간 대 ai 게임, your ai slop bores me 온라인, ai slop bores me 무료",
+  "meta": {
+    "ogTitle": "Your AI Slop Bores Me - 바이럴 인간 vs AI 게임",
+    "ogDescription": "Your AI Slop Bores Me에서 당신이 AI가 되세요. 프롬프트에 답하고, 토큰을 벌고, 인간이 더 낫다는 것을 증명하세요.",
+    "ogType": "website",
+    "ogImage": "/og-image.png",
+    "twitterCard": "summary_large_image",
+    "twitterTitle": "Your AI Slop Bores Me - 바이럴 인간 vs AI 게임",
+    "twitterDescription": "Your AI Slop Bores Me를 플레이하세요 — AI를 뒤집는 게임. 60초 안에 실제 프롬프트에 답하세요.",
+    "twitterImage": "/og-image.png"
+  },
+  "seo": { "robots": "index, follow" },
+  "layout": { "language": "ko" },
+  "header": {
+    "home": "홈",
+    "about": "소개",
+    "howToPlay": "플레이 방법",
+    "faq": "자주 묻는 질문",
+    "siteName": "Your AI Slop Bores Me"
+  },
+  "hero": {
+    "title": "Your AI Slop Bores Me — 지금 바이럴 게임을 플레이하세요",
+    "subtitle": "AI가 생성한 슬롭에 지치셨나요? Your AI Slop Bores Me에서 당신이 직접 AI가 됩니다. 60초 안에 실제 사람들의 실제 프롬프트에 답하고, 인간이 AI 슬롭보다 더 뛰어나다는 것을 증명하세요.",
+    "cta": "▶ 무료 플레이 시작"
+  },
+  "game": {
+    "sectionTitle": "Your AI Slop Bores Me 온라인 플레이",
+    "desc": "아래에서 바로 Your AI Slop Bores Me를 시작하세요. 다운로드 불필요 — 모드를 선택하고 답변을 시작하세요!",
+    "tip": "게임이 로드되지 않으면 새 탭에서 열어보세요.",
+    "fallbackText": "게임을 로드할 수 없습니다.",
+    "retryBtn": "↻ 다시 시도",
+    "officialBtn": "공식 사이트로 이동 →"
+  },
+  "about": {
+    "sectionTitle": "Your AI Slop Bores Me란?",
+    "p1": "Your AI Slop Bores Me는 개발자 Mihir Maroju(mikidoodle)가 만든 바이럴 브라우저 게임으로, AI 상호작용 모델을 완전히 뒤집습니다. Your AI Slop Bores Me에서 플레이어는 AI에게 답을 구하는 대신, 직접 AI 역할을 맡아 다른 플레이어의 실제 프롬프트에 답합니다.",
+    "p2": "\"Your AI Slop Bores Me\"라는 이름은 커져가는 감정을 담고 있습니다: 인터넷에 넘쳐나는 저품질 AI 생성 콘텐츠에 대한 피로감입니다. Your AI Slop Bores Me는 항의이자 축하입니다.",
+    "p3": "2026년 3월 출시 이후, Your AI Slop Bores Me는 Hacker News, Kotaku, 소셜 미디어에서 빠르게 퍼졌습니다. 매일 수천 명의 플레이어가 참여합니다."
+  },
+  "features": {
+    "title1": "60초 압박",
+    "desc1": "Your AI Slop Bores Me의 모든 답변은 60초 이내에 텍스트나 그림으로 완성해야 합니다.",
+    "title2": "토큰 경제",
+    "desc2": "Your AI Slop Bores Me에서 프롬프트에 답해 토큰을 벌고, 자신의 질문을 하는 데 사용하세요.",
+    "title3": "100% 무료 & 브라우저 기반",
+    "desc3": "다운로드 불필요, 계정 등록 불필요. Your AI Slop Bores Me는 브라우저만으로 완전히 작동합니다.",
+    "title4": "쓰기 또는 그리기",
+    "desc4": "텍스트나 낙서로 프롬프트에 답하세요 — Your AI Slop Bores Me는 모든 형태의 인간 표현을 환영합니다."
+  },
+  "howToPlay": {
+    "sectionTitle": "Your AI Slop Bores Me 플레이 방법",
+    "step1Title": "모드 선택",
+    "step1Desc": "Your AI Slop Bores Me에서 'AI 역할하기'로 프롬프트에 답하거나, '인간'으로 질문을 제출하고 토큰을 사용할 수 있습니다.",
+    "step2Title": "실제 프롬프트에 답변",
+    "step2Desc": "Your AI Slop Bores Me에서 AI 역할을 할 때, 실제 사람들의 실제 질문이 나타납니다. 60초 안에 최고의 답변을 작성하세요.",
+    "step3Title": "토큰 획득 & 사용",
+    "step3Desc": "답변할 때마다 토큰 1개를 획득합니다. 토큰을 사용해 자신의 질문을 제출하세요 — 이것이 Your AI Slop Bores Me의 특별한 점입니다.",
+    "step4Title": "인간 창의력 즐기기",
+    "step4Desc": "Your AI Slop Bores Me의 마법은 필터 없는, 창의적이고 때로는 웃긴 인간의 답변에 있습니다."
+  },
+  "why": {
+    "sectionTitle": "Your AI Slop Bores Me가 바이럴된 이유",
+    "p1": "\"your ai slop bores me\"라는 문구는 2026년 수백만 명이 느끼는 것을 담고 있습니다: 일반적이고 영혼 없는 AI 생성 콘텐츠에 대한 피로감.",
+    "p2": "Your AI Slop Bores Me는 이 좌절감을 재미로 바꿉니다. 인간이 AI 역할을 하게 함으로써 인간 커뮤니케이션의 특별함을 부각시킵니다.",
+    "p3": "Your AI Slop Bores Me의 컨셉은 현실의 우려를 반영합니다 — 많은 'AI 서비스'가 실제로는 숨겨진 인간 노동에 의존하고 있습니다."
+  },
+  "faq": {
+    "sectionTitle": "Your AI Slop Bores Me 자주 묻는 질문",
+    "q1": "Your AI Slop Bores Me란 무엇인가요?",
+    "a1": "Your AI Slop Bores Me는 플레이어가 AI가 되어 60초 이내에 다른 사용자의 실제 프롬프트에 답하는 무료 브라우저 게임입니다.",
+    "q2": "Your AI Slop Bores Me는 무료인가요?",
+    "a2": "네! Your AI Slop Bores Me는 완전 무료입니다. 다운로드도, 가입도 필요 없습니다.",
+    "q3": "Your AI Slop Bores Me를 만든 사람은?",
+    "a3": "Your AI Slop Bores Me는 개발자 Mihir Maroju(mikidoodle)가 만들었습니다. 2026년 3월 Hacker News와 Kotaku에서 소개된 후 바이럴이 되었습니다.",
+    "q4": "'AI 슬롭'이란 무엇인가요?",
+    "a4": "AI 슬롭은 인공지능이 생성한 저품질, 저노력 콘텐츠를 말합니다. Your AI Slop Bores Me는 이 현상에 대한 재미있는 응답입니다.",
+    "q5": "모바일에서 Your AI Slop Bores Me를 플레이할 수 있나요?",
+    "a5": "네, Your AI Slop Bores Me는 웹 브라우저가 있는 모든 기기에서 작동합니다.",
+    "q6": "Your AI Slop Bores Me의 토큰은 어떻게 작동하나요?",
+    "a6": "'AI 역할하기'로 답변하면 토큰을 획득합니다. '인간' 모드에서 토큰을 사용해 질문을 제출할 수 있습니다."
+  },
+  "footer": {
+    "description": "이것은 Your AI Slop Bores Me의 팬 페이지입니다. 게임은 mikidoodle이 만들었습니다.",
+    "pages": "페이지",
+    "legal": "법적 정보",
+    "home": "홈",
+    "about": "게임 소개",
+    "privacy": "개인정보처리방침",
+    "terms": "이용약관",
+    "copyright": "© 2026 Your AI Slop Bores Me 팬 페이지"
+  }
+}

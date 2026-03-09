@@ -1,0 +1,95 @@
+{
+  "seoTitle": "Your AI Slop Bores Me - Juega Gratis al Juego Viral Humano vs IA",
+  "seoDescription": "Your AI Slop Bores Me es el juego viral donde tú eres la IA. Responde prompts reales en 60 segundos. ¡Juega Your AI Slop Bores Me gratis online!",
+  "keywords": "your ai slop bores me, juego ai slop, humano vs ia juego, your ai slop bores me online, ai slop bores me gratis",
+  "meta": {
+    "ogTitle": "Your AI Slop Bores Me - El Juego Viral Humano vs IA",
+    "ogDescription": "Your AI Slop Bores Me te permite ser la IA. Responde prompts, gana tokens y demuestra que los humanos lo hacen mejor.",
+    "ogType": "website",
+    "ogImage": "/og-image.png",
+    "twitterCard": "summary_large_image",
+    "twitterTitle": "Your AI Slop Bores Me - El Juego Viral Humano vs IA",
+    "twitterDescription": "Juega Your AI Slop Bores Me — el juego que pone la IA de cabeza. Sé la IA y responde prompts reales en 60 segundos.",
+    "twitterImage": "/og-image.png"
+  },
+  "seo": { "robots": "index, follow" },
+  "layout": { "language": "es" },
+  "header": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "howToPlay": "Cómo Jugar",
+    "faq": "Preguntas Frecuentes",
+    "siteName": "Your AI Slop Bores Me"
+  },
+  "hero": {
+    "title": "Your AI Slop Bores Me — Juega Ahora al Juego Viral",
+    "subtitle": "¿Cansado del slop generado por IA? En Your AI Slop Bores Me, TÚ te conviertes en la IA. Responde prompts reales de personas reales en 60 segundos y demuestra que los humanos siguen siendo mejores que el AI slop.",
+    "cta": "▶ Empieza a Jugar Gratis"
+  },
+  "game": {
+    "sectionTitle": "Juega Your AI Slop Bores Me Online",
+    "desc": "Salta directo a Your AI Slop Bores Me abajo. Sin descargas — ¡solo elige un modo y empieza a responder!",
+    "tip": "Si el juego no carga, intenta abrirlo en una nueva pestaña.",
+    "fallbackText": "El juego no se pudo cargar.",
+    "retryBtn": "↻ Reintentar",
+    "officialBtn": "Ir al Oficial →"
+  },
+  "about": {
+    "sectionTitle": "¿Qué es Your AI Slop Bores Me?",
+    "p1": "Your AI Slop Bores Me es un juego viral de navegador creado por el desarrollador Mihir Maroju (mikidoodle) que invierte el modelo de interacción con IA. En Your AI Slop Bores Me, los jugadores asumen el rol de la IA y responden prompts reales de otros jugadores.",
+    "p2": "El nombre \"Your AI Slop Bores Me\" captura un sentimiento creciente: la gente está cansada del contenido de baja calidad generado por IA. Your AI Slop Bores Me es tanto una protesta como una celebración de la creatividad humana.",
+    "p3": "Desde su lanzamiento en marzo de 2026, Your AI Slop Bores Me se ha viralizado en Hacker News, Kotaku y redes sociales. Miles de jugadores se unen cada día."
+  },
+  "features": {
+    "title1": "Presión de 60 Segundos",
+    "desc1": "Cada respuesta en Your AI Slop Bores Me debe completarse en 60 segundos — manteniendo las respuestas auténticas y humanas.",
+    "title2": "Economía de Tokens",
+    "desc2": "Gana tokens respondiendo prompts en Your AI Slop Bores Me y úsalos para hacer tus propias preguntas.",
+    "title3": "100% Gratis y en el Navegador",
+    "desc3": "Sin descargas, sin registro. Your AI Slop Bores Me funciona completamente en tu navegador.",
+    "title4": "Escribe o Dibuja",
+    "desc4": "Responde con texto o dibujos — Your AI Slop Bores Me celebra todas las formas de expresión humana."
+  },
+  "howToPlay": {
+    "sectionTitle": "Cómo Jugar Your AI Slop Bores Me",
+    "step1Title": "Elige tu Modo",
+    "step1Desc": "En Your AI Slop Bores Me puedes \"Hacerte pasar por IA\" para responder prompts, o jugar como \"Humano\" para enviar preguntas.",
+    "step2Title": "Responde Prompts Reales",
+    "step2Desc": "Cuando te haces pasar por IA en Your AI Slop Bores Me, aparecen preguntas reales. Tienes 60 segundos para escribir o dibujar tu mejor respuesta.",
+    "step3Title": "Gana y Gasta Tokens",
+    "step3Desc": "Cada respuesta te da un token. Gasta tokens para hacer tus preguntas — eso es lo que hace único a Your AI Slop Bores Me.",
+    "step4Title": "Disfruta la Creatividad Humana",
+    "step4Desc": "La magia de Your AI Slop Bores Me son las respuestas humanas sin filtro, creativas y a veces hilarantes."
+  },
+  "why": {
+    "sectionTitle": "Por Qué Your AI Slop Bores Me Se Hizo Viral",
+    "p1": "La frase \"your ai slop bores me\" captura lo que millones sienten en 2026: fatiga con el contenido genérico y sin alma generado por IA.",
+    "p2": "Your AI Slop Bores Me convierte la frustración en diversión. Al hacer que los humanos jueguen el papel de la IA, el juego destaca lo especial de la comunicación humana.",
+    "p3": "El concepto de Your AI Slop Bores Me también refleja una preocupación real — muchos \"servicios de IA\" dependen de trabajo humano oculto."
+  },
+  "faq": {
+    "sectionTitle": "Preguntas Frecuentes sobre Your AI Slop Bores Me",
+    "q1": "¿Qué es Your AI Slop Bores Me?",
+    "a1": "Your AI Slop Bores Me es un juego gratuito de navegador donde los jugadores fingen ser IA y responden prompts reales en 60 segundos.",
+    "q2": "¿Your AI Slop Bores Me es gratis?",
+    "a2": "¡Sí! Your AI Slop Bores Me es completamente gratis. Sin descargas, sin registro.",
+    "q3": "¿Quién creó Your AI Slop Bores Me?",
+    "a3": "Your AI Slop Bores Me fue creado por el desarrollador Mihir Maroju (mikidoodle). Se hizo viral en marzo de 2026.",
+    "q4": "¿Qué significa \"AI slop\"?",
+    "a4": "AI slop se refiere al contenido de baja calidad generado por inteligencia artificial. Your AI Slop Bores Me es una respuesta lúdica a este fenómeno.",
+    "q5": "¿Puedo jugar Your AI Slop Bores Me en móvil?",
+    "a5": "Sí, Your AI Slop Bores Me funciona en cualquier dispositivo con navegador web.",
+    "q6": "¿Cómo funcionan los tokens en Your AI Slop Bores Me?",
+    "a6": "Ganas tokens al responder prompts como IA. Luego puedes gastar tokens en modo Humano para enviar tus propias preguntas."
+  },
+  "footer": {
+    "description": "Esta es una página de fans de Your AI Slop Bores Me. El juego fue creado por mikidoodle.",
+    "pages": "Páginas",
+    "legal": "Legal",
+    "home": "Inicio",
+    "about": "Sobre el Juego",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Uso",
+    "copyright": "© 2026 Your AI Slop Bores Me Página de Fans"
+  }
+}

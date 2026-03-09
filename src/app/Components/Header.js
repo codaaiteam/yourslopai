@@ -1,0 +1,83 @@
+'use client'
+
+import Link from 'next/link';
+import { useState } from 'react';
+import { useParams, usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import styles from './Header.module.css';
+import { useTranslations } from '@/hooks/useTranslations';
+
+export default function Header() {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const router = useRouter();
+  const params = useParams();
+  const pathname = usePathname();
+  const currentLang = params?.lang || 'en';
+  const { t } = useTranslations();
+
+  const changeLanguage = (newLocale) => {
+    const segments = pathname.split('/');
+    segments[1] = newLocale;
+    router.push(segments.join('/'));
+  };
+
+  return (
+    <header className={styles.header}>
+      <div className={styles.headerContent}>
+        <Link href={`/${currentLang}`} className={styles.logoLink}>
+          <span className={styles.logoIcon}>🤖</span>
+          <span className={styles.logoText}>{t?.header?.siteName || 'Your AI Slop Bores Me'}</span>
+        </Link>
+
+        <button
+          className={styles.mobileMenuToggle}
+          onClick={() => setIsNavOpen(!isNavOpen)}
+          aria-label="Toggle menu"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            {isNavOpen ? (
+              <path d="M18 6L6 18M6 6l12 12" />
+            ) : (
+              <>
+                <path d="M3 12h18" />
+                <path d="M3 6h18" />
+                <path d="M3 18h18" />
+              </>
+            )}
+          </svg>
+        </button>
+
+        <nav className={`${styles.mainNav} ${isNavOpen ? styles.open : ''}`}>
+          <Link href={`/${currentLang}`} className={styles.navLink} onClick={() => setIsNavOpen(false)}>
+            {t?.header?.home || 'Home'}
+          </Link>
+          <a href="#about" className={styles.navLink} onClick={() => setIsNavOpen(false)}>
+            {t?.header?.about || 'About'}
+          </a>
+          <a href="#how-to-play" className={styles.navLink} onClick={() => setIsNavOpen(false)}>
+            {t?.header?.howToPlay || 'How to Play'}
+          </a>
+          <a href="#faq" className={styles.navLink} onClick={() => setIsNavOpen(false)}>
+            {t?.header?.faq || 'FAQ'}
+          </a>
+        </nav>
+
+        <div className={styles.langSwitcher}>
+          <select
+            onChange={(e) => changeLanguage(e.target.value)}
+            defaultValue={currentLang}
+            className={styles.langSelect}
+          >
+            <option value="en">EN</option>
+            <option value="zh">中文</option>
+            <option value="ja">日本語</option>
+            <option value="ko">한국어</option>
+            <option value="es">ES</option>
+            <option value="fr">FR</option>
+            <option value="de">DE</option>
+          </select>
+        </div>
+      </div>
+    </header>
+  );
+}

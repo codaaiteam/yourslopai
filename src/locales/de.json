@@ -1,0 +1,71 @@
+{
+  "seoTitle": "Your AI Slop Bores Me - Spiele das Virale Mensch vs KI Spiel Kostenlos",
+  "seoDescription": "Your AI Slop Bores Me ist das virale Browserspiel, in dem du die KI spielst. Beantworte echte Prompts in 60 Sekunden. Spiele Your AI Slop Bores Me jetzt kostenlos!",
+  "keywords": "your ai slop bores me, ai slop spiel, mensch gegen ki spiel, your ai slop bores me online, ai slop bores me kostenlos",
+  "meta": {
+    "ogTitle": "Your AI Slop Bores Me - Das Virale Mensch vs KI Spiel",
+    "ogDescription": "Your AI Slop Bores Me lässt dich zur KI werden. Beantworte Prompts, verdiene Tokens.",
+    "ogType": "website",
+    "ogImage": "/og-image.png",
+    "twitterCard": "summary_large_image",
+    "twitterTitle": "Your AI Slop Bores Me - Das Virale Mensch vs KI Spiel",
+    "twitterDescription": "Spiele Your AI Slop Bores Me — das Spiel das KI auf den Kopf stellt. Sei die KI, antworte in 60 Sekunden.",
+    "twitterImage": "/og-image.png"
+  },
+  "seo": { "robots": "index, follow" },
+  "layout": { "language": "de" },
+  "header": { "home": "Startseite", "about": "Über", "howToPlay": "Spielanleitung", "faq": "FAQ", "siteName": "Your AI Slop Bores Me" },
+  "hero": {
+    "title": "Your AI Slop Bores Me — Spiele Jetzt das Virale Spiel",
+    "subtitle": "Genervt von KI-generiertem Slop? Bei Your AI Slop Bores Me WIRST DU zur KI. Beantworte echte Prompts von echten Menschen in 60 Sekunden und beweise, dass Menschen besser sind als jeder AI Slop.",
+    "cta": "▶ Jetzt Kostenlos Spielen"
+  },
+  "game": {
+    "sectionTitle": "Your AI Slop Bores Me Online Spielen",
+    "desc": "Starte Your AI Slop Bores Me direkt hier. Kein Download nötig — wähle einen Modus und leg los!",
+    "tip": "Falls das Spiel nicht lädt, versuche es in einem neuen Tab zu öffnen.",
+    "fallbackText": "Das Spiel konnte nicht geladen werden.",
+    "retryBtn": "↻ Erneut versuchen",
+    "officialBtn": "Zur Offiziellen Seite →"
+  },
+  "about": {
+    "sectionTitle": "Was ist Your AI Slop Bores Me?",
+    "p1": "Your AI Slop Bores Me ist ein virales Browserspiel von Entwickler Mihir Maroju (mikidoodle), das das KI-Interaktionsmodell komplett umdreht. In Your AI Slop Bores Me übernehmen Spieler die Rolle der KI und beantworten echte Prompts anderer Spieler.",
+    "p2": "Der Name \"Your AI Slop Bores Me\" fängt ein wachsendes Gefühl ein: Menschen sind es leid, dass das Internet mit minderwertigen KI-generierten Inhalten überflutet wird. Your AI Slop Bores Me ist sowohl Protest als auch Feier menschlicher Kreativität.",
+    "p3": "Seit dem Start im März 2026 ist Your AI Slop Bores Me auf Hacker News, Kotaku und in sozialen Medien viral gegangen. Täglich treten tausende Spieler bei."
+  },
+  "features": {
+    "title1": "60-Sekunden-Druck", "desc1": "Jede Antwort in Your AI Slop Bores Me muss in 60 Sekunden geschrieben oder gezeichnet werden.",
+    "title2": "Token-Wirtschaft", "desc2": "Verdiene Tokens durch Antworten in Your AI Slop Bores Me und stelle eigene Fragen.",
+    "title3": "100% Kostenlos & Browserbasiert", "desc3": "Kein Download, keine Registrierung. Your AI Slop Bores Me läuft komplett im Browser.",
+    "title4": "Schreiben oder Zeichnen", "desc4": "Antworte mit Text oder Kritzeleien — Your AI Slop Bores Me feiert alle Formen menschlichen Ausdrucks."
+  },
+  "howToPlay": {
+    "sectionTitle": "So Spielst Du Your AI Slop Bores Me",
+    "step1Title": "Wähle deinen Modus", "step1Desc": "In Your AI Slop Bores Me kannst du als KI antworten oder als Mensch Fragen stellen.",
+    "step2Title": "Beantworte Echte Prompts", "step2Desc": "Als KI in Your AI Slop Bores Me erscheinen echte Fragen. Du hast 60 Sekunden.",
+    "step3Title": "Verdiene & Gib Tokens aus", "step3Desc": "Jede Antwort bringt ein Token. Gib Tokens aus für eigene Fragen — das macht Your AI Slop Bores Me besonders.",
+    "step4Title": "Genieße Menschliche Kreativität", "step4Desc": "Der Zauber von Your AI Slop Bores Me liegt in den ungefilterten, kreativen menschlichen Antworten."
+  },
+  "why": {
+    "sectionTitle": "Warum Your AI Slop Bores Me Viral Ging",
+    "p1": "Der Satz \"your ai slop bores me\" drückt aus, was Millionen 2026 fühlen: Müdigkeit von generischem KI-Content.",
+    "p2": "Your AI Slop Bores Me verwandelt diese Frustration in Spaß. Indem Menschen die Rolle der KI spielen, hebt das Spiel hervor, was menschliche Kommunikation besonders macht.",
+    "p3": "Das Konzept hinter Your AI Slop Bores Me spiegelt auch eine reale Sorge wider — viele \"KI-Dienste\" basieren auf versteckter menschlicher Arbeit."
+  },
+  "faq": {
+    "sectionTitle": "Häufig Gestellte Fragen zu Your AI Slop Bores Me",
+    "q1": "Was ist Your AI Slop Bores Me?", "a1": "Your AI Slop Bores Me ist ein kostenloses Browserspiel, in dem Spieler die KI spielen und in 60 Sekunden auf echte Prompts antworten.",
+    "q2": "Ist Your AI Slop Bores Me kostenlos?", "a2": "Ja! Your AI Slop Bores Me ist komplett kostenlos. Kein Download, keine Registrierung nötig.",
+    "q3": "Wer hat Your AI Slop Bores Me erstellt?", "a3": "Your AI Slop Bores Me wurde von Mihir Maroju (mikidoodle) entwickelt. Es ging im März 2026 viral.",
+    "q4": "Was bedeutet \"AI Slop\"?", "a4": "AI Slop bezeichnet minderwertige, KI-generierte Inhalte. Your AI Slop Bores Me ist eine spielerische Antwort auf dieses Phänomen.",
+    "q5": "Kann ich Your AI Slop Bores Me auf dem Handy spielen?", "a5": "Ja, Your AI Slop Bores Me funktioniert auf jedem Gerät mit Webbrowser.",
+    "q6": "Wie funktionieren Tokens in Your AI Slop Bores Me?", "a6": "Verdiene Tokens durch Antworten als KI. Gib sie im Mensch-Modus aus, um eigene Fragen zu stellen."
+  },
+  "footer": {
+    "description": "Dies ist eine Fan-Seite über Your AI Slop Bores Me. Das Spiel wurde von mikidoodle erstellt.",
+    "pages": "Seiten", "legal": "Rechtliches", "home": "Startseite", "about": "Über das Spiel",
+    "privacy": "Datenschutz", "terms": "Nutzungsbedingungen",
+    "copyright": "© 2026 Your AI Slop Bores Me Fan-Seite"
+  }
+}

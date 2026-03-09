@@ -1,0 +1,556 @@
+/* Game Container */
+.game {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  min-height: 500px;
+}
+
+/* Mode Selection */
+.modeSelect {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.modeTitle {
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.modeSubtitle {
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  font-size: 1rem;
+}
+
+.modeCards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.modeCard {
+  background: rgba(255, 255, 255, 0.04);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: inherit;
+  width: 100%;
+}
+
+.modeCard:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(249, 168, 37, 0.12);
+  background: rgba(249, 168, 37, 0.05);
+}
+
+.modeCard h3 {
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.modeCard p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.modeDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.modeDisabled:hover {
+  transform: none;
+  border-color: var(--border-color);
+  box-shadow: none;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.modeEmoji {
+  font-size: 3rem;
+  display: block;
+}
+
+.modeTag {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(249, 168, 37, 0.15);
+  color: var(--accent);
+}
+
+/* Token Display */
+.tokenDisplay {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(249, 168, 37, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  border: 1px solid rgba(249, 168, 37, 0.25);
+  margin-bottom: 1.5rem;
+}
+
+.tokenIcon {
+  font-size: 1.2rem;
+}
+
+.tokenCount {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.tokenLabel {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* Stats */
+.statsBar {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Game Header */
+.gameHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.backBtn {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-secondary);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.backBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+/* Larp Idle */
+.larpIdle, .humanIdle {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.bigEmoji {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.larpIdle h2, .humanIdle h2 {
+  margin-bottom: 0.5rem;
+}
+
+.larpIdle p, .humanIdle p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.startBtn {
+  display: inline-block;
+  padding: 0.9rem 2.5rem;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+  color: #000;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(249, 168, 37, 0.3);
+}
+
+.startBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(249, 168, 37, 0.5);
+}
+
+/* Timer */
+.timerBar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.timerFill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1s linear, background 0.5s;
+}
+
+.timerText {
+  text-align: right;
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 1rem;
+}
+
+/* Prompt Card */
+.promptCard {
+  background: rgba(249, 168, 37, 0.06);
+  border: 1px solid rgba(249, 168, 37, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.promptLabel {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.promptText {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Answer Area */
+.answerArea {
+  position: relative;
+}
+
+.answerInput {
+  width: 100%;
+  min-height: 150px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.6;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+.answerInput:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(249, 168, 37, 0.1);
+}
+
+.answerInput::placeholder {
+  color: var(--text-muted);
+}
+
+.charCount {
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0.5rem 0;
+}
+
+.submitBtn {
+  display: block;
+  width: 100%;
+  padding: 0.9rem;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+  color: #000;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.submitBtn:hover:not(:disabled) {
+  box-shadow: 0 4px 20px rgba(249, 168, 37, 0.4);
+  transform: translateY(-1px);
+}
+
+.submitBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Drawing Canvas */
+.canvasContainer {
+  margin-bottom: 1rem;
+}
+
+.canvasToolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.colorPicker {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.colorBtn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s;
+  border: 2px solid transparent;
+}
+
+.colorBtn:hover {
+  transform: scale(1.15);
+}
+
+.colorActive {
+  border-color: var(--text-primary);
+  transform: scale(1.15);
+}
+
+.brushSizes {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.sizeBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+
+.sizeActive {
+  background: rgba(249, 168, 37, 0.2);
+  color: var(--accent);
+}
+
+.clearBtn {
+  margin-left: auto;
+  padding: 0.4rem 0.8rem;
+  background: rgba(229, 57, 53, 0.15);
+  color: #e53935;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.clearBtn:hover {
+  background: rgba(229, 57, 53, 0.25);
+}
+
+.canvas {
+  width: 100%;
+  height: 350px;
+  border-radius: 12px;
+  border: 2px solid var(--border-color);
+  cursor: crosshair;
+  touch-action: none;
+  display: block;
+}
+
+.submitDrawBtn {
+  display: block;
+  width: 100%;
+  padding: 0.9rem;
+  margin-top: 0.75rem;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+  color: #000;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.submitDrawBtn:hover:not(:disabled) {
+  box-shadow: 0 4px 20px rgba(249, 168, 37, 0.4);
+}
+
+/* Result Phase */
+.resultPhase {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.resultPhase h2 {
+  margin-bottom: 0.5rem;
+}
+
+.tokenEarned {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.yourAnswer {
+  text-align: left;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.yourAnswer p {
+  margin-bottom: 1rem;
+}
+
+.answerPreview {
+  background: rgba(249, 168, 37, 0.05);
+  border-radius: 8px;
+  padding: 1rem;
+  font-style: italic;
+  color: var(--text-primary);
+  border-left: 3px solid var(--accent);
+}
+
+.aiResponse {
+  background: rgba(249, 168, 37, 0.05);
+  border-radius: 8px;
+  padding: 1rem;
+  color: var(--text-primary);
+  border-left: 3px solid var(--accent);
+  line-height: 1.7;
+}
+
+.drawingPreview {
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.resultActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Waiting Phase */
+.waitingPhase {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.waitingAnimation h2 {
+  margin-bottom: 0.5rem;
+}
+
+.waitingAnimation p {
+  color: var(--text-secondary);
+}
+
+.loadingDots {
+  display: flex;
+  gap: 0.3rem;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--accent);
+  margin-top: 1rem;
+}
+
+.loadingDots span {
+  animation: blink 1.4s infinite both;
+  color: var(--accent);
+}
+
+.loadingDots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loadingDots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0; }
+  40% { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .game {
+    padding: 1rem;
+  }
+
+  .modeCards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .modeCard {
+    padding: 1.5rem 1rem;
+  }
+
+  .modeTitle {
+    font-size: 1.4rem;
+  }
+
+  .heroTitle {
+    font-size: 1.5rem;
+  }
+
+  .canvas {
+    height: 250px;
+  }
+
+  .promptText {
+    font-size: 1.05rem;
+  }
+
+  .timerText {
+    font-size: 1.2rem;
+  }
+
+  .statsBar {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

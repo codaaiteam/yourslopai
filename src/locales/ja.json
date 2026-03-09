@@ -1,0 +1,99 @@
+{
+  "seoTitle": "Your AI Slop Bores Me - バイラルな人間vsAIゲームを無料でプレイ",
+  "seoDescription": "Your AI Slop Bores Me は、あなたがAIになりきって本物のプロンプトに答えるバイラルブラウザゲームです。Your AI Slop Bores Me を今すぐ無料でプレイ！",
+  "keywords": "your ai slop bores me, aiスロップゲーム, 人間対aiゲーム, your ai slop bores me オンライン, ai slop bores me 無料",
+  "meta": {
+    "ogTitle": "Your AI Slop Bores Me - バイラルな人間vsAIゲーム",
+    "ogDescription": "Your AI Slop Bores Me であなたがAIに。プロンプトに答え、トークンを稼ぎ、人間の方が優れていることを証明しよう。",
+    "ogType": "website",
+    "ogImage": "/og-image.png",
+    "twitterCard": "summary_large_image",
+    "twitterTitle": "Your AI Slop Bores Me - バイラルな人間vsAIゲーム",
+    "twitterDescription": "Your AI Slop Bores Me をプレイ — AIの概念を覆すゲーム。AIになりきって60秒で回答。",
+    "twitterImage": "/og-image.png"
+  },
+  "seo": {
+    "robots": "index, follow"
+  },
+  "layout": {
+    "language": "ja"
+  },
+  "header": {
+    "home": "ホーム",
+    "about": "概要",
+    "howToPlay": "遊び方",
+    "faq": "よくある質問",
+    "siteName": "Your AI Slop Bores Me"
+  },
+  "hero": {
+    "title": "Your AI Slop Bores Me — 今すぐバイラルゲームをプレイ",
+    "subtitle": "AI生成のスロップにうんざり？Your AI Slop Bores Me では、あなた自身がAIになります。60秒以内に本物の人々からの本物のプロンプトに答えて、人間がAIスロップよりも優れていることを証明しましょう。",
+    "cta": "▶ 無料でプレイ開始"
+  },
+  "game": {
+    "sectionTitle": "Your AI Slop Bores Me をオンラインでプレイ",
+    "desc": "下で直接 Your AI Slop Bores Me を始めましょう。ダウンロード不要 — モードを選んで回答開始！",
+    "tip": "ゲームが読み込めない場合は、新しいタブで開いてみてください。",
+    "fallbackText": "ゲームを読み込めませんでした。",
+    "retryBtn": "↻ 再試行",
+    "officialBtn": "公式サイトへ →"
+  },
+  "about": {
+    "sectionTitle": "Your AI Slop Bores Me とは？",
+    "p1": "Your AI Slop Bores Me は、開発者 Mihir Maroju（mikidoodle）が制作したバイラルブラウザゲームで、AIインタラクションモデルを完全に逆転させます。Your AI Slop Bores Me では、AIに答えを求めるのではなく、プレイヤー自身がAIの役割を担い、他のプレイヤーからの本物のプロンプトに答えます。",
+    "p2": "「Your AI Slop Bores Me」という名前は、増大する感情を捉えています：人々はインターネットに溢れる低品質なAI生成コンテンツにうんざりしています。Your AI Slop Bores Me は抗議であり祝福でもあります — 人間の創造性、ユーモア、即興性はアルゴリズムには置き換えられないことを証明しています。",
+    "p3": "2026年3月のローンチ以来、Your AI Slop Bores Me はHacker News、Kotaku、ソーシャルメディアで瞬く間に広まりました。毎日何千人ものプレイヤーが参加し、プロンプトに答え、トークンを稼ぎ、AIには再現できない素晴らしく人間らしい回答を楽しんでいます。"
+  },
+  "features": {
+    "title1": "60秒プレッシャー",
+    "desc1": "Your AI Slop Bores Me では、すべての回答を60秒以内にテキストまたはイラストで完成させる必要があります — 回答を生々しく本物の人間らしく保ちます。",
+    "title2": "トークンエコノミー",
+    "desc2": "Your AI Slop Bores Me でプロンプトに答えてトークンを稼ぎ、自分の質問をするために使いましょう。",
+    "title3": "100%無料＆ブラウザベース",
+    "desc3": "ダウンロード不要、アカウント登録不要。Your AI Slop Bores Me はブラウザだけで完全に動作します。",
+    "title4": "書くか描くか",
+    "desc4": "テキストや落書きでプロンプトに答えよう — Your AI Slop Bores Me はあらゆる形の人間の表現を称えます。"
+  },
+  "howToPlay": {
+    "sectionTitle": "Your AI Slop Bores Me の遊び方",
+    "step1Title": "モードを選択",
+    "step1Desc": "Your AI Slop Bores Me では、「AIになりきる」でプロンプトに答えるか、「人間」として質問を投稿してトークンを使うことができます。",
+    "step2Title": "本物のプロンプトに回答",
+    "step2Desc": "Your AI Slop Bores Me でAIになりきると、本物の人々からの本物の質問が表示されます。60秒以内に最高の回答を書くか描きましょう。",
+    "step3Title": "トークンを稼いで使う",
+    "step3Desc": "回答するたびにトークンを1つ獲得。トークンを使って自分の質問を投稿し、人間による回答を受け取りましょう — これが Your AI Slop Bores Me の魅力です。",
+    "step4Title": "人間の創造性を楽しむ",
+    "step4Desc": "Your AI Slop Bores Me の魔法は、フィルターなしの、創造的で、時に爆笑ものの人間の回答にあります — AIスロップが本物の人間に太刀打ちできない証拠です。"
+  },
+  "why": {
+    "sectionTitle": "Your AI Slop Bores Me がバイラルになった理由",
+    "p1": "「your ai slop bores me」というフレーズは、2026年に何百万人もが感じていることを表しています：ジェネリックで魂のないAI生成コンテンツへの疲労です。",
+    "p2": "Your AI Slop Bores Me はこのフラストレーションを楽しみに変えます。人間にAIの役割を演じさせることで、人間のコミュニケーションの特別さを浮き彫りにします。",
+    "p3": "Your AI Slop Bores Me のコンセプトはまた、現実の懸念を反映しています — 多くの「AIサービス」は実際には隠れた人間の労働に依存しています。"
+  },
+  "faq": {
+    "sectionTitle": "Your AI Slop Bores Me に関するよくある質問",
+    "q1": "Your AI Slop Bores Me とは何ですか？",
+    "a1": "Your AI Slop Bores Me は無料のブラウザゲームで、プレイヤーがAIになりきって60秒以内に他のユーザーの本物のプロンプトに答えます。人間の創造性がAI生成コンテンツより優れていることを称えるバイラルゲームです。",
+    "q2": "Your AI Slop Bores Me は無料ですか？",
+    "a2": "はい！Your AI Slop Bores Me は完全無料です。ダウンロードもサインアップも不要 — ブラウザを開いてすぐにプレイできます。",
+    "q3": "Your AI Slop Bores Me の制作者は？",
+    "a3": "Your AI Slop Bores Me は開発者 Mihir Maroju（mikidoodle）が制作しました。2026年3月にHacker Newsで紹介されKotakuで報道された後、バイラルになりました。",
+    "q4": "「AIスロップ」とは？",
+    "a4": "AIスロップとは、人工知能が生成する低品質・低労力のコンテンツのことです。Your AI Slop Bores Me はこの現象への遊び心ある応答です。",
+    "q5": "スマホで Your AI Slop Bores Me をプレイできますか？",
+    "a5": "はい、Your AI Slop Bores Me はウェブブラウザがあればどのデバイスでも動作します。完全レスポンシブ対応です。",
+    "q6": "Your AI Slop Bores Me のトークンの仕組みは？",
+    "a6": "「AIになりきる」でプロンプトに答えるとトークンを獲得。「人間」モードでトークンを使って自分の質問を投稿できます。"
+  },
+  "footer": {
+    "description": "これは Your AI Slop Bores Me のファンページです。ゲームは mikidoodle が制作しました。",
+    "pages": "ページ",
+    "legal": "法的情報",
+    "home": "ホーム",
+    "about": "ゲーム概要",
+    "privacy": "プライバシーポリシー",
+    "terms": "利用規約",
+    "copyright": "© 2026 Your AI Slop Bores Me ファンページ"
+  }
+}

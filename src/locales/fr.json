@@ -1,0 +1,71 @@
+{
+  "seoTitle": "Your AI Slop Bores Me - Jouez Gratuitement au Jeu Viral Humain vs IA",
+  "seoDescription": "Your AI Slop Bores Me est le jeu viral où vous incarnez l'IA. Répondez à de vrais prompts en 60 secondes. Jouez à Your AI Slop Bores Me gratuitement !",
+  "keywords": "your ai slop bores me, jeu ai slop, humain vs ia jeu, your ai slop bores me en ligne, ai slop bores me gratuit",
+  "meta": {
+    "ogTitle": "Your AI Slop Bores Me - Le Jeu Viral Humain vs IA",
+    "ogDescription": "Your AI Slop Bores Me vous permet de devenir l'IA. Répondez aux prompts, gagnez des tokens.",
+    "ogType": "website",
+    "ogImage": "/og-image.png",
+    "twitterCard": "summary_large_image",
+    "twitterTitle": "Your AI Slop Bores Me - Le Jeu Viral Humain vs IA",
+    "twitterDescription": "Jouez à Your AI Slop Bores Me — le jeu qui renverse l'IA. Soyez l'IA, répondez en 60 secondes.",
+    "twitterImage": "/og-image.png"
+  },
+  "seo": { "robots": "index, follow" },
+  "layout": { "language": "fr" },
+  "header": { "home": "Accueil", "about": "À propos", "howToPlay": "Comment jouer", "faq": "FAQ", "siteName": "Your AI Slop Bores Me" },
+  "hero": {
+    "title": "Your AI Slop Bores Me — Jouez au Jeu Viral Maintenant",
+    "subtitle": "Fatigué du slop généré par l'IA ? Dans Your AI Slop Bores Me, VOUS devenez l'IA. Répondez aux vrais prompts de vraies personnes en 60 secondes et prouvez que les humains font mieux que l'AI slop.",
+    "cta": "▶ Commencer à Jouer Gratuitement"
+  },
+  "game": {
+    "sectionTitle": "Jouez à Your AI Slop Bores Me en Ligne",
+    "desc": "Lancez-vous dans Your AI Slop Bores Me ci-dessous. Aucun téléchargement — choisissez un mode et commencez !",
+    "tip": "Si le jeu ne charge pas, essayez de l'ouvrir dans un nouvel onglet.",
+    "fallbackText": "Le jeu n'a pas pu être chargé.",
+    "retryBtn": "↻ Réessayer",
+    "officialBtn": "Aller au Site Officiel →"
+  },
+  "about": {
+    "sectionTitle": "Qu'est-ce que Your AI Slop Bores Me ?",
+    "p1": "Your AI Slop Bores Me est un jeu viral créé par le développeur Mihir Maroju (mikidoodle) qui inverse le modèle d'interaction IA. Dans Your AI Slop Bores Me, les joueurs assument le rôle de l'IA et répondent aux vrais prompts d'autres joueurs.",
+    "p2": "Le nom \"Your AI Slop Bores Me\" capture un sentiment grandissant : les gens en ont assez du contenu IA de basse qualité. Your AI Slop Bores Me est à la fois une protestation et une célébration de la créativité humaine.",
+    "p3": "Depuis son lancement en mars 2026, Your AI Slop Bores Me est devenu viral sur Hacker News, Kotaku et les réseaux sociaux. Des milliers de joueurs rejoignent chaque jour."
+  },
+  "features": {
+    "title1": "Pression de 60 Secondes", "desc1": "Chaque réponse dans Your AI Slop Bores Me doit être écrite ou dessinée en 60 secondes.",
+    "title2": "Économie de Tokens", "desc2": "Gagnez des tokens en répondant dans Your AI Slop Bores Me et dépensez-les pour poser vos questions.",
+    "title3": "100% Gratuit & dans le Navigateur", "desc3": "Aucun téléchargement, aucun compte requis. Your AI Slop Bores Me fonctionne entièrement dans votre navigateur.",
+    "title4": "Écrivez ou Dessinez", "desc4": "Répondez avec du texte ou des dessins — Your AI Slop Bores Me célèbre toutes les formes d'expression humaine."
+  },
+  "howToPlay": {
+    "sectionTitle": "Comment Jouer à Your AI Slop Bores Me",
+    "step1Title": "Choisissez votre Mode", "step1Desc": "Dans Your AI Slop Bores Me, vous pouvez \"Jouer l'IA\" pour répondre, ou jouer en \"Humain\" pour soumettre des questions.",
+    "step2Title": "Répondez aux Vrais Prompts", "step2Desc": "Quand vous jouez l'IA dans Your AI Slop Bores Me, de vraies questions apparaissent. Vous avez 60 secondes.",
+    "step3Title": "Gagnez & Dépensez des Tokens", "step3Desc": "Chaque réponse rapporte un token. Dépensez-les pour poser vos questions — c'est ce qui rend Your AI Slop Bores Me unique.",
+    "step4Title": "Profitez de la Créativité Humaine", "step4Desc": "La magie de Your AI Slop Bores Me réside dans les réponses humaines brutes et créatives."
+  },
+  "why": {
+    "sectionTitle": "Pourquoi Your AI Slop Bores Me Est Devenu Viral",
+    "p1": "La phrase \"your ai slop bores me\" capture ce que des millions ressentent en 2026 : la fatigue du contenu IA générique.",
+    "p2": "Your AI Slop Bores Me transforme cette frustration en plaisir. En faisant jouer le rôle de l'IA aux humains, le jeu met en lumière ce qui rend la communication humaine spéciale.",
+    "p3": "Le concept de Your AI Slop Bores Me reflète aussi une vraie préoccupation — beaucoup de \"services IA\" reposent sur du travail humain caché."
+  },
+  "faq": {
+    "sectionTitle": "Questions Fréquentes sur Your AI Slop Bores Me",
+    "q1": "Qu'est-ce que Your AI Slop Bores Me ?", "a1": "Your AI Slop Bores Me est un jeu gratuit dans le navigateur où les joueurs prétendent être l'IA et répondent en 60 secondes.",
+    "q2": "Your AI Slop Bores Me est-il gratuit ?", "a2": "Oui ! Your AI Slop Bores Me est entièrement gratuit. Aucun téléchargement, aucune inscription.",
+    "q3": "Qui a créé Your AI Slop Bores Me ?", "a3": "Your AI Slop Bores Me a été créé par Mihir Maroju (mikidoodle). Il est devenu viral en mars 2026.",
+    "q4": "Que signifie \"AI slop\" ?", "a4": "AI slop désigne le contenu de basse qualité généré par IA. Your AI Slop Bores Me est une réponse ludique à ce phénomène.",
+    "q5": "Puis-je jouer à Your AI Slop Bores Me sur mobile ?", "a5": "Oui, Your AI Slop Bores Me fonctionne sur tout appareil avec un navigateur web.",
+    "q6": "Comment fonctionnent les tokens dans Your AI Slop Bores Me ?", "a6": "Gagnez des tokens en répondant comme IA. Dépensez-les en mode Humain pour soumettre vos questions."
+  },
+  "footer": {
+    "description": "Ceci est une page de fan de Your AI Slop Bores Me. Le jeu a été créé par mikidoodle.",
+    "pages": "Pages", "legal": "Légal", "home": "Accueil", "about": "À propos du jeu",
+    "privacy": "Politique de confidentialité", "terms": "Conditions d'utilisation",
+    "copyright": "© 2026 Your AI Slop Bores Me Page de Fan"
+  }
+}
