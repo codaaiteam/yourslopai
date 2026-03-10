@@ -46,10 +46,23 @@ export default function Home() {
                 youraislopboresmegame.com
               </a>
             </p>
-            <details className={styles.embedSection}>
-              <summary className={styles.embedToggle}>Embed this game on your site</summary>
-              <pre className={styles.embedCode}>{`<div>\n  Play the game:\n  <a href="https://youraislopboresmegame.com">\n    Your AI Slop Bores Me Game\n  </a>\n\n  <iframe src="https://youraislopboresmegame.com" width="1280" height="720"></iframe>\n</div>`}</pre>
-            </details>
+            <div className={styles.embedSection}>
+              <h3 className={styles.embedTitle}>Embed this game</h3>
+              <div className={styles.embedRow}>
+                <label className={styles.embedLabel}>Embed URL</label>
+                <div className={styles.embedField}>
+                  <code className={styles.embedValue}>https://youraislopboresmegame.com</code>
+                  <button className={styles.embedCopy} onClick={() => { navigator.clipboard.writeText('https://youraislopboresmegame.com'); }}>Copy</button>
+                </div>
+              </div>
+              <div className={styles.embedRow}>
+                <label className={styles.embedLabel}>Embed Code</label>
+                <div className={styles.embedField}>
+                  <code className={styles.embedValue}>{`<iframe src="https://youraislopboresmegame.com" width="1280" height="720" frameborder="0" scrolling="no"></iframe>`}</code>
+                  <button className={styles.embedCopy} onClick={() => { navigator.clipboard.writeText('<iframe src="https://youraislopboresmegame.com" width="1280" height="720" frameborder="0" scrolling="no"></iframe>'); }}>Copy</button>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
