@@ -46,6 +46,10 @@ export default function Home() {
                 youraislopboresmegame.com
               </a>
             </p>
+            <details className={styles.embedSection}>
+              <summary className={styles.embedToggle}>Embed this game on your site</summary>
+              <pre className={styles.embedCode}>{`<div>\n  Play the game:\n  <a href="https://youraislopboresmegame.com">\n    Your AI Slop Bores Me Game\n  </a>\n\n  <iframe src="https://youraislopboresmegame.com" width="1280" height="720"></iframe>\n</div>`}</pre>
+            </details>
           </div>
         </section>
 
