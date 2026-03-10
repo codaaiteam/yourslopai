@@ -5,6 +5,7 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import QuestionFAQ from './Components/QuestionFAQ';
 import GameMain from './Components/Game/GameMain';
+import MoreGames from './Components/MoreGames';
 import { useTranslations } from '@/hooks/useTranslations';
 
 export default function Home() {
@@ -40,13 +41,16 @@ export default function Home() {
               <GameMain t={t} />
             </div>
             <p className={styles.gameTip}>
-              💡 Also try the original:{' '}
-              <a href="https://youraislopbores.me/" target="_blank" rel="noopener noreferrer">
-                youraislopbores.me
+              💡 Play the full game on the official site →{' '}
+              <a href="https://youraislopboresmegame.com">
+                youraislopboresmegame.com
               </a>
             </p>
           </div>
         </section>
+
+        {/* More Games */}
+        <MoreGames current="main" />
 
         {/* About */}
         <section id="about" className={styles.aboutSection}>

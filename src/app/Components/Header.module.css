@@ -33,8 +33,11 @@
   text-decoration: none;
 }
 
-.logoIcon {
-  font-size: 1.1rem;
+.logoImg {
+  width: 28px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 4px;
 }
 
 .logoText {

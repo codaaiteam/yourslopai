@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { useParams, usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
@@ -25,7 +26,7 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.headerContent}>
         <Link href={`/${currentLang}`} className={styles.logoLink}>
-          <span className={styles.logoIcon}>🤖</span>
+          <Image src="/logo-site.png" alt="Logo" width={28} height={28} className={styles.logoImg} />
           <span className={styles.logoText}>{t?.header?.siteName || 'Your AI Slop Bores Me'}</span>
         </Link>
 

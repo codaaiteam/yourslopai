@@ -59,6 +59,9 @@ export default function RootLayout({ children, params }) {
     <html lang={t.layout.language}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" href="/icon-192.png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script defer data-domain="youraislopboresmegame.com" src="https://app.pageview.app/js/script.js"></script>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5451478429268021" crossOrigin="anonymous"></script>

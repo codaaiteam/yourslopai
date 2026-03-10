@@ -131,6 +131,57 @@
   color: var(--text-secondary);
 }
 
+/* More Games */
+.moreGamesSection {
+  padding: 4rem 0;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.gamesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.gameCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.8rem 1.4rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: block;
+}
+
+.gameCard:hover {
+  border-color: var(--text-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.gameCardIcon {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.gameCard h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.gameCard p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
 /* About */
 .aboutSection {
   padding: 4rem 0;
@@ -286,6 +337,11 @@
     gap: 0.75rem;
   }
 
+  .gamesGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
   .heroTitle {
     font-size: 1.8rem;
   }
@@ -316,7 +372,8 @@
   .aboutSection,
   .howtoSection,
   .whySection,
-  .faqSection {
+  .faqSection,
+  .moreGamesSection {
     padding: 3rem 0;
   }
 

@@ -1,0 +1,227 @@
+/* Game area within the section */
+.gameArea {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Score bar */
+.scoreBar {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.scoreStat {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.scoreValue {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.streakValue {
+  font-weight: 600;
+  color: var(--accent-green);
+}
+
+/* Card */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.75rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.5rem;
+}
+
+.roundLabel {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.snippetText {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  text-align: left;
+  margin-bottom: 0;
+}
+
+/* Buttons */
+.buttonRow {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.choiceBtn {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
+.choiceBtn:hover:not(:disabled) {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.choiceBtn:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.choiceBtnCorrect {
+  border-color: #4caf50;
+  background: #e8f5e9;
+  color: #2e7d32;
+  opacity: 1 !important;
+}
+
+.choiceBtnWrong {
+  border-color: #e53935;
+  background: #ffebee;
+  color: #c62828;
+  opacity: 1 !important;
+}
+
+/* Result */
+.result {
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.resultCorrect {
+  composes: result;
+}
+
+.resultWrong {
+  composes: result;
+}
+
+.resultIcon {
+  font-size: 1.3rem;
+  margin-bottom: 0.25rem;
+}
+
+.resultText {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.resultCorrect .resultText {
+  color: #2e7d32;
+}
+
+.resultWrong .resultText {
+  color: #c62828;
+}
+
+.nextBtn {
+  padding: 0.6rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  transition: opacity 0.15s ease;
+  border: none;
+}
+
+.nextBtn:hover {
+  opacity: 0.85;
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  border-top-color: var(--text-primary);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin-bottom: 0.75rem;
+}
+
+/* Error */
+.error {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #c62828;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.retryBtn {
+  margin-top: 0.75rem;
+  padding: 0.5rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.retryBtn:hover {
+  border-color: var(--border-accent);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .snippetText {
+    font-size: 1rem;
+  }
+
+  .buttonRow {
+    flex-direction: column;
+  }
+
+  .scoreBar {
+    gap: 1rem;
+    font-size: 0.8rem;
+  }
+}

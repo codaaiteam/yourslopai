@@ -12,6 +12,13 @@ const Footer = ({ t }) => {
         </div>
 
         <div className={styles.footerSection}>
+          <h3>Games</h3>
+          <Link href="/games/ai-or-human">AI or Human?</Link>
+          <Link href="/games/ai-roast">AI Roast Me</Link>
+          <Link href="/games/story-chain">Story Chain</Link>
+        </div>
+
+        <div className={styles.footerSection}>
           <h3>{t?.footer?.legal || 'Legal'}</h3>
           <Link href="/privacy">{t?.footer?.privacy || 'Privacy Policy'}</Link>
           <Link href="/terms">{t?.footer?.terms || 'Terms of Use'}</Link>
@@ -19,8 +26,8 @@ const Footer = ({ t }) => {
 
         <div className={styles.footerSection}>
           <h3>Official</h3>
-          <a href="https://www.youraislopbores.me" target="_blank" rel="noopener noreferrer">
-            Your AI Slop Bores Me
+          <a href="https://youraislopboresmegame.com">
+            youraislopboresmegame.com
           </a>
         </div>
       </div>
