@@ -7,6 +7,7 @@ import Footer from '../../Components/Footer';
 import MoreGames from '../../Components/MoreGames';
 import QuestionFAQ from '../../Components/QuestionFAQ';
 import { useTranslations } from '@/hooks/useTranslations';
+import { shareCard } from '@/lib/shareImage';
 import styles from './StoryChain.module.css';
 import gp from '../gamePage.module.css';
 
@@ -103,6 +104,17 @@ export default function StoryChainPage() {
                 <button className={styles.toolBtn} onClick={handleReset}>New Story</button>
                 <button className={styles.toolBtn} onClick={handleCopy} disabled={sentences.length === 0}>
                   Copy Story
+                </button>
+                <button className={styles.toolBtn} onClick={() => {
+                  if (sentences.length === 0) return;
+                  const storyBlocks = sentences.map((s) => ({
+                    text: s.text,
+                    label: s.author === 'human' ? 'you' : 'ai',
+                    color: s.author === 'human' ? '#f6faf6' : '#faf6fc',
+                  }));
+                  shareCard({ title: 'Story Chain', blocks: storyBlocks });
+                }} disabled={sentences.length === 0}>
+                  Share Story
                 </button>
                 <span className={styles.turnCount}>{sentences.length}/{MAX_SENTENCES}</span>
               </div>

@@ -153,6 +153,30 @@
   opacity: 0.85;
 }
 
+.resultActions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.shareBtn {
+  padding: 0.6rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  transition: all 0.15s ease;
+}
+
+.shareBtn:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+}
+
 /* Loading */
 .loading {
   text-align: center;

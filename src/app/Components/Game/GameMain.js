@@ -279,16 +279,18 @@ export default function GameMain({ t }) {
     const lineH = 20;
     const bubbleMaxW = W - pad * 2;
 
-    // Load image if present
+    // Load image if present — proxy through our API to avoid CORS canvas tainting
     let loadedImg = null;
     if (responseMsg.imageUrl) {
       try {
+        const proxyUrl = `/api/image-proxy?url=${encodeURIComponent(responseMsg.imageUrl)}`;
+        const imgBlob = await fetch(proxyUrl).then(r => r.blob());
+        const blobUrl = URL.createObjectURL(imgBlob);
         loadedImg = await new Promise((resolve, reject) => {
           const img = new Image();
-          img.crossOrigin = 'anonymous';
           img.onload = () => resolve(img);
           img.onerror = reject;
-          img.src = responseMsg.imageUrl;
+          img.src = blobUrl;
         });
       } catch (e) { loadedImg = null; }
     }

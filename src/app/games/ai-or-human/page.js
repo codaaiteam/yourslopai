@@ -7,6 +7,7 @@ import Footer from '../../Components/Footer';
 import MoreGames from '../../Components/MoreGames';
 import QuestionFAQ from '../../Components/QuestionFAQ';
 import { useTranslations } from '@/hooks/useTranslations';
+import { shareCard } from '@/lib/shareImage';
 import styles from './AiOrHuman.module.css';
 import gp from '../gamePage.module.css';
 
@@ -125,7 +126,16 @@ export default function AiOrHumanPage() {
                         {isCorrect ? 'Nice call!' : 'Nope!'} It was written by{' '}
                         <strong>{snippet.answer === 'ai' ? 'AI' : 'a human'}</strong>.
                       </div>
-                      <button className={styles.nextBtn} onClick={fetchRound}>Next Round</button>
+                      <div className={styles.resultActions}>
+                        <button className={styles.nextBtn} onClick={fetchRound}>Next Round</button>
+                        <button className={styles.shareBtn} onClick={() => shareCard({
+                          title: 'AI or Human?',
+                          blocks: [
+                            { label: `Round ${total}`, text: snippet.text, color: '#f5f5f0', bold: false },
+                            { text: `${isCorrect ? '✓ Correct!' : '✗ Wrong!'} It was written by ${snippet.answer === 'ai' ? 'AI' : 'a human'}. Score: ${score}/${total}`, color: isCorrect ? '#e8f5e9' : '#ffebee', bold: true },
+                          ],
+                        })}>Share</button>
+                      </div>
                     </div>
                   )}
                 </>

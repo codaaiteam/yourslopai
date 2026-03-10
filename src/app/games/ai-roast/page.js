@@ -7,6 +7,7 @@ import Footer from '../../Components/Footer';
 import MoreGames from '../../Components/MoreGames';
 import QuestionFAQ from '../../Components/QuestionFAQ';
 import { useTranslations } from '@/hooks/useTranslations';
+import { shareCard } from '@/lib/shareImage';
 import styles from './AiRoast.module.css';
 import gp from '../gamePage.module.css';
 
@@ -123,6 +124,13 @@ export default function AiRoastPage() {
                   <div className={styles.fireDecor}>&#x1F525;</div>
                   <p className={styles.roastText}>{roast}</p>
                   <div className={styles.fireDecor}>&#x1F525;</div>
+                  <button className={styles.shareBtn} onClick={() => shareCard({
+                    title: 'AI Roast Me',
+                    blocks: [
+                      { label: 'I said...', text: description.trim(), color: '#f5f5f0' },
+                      { label: '🔥 AI roasted me', text: roast, color: '#fff3e0', bold: true },
+                    ],
+                  })}>Share Roast</button>
                 </div>
               )}
 
