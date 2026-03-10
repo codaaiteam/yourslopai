@@ -69,30 +69,39 @@ export async function POST(request) {
   }
 
   try {
-    const { prompt, answer, isDrawing } = await request.json();
+    const { prompt, answer, isDrawing, userImageCount = 0 } = await request.json();
 
     if (!prompt || typeof prompt !== 'string') {
       return NextResponse.json({ pass: true, reason: '' });
     }
 
-    // Get dynamic difficulty
+    // Get global difficulty (based on today's total image count)
     const todayCount = await getTodayImageCount();
     const diff = getDifficulty(todayCount);
 
-    // Drawings: pass rate based on difficulty
+    // Per-user penalty: after 2 images, gradually reduce pass rate
+    // Each image after 2 reduces pass rate by 5%, min 15%
+    const userPenalty = Math.max(0, (userImageCount - 2)) * 0.05;
+    const userDrawRate = Math.max(0.15, diff.drawingPassRate - userPenalty);
+
+    // Drawings: pass rate based on difficulty + user penalty
     if (isDrawing) {
-      if (Math.random() < diff.drawingPassRate) {
+      if (Math.random() < userDrawRate) {
         return NextResponse.json({ pass: true, reason: pick(drawPassReasons) });
       } else {
         return NextResponse.json({ pass: false, reason: pick(drawFailReasons) });
       }
     }
 
+    // Per-user text penalty: increase min length after 2 images
+    const extraMinLen = Math.max(0, (userImageCount - 2)) * 3;
+    const minLen = Math.min(60, diff.minTextLength + extraMinLen);
+
     // Too short = auto fail
-    if (!answer || answer.trim().length < diff.minTextLength) {
+    if (!answer || answer.trim().length < minLen) {
       return NextResponse.json({
         pass: false,
-        reason: `Too short. Need at least ${diff.minTextLength} characters. A real AI would say more.`,
+        reason: `Too short. Need at least ${minLen} characters. A real AI would say more.`,
       });
     }
 
@@ -102,7 +111,14 @@ export async function POST(request) {
 
     recordCall('judge');
 
-    const judgePrompt = BASE_JUDGE_PROMPT.replace('STRICTNESS_PLACEHOLDER', diff.judgeExtra);
+    let strictness = diff.judgeExtra;
+    if (userImageCount >= 5) {
+      strictness += ' This user has generated many images. Be EXTRA strict — only truly excellent AI impersonations should pass.';
+    } else if (userImageCount >= 3) {
+      strictness += ' This user has used several images. Raise your standards slightly.';
+    }
+    const judgePrompt = BASE_JUDGE_PROMPT.replace('STRICTNESS_PLACEHOLDER', strictness);
+    const judgeTemp = Math.max(0.1, diff.judgeTemp - userPenalty * 0.5);
 
     const completion = await client.chat.completions.create({
       model: 'deepseek-chat',
@@ -111,7 +127,7 @@ export async function POST(request) {
         { role: 'user', content: `Prompt: ${prompt}\nAnswer: ${answer}` }
       ],
       max_tokens: 80,
-      temperature: diff.judgeTemp,
+      temperature: judgeTemp,
     });
 
     const raw = completion.choices[0]?.message?.content || '';

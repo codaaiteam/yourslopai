@@ -24,7 +24,7 @@ export default function GameMain({ t }) {
   const [drawingData, setDrawingData] = useState(null);
   const [generatedImage, setGeneratedImage] = useState(null);
   const [isGeneratingImage, setIsGeneratingImage] = useState(false);
-  const [stats, setStats] = useState({ answered: 0, asked: 0 });
+  const [stats, setStats] = useState({ answered: 0, asked: 0, images: 0 });
   const [onlineCount] = useState(() => Math.floor(Math.random() * 8000) + 12000);
   const [tokenPop, setTokenPop] = useState(false);
   const [showRules, setShowRules] = useState(false);
@@ -201,6 +201,7 @@ export default function GameMain({ t }) {
           prompt: currentPrompt,
           answer: isDrawing ? '[drawing submitted]' : answer,
           isDrawing,
+          userImageCount: stats.images || 0,
         }),
       });
       const data = await res.json();
@@ -247,6 +248,7 @@ export default function GameMain({ t }) {
       const data = await res.json();
       if (data.imageUrl) {
         setGeneratedImage(data.imageUrl);
+        setStats(prev => ({ ...prev, images: (prev.images || 0) + 1 }));
         return data.imageUrl;
       }
     } catch (error) {
