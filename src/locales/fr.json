@@ -67,5 +67,176 @@
     "pages": "Pages", "legal": "Légal", "home": "Accueil", "about": "À propos du jeu",
     "privacy": "Politique de confidentialité", "terms": "Conditions d'utilisation",
     "copyright": "© 2026 Your AI Slop Bores Me Page de Fan"
+  },
+  "moreGames": {
+    "title": "Plus de Jeux",
+    "subtitle": "Essayez d'autres mini-jeux IA sur le site.",
+    "mainTitle": "Your AI Slop Bores Me",
+    "mainDesc": "Le jeu original — faites-vous passer pour une IA, trompez les juges, gagnez des jetons.",
+    "aiOrHumanTitle": "IA ou Humain ?",
+    "aiOrHumanDesc": "Lisez un extrait et devinez — écrit par IA ou par un humain ?",
+    "aiRoastTitle": "AI Roast Me",
+    "aiRoastDesc": "Décrivez-vous et laissez l'IA vous servir le roast le plus créatif.",
+    "storyChainTitle": "Story Chain",
+    "storyChainDesc": "Co-écrivez une histoire avec l'IA, une phrase à la fois."
+  },
+  "aiOrHuman": {
+    "seoTitle": "IA ou Humain ? — Saurez-vous deviner qui l'a écrit ? | Jeu en ligne gratuit",
+    "seoDescription": "Testez vos compétences dans IA ou Humain — lisez de courts extraits de texte et devinez s'ils ont été écrits par une intelligence artificielle ou un vrai humain. Jouez gratuitement en ligne !",
+    "hero": {
+      "title": "IA ou Humain ? — Saurez-vous deviner qui l'a écrit ?",
+      "subtitle": "Pouvez-vous deviner qui l'a écrit ? Lisez un court extrait de texte et devinez s'il a été créé par une intelligence artificielle ou rédigé par un véritable être humain."
+    },
+    "about": {
+      "sectionTitle": "Qu'est-ce que IA ou Humain ?",
+      "p1": "IA ou Humain est un jeu de devinette au rythme rapide qui teste votre capacité à distinguer le texte généré par IA du texte écrit par un humain. À mesure que les modèles de langage deviennent plus sophistiqués, la frontière entre le contenu écrit par des machines et celui écrit par des humains se brouille chaque jour davantage.",
+      "p2": "Chaque manche vous présente un court extrait — certains générés en temps réel par DeepSeek AI, d'autres tirés de véritables conversations humaines avec leurs fautes de frappe, leur argot et leurs petites particularités. Votre mission : lire attentivement et trancher.",
+      "p3": "Suivez votre score, enchaînez les bonnes réponses et découvrez à quel point vous êtes doué (ou non) pour repérer le texte généré par IA. Avec plus de 50 phrases humaines et plus de 50 sujets IA générant un contenu unique à chaque fois, aucune partie ne se ressemble."
+    },
+    "howToPlay": {
+      "sectionTitle": "Comment jouer à IA ou Humain ?",
+      "step1Title": "Lisez le texte",
+      "step1Desc": "Un court extrait apparaît à l'écran. Lisez-le attentivement — cherchez des indices subtils dans la grammaire, le ton et le style.",
+      "step2Title": "Faites votre choix",
+      "step2Desc": "Cliquez sur « Écrit par une IA » ou « Écrit par un humain » en vous fiant à votre instinct et à votre analyse.",
+      "step3Title": "Découvrez le résultat",
+      "step3Desc": "Découvrez si vous aviez raison ! La bonne réponse est révélée avec un surlignage vert ou rouge. Enchaînez les séries et visez le score parfait."
+    },
+    "why": {
+      "sectionTitle": "Pourquoi jouer à IA ou Humain ?",
+      "p1": "Dans un monde où le contenu généré par IA est partout — des articles de presse aux publications sur les réseaux sociaux — la capacité à distinguer le vrai du faux devient une compétence essentielle. IA ou Humain entraîne votre œil dans un environnement amusant et sans enjeux.",
+      "p2": "Le jeu met aussi en lumière un fait surprenant : le texte de l'IA sonne souvent « trop parfait ». Les vrais humains font des fautes de frappe, utilisent de l'argot, partent dans des digressions et injectent des émotions personnelles. Ces belles imperfections sont exactement ce qui rend l'écriture humaine irremplaçable.",
+      "p3": "Que vous soyez écrivain, enseignant, étudiant ou simplement quelqu'un qui passe du temps en ligne, IA ou Humain affinera votre capacité à porter un regard critique sur le contenu que vous consommez chaque jour."
+    },
+    "faq": {
+      "sectionTitle": "Questions Fréquentes",
+      "q1": "Le texte de l'IA est-il généré en temps réel ?",
+      "a1": "Oui ! Chaque extrait IA est généré en direct par DeepSeek AI sur un sujet aléatoire avec une graine aléatoire. Vous verrez donc rarement le même texte deux fois.",
+      "q2": "D'où viennent les phrases humaines ?",
+      "a2": "Les phrases humaines sont sélectionnées dans de vraies conversations en ligne, des publications sur les réseaux sociaux et de l'écriture informelle — avec fautes de frappe, argot et anecdotes personnelles qui les rendent authentiquement humaines.",
+      "q3": "IA ou Humain est-il gratuit ?",
+      "a3": "100 % gratuit. Pas d'inscription, pas de téléchargement. Ouvrez la page et commencez à deviner.",
+      "q4": "Combien de manches puis-je jouer ?",
+      "a4": "Autant que vous voulez ! Il n'y a pas de limite. Avec plus de 50 phrases humaines et l'IA qui génère un contenu unique à chaque fois, le jeu reste toujours frais.",
+      "q5": "Quels conseils aident à repérer l'écriture IA ?",
+      "a5": "Cherchez une grammaire trop soignée, des structures de phrases équilibrées et un manque de pronoms personnels ou de langage émotionnel. L'écriture humaine tend à être plus désordonnée, plus personnelle et pleine de caractère.",
+      "q6": "Ça fonctionne sur mobile ?",
+      "a6": "Oui, IA ou Humain est entièrement responsive et fonctionne parfaitement sur téléphones, tablettes et ordinateurs."
+    },
+    "tips": {
+      "sectionTitle": "Repérer la différence",
+      "tip1Title": "Attention à la perfection",
+      "tip1Desc": "Le texte de l'IA a tendance à être grammaticalement irréprochable. Les humains font des fautes et utilisent un langage informel.",
+      "tip2Title": "Vérifiez l'émotion",
+      "tip2Desc": "Les humains injectent des sentiments personnels, du sarcasme et des expériences vécues dans leur écriture.",
+      "tip3Title": "Observez la structure",
+      "tip3Desc": "L'IA écrit souvent des phrases équilibrées et symétriques. Les humains divaguent et sautent d'une idée à l'autre."
+    }
+  },
+  "aiRoast": {
+    "seoTitle": "IA Rôtis-Moi — Fais-toi Griller par l'Intelligence Artificielle | Gratuit en Ligne",
+    "seoDescription": "Décrivez-vous et laissez l'IA vous envoyer le roast le plus sauvage et créatif possible. IA Rôtis-Moi est le jeu d'IA le plus drôle d'internet. Jouez gratuitement !",
+    "hero": {
+      "title": "IA Rôtis-Moi — Laissez l'IA Vous Détruire (Avec Amour)",
+      "subtitle": "Décrivez-vous, votre vie ou votre situation — et laissez l'IA préparer le roast le plus créatif, le plus sauvage (mais tendrement drôle) qu'elle puisse imaginer."
+    },
+    "about": {
+      "sectionTitle": "Qu'est-ce que IA Rôtis-Moi ?",
+      "p1": "IA Rôtis-Moi est le test ultime pour savoir si l'intelligence artificielle peut vraiment être drôle. Donnez à l'IA une cible — vous-même — et voyez si son roast fait mouche ou tombe à plat. Imaginez une soirée micro ouvert de comédie, sauf que le comédien est un modèle de langage sans aucun trac.",
+      "p2": "Les roasts sont conçus pour être spirituels et absurdes, jamais méchants ni offensants. Nous utilisons des prompts soigneusement conçus pour que l'IA frappe vers le haut, pas vers le bas — livrant des punchlines créatives qui vous font rire, pas pleurer. Chaque roast est unique, généré en temps réel à partir de ce que vous partagez.",
+      "p3": "Partagez vos meilleurs (ou pires) roasts avec vos amis, construisez un historique de roasts et découvrez à quel point l'IA peut être féroce quand vous lui en donnez la permission. Fonctionne dans toutes les langues — le roast ne connaît pas de frontières."
+    },
+    "howToPlay": {
+      "sectionTitle": "Comment se faire rôtir",
+      "step1Title": "Décrivez-vous",
+      "step1Desc": "Tapez une courte description de vous-même, votre travail, vos habitudes — plus c'est spécifique et honnête, meilleur sera le roast.",
+      "step2Title": "Appuyez sur « Rôtis-Moi »",
+      "step2Desc": "L'IA analyse votre description et prépare un roast personnalisé, sauvage (mais drôle) rien que pour vous.",
+      "step3Title": "Riez (ou Pleurez)",
+      "step3Desc": "Lisez le roast, partagez-le avec vos amis et revenez pour en avoir plus. Votre historique de roasts est sauvegardé dans la session."
+    },
+    "why": {
+      "sectionTitle": "Pourquoi IA Rôtis-Moi est si addictif",
+      "p1": "Il y a quelque chose de profondément satisfaisant à se faire rôtir par une machine. Ça enlève le piquant de la critique tout en gardant l'humour — vous savez que l'IA ne le pense pas vraiment, ce qui rend les répliques sauvages encore plus drôles.",
+      "p2": "IA Rôtis-Moi révèle aussi à quel point l'IA comprend les insécurités humaines et les dynamiques sociales. Les meilleurs roasts ne sont pas des insultes aléatoires — ce sont des observations malignes qui touchent juste tout en restant ludiques.",
+      "p3": "Que vous vous rôtissiez pour le plaisir, que vous défiiez vos amis pour voir qui reçoit la pire brûlure, ou que vous soyez simplement curieux de voir comment l'IA gère la comédie, IA Rôtis-Moi offre un divertissement frais à chaque fois."
+    },
+    "faq": {
+      "sectionTitle": "Questions Fréquentes",
+      "q1": "Les roasts sont-ils offensants ?",
+      "a1": "Non ! L'IA est programmée pour être spirituelle et absurde, jamais méchante ni offensante. Pensez à des taquineries entre amis, pas à de vrais insultes.",
+      "q2": "IA Rôtis-Moi fonctionne-t-il dans d'autres langues ?",
+      "a2": "Oui ! Écrivez votre description dans n'importe quelle langue — chinois, japonais, espagnol, etc. — et l'IA vous rôtira dans la même langue.",
+      "q3": "Ma description est-elle stockée quelque part ?",
+      "a3": "Non. Votre description est envoyée à l'IA pour traitement et n'est pas stockée sur nos serveurs. L'historique des roasts n'existe que dans votre session navigateur.",
+      "q4": "Comment obtenir un meilleur roast ?",
+      "a4": "Soyez précis ! « Je suis développeur » donne un roast générique. « Je suis un développeur qui débogue à 3h du matin en mangeant de la pizza froide pendant que mon chat me juge » donne de l'or comique.",
+      "q5": "IA Rôtis-Moi est-il gratuit ?",
+      "a5": "Entièrement gratuit. Pas d'inscription requise. Décrivez-vous et faites-vous rôtir instantanément.",
+      "q6": "Puis-je partager mes roasts ?",
+      "a6": "Votre historique de roasts s'affiche sous chaque roast. Vous pouvez copier le texte et le partager avec vos amis sur les réseaux sociaux."
+    },
+    "tips": {
+      "sectionTitle": "Astuces Pro pour de Meilleurs Roasts",
+      "tip1Title": "Soyez précis",
+      "tip1Desc": "« Je suis développeur » c'est correct. « Je suis un développeur qui débogue à 3h du matin en mangeant de la pizza froide » c'est de l'or pour le roast.",
+      "tip2Title": "Assumez à fond",
+      "tip2Desc": "Plus votre description est lucide sur vous-même, plus la répartie de l'IA sera drôle.",
+      "tip3Title": "N'importe quelle langue",
+      "tip3Desc": "Écrivez dans n'importe quelle langue — l'IA vous rôtira dans la langue que vous utilisez."
+    }
+  },
+  "storyChain": {
+    "seoTitle": "Chaîne d'Histoires — Co-écrivez une Histoire avec l'IA, Phrase par Phrase",
+    "seoDescription": "Écrivez une histoire collaborative avec l'IA, une phrase à la fois. Alternez les tours, ajoutez des rebondissements et voyez où votre histoire vous mène. Jouez à Chaîne d'Histoires gratuitement en ligne !",
+    "hero": {
+      "title": "Chaîne d'Histoires — Écrivez une Histoire avec l'IA",
+      "subtitle": "Écrivez une histoire avec l'IA, une phrase à la fois. Vous écrivez, l'IA continue. Jusqu'où votre histoire collaborative peut-elle aller dans le délire, l'humour ou l'absurde ?"
+    },
+    "about": {
+      "sectionTitle": "Qu'est-ce que Chaîne d'Histoires ?",
+      "p1": "Chaîne d'Histoires est un jeu d'écriture créative collaborative où vous et l'IA construisez une histoire à tour de rôle, une phrase à la fois. Imaginez un spectacle d'improvisation — sauf que votre partenaire de scène est un modèle de langage avec un talent pour l'inattendu.",
+      "p2": "Chaque histoire est unique. L'IA s'adapte à votre ton, votre genre et votre langue, ajoutant des rebondissements que vous n'avez jamais vus venir. Que vous commenciez par « Il était une fois » ou « Le raton laveur avait un plan », l'IA suivra le mouvement et fera avancer l'histoire dans des directions surprenantes.",
+      "p3": "Les histoires sont limitées à 20 phrases (10 tours chacun), donc chaque mot compte. Une fois terminé, copiez votre chef-d'œuvre et partagez-le avec vos amis. Certaines des meilleures histoires sont celles qui déraillent complètement."
+    },
+    "howToPlay": {
+      "sectionTitle": "Comment jouer à Chaîne d'Histoires",
+      "step1Title": "Commencez l'histoire",
+      "step1Desc": "Tapez votre phrase d'ouverture. Plantez le décor, présentez un personnage ou dites quelque chose de bizarre — le ton est entre vos mains.",
+      "step2Title": "L'IA continue",
+      "step2Desc": "L'IA lit tout ce qui a été écrit et ajoute la phrase suivante. Regardez l'histoire évoluer en temps réel avec des rebondissements surprenants.",
+      "step3Title": "Continuez",
+      "step3Desc": "Alternez les tours jusqu'à 20 phrases. Puis copiez et partagez votre chef-d'œuvre collaboratif avec vos amis."
+    },
+    "why": {
+      "sectionTitle": "Pourquoi Chaîne d'Histoires est si amusant",
+      "p1": "Il y a de la magie à ne pas savoir ce qui vient ensuite. Chaîne d'Histoires capture le frisson de la narration improvisée — vous donnez la direction, mais l'IA peut faire tourner le récit d'une manière totalement inattendue.",
+      "p2": "Les meilleures histoires naissent de la tension créative entre l'humain et l'IA. Vous essayez peut-être d'écrire un thriller noir sérieux, et l'IA introduit un pingouin qui parle. Ces collisions inattendues créent des histoires véritablement hilarantes et mémorables.",
+      "p3": "Chaîne d'Histoires est aussi un exercice d'écriture créative étonnamment efficace. Les contraintes (une phrase, 20 au total) vous forcent à être concis et intentionnel à chaque mot, tandis que l'IA vous garde sur le qui-vive."
+    },
+    "faq": {
+      "sectionTitle": "Questions Fréquentes",
+      "q1": "Combien de phrases peut contenir une histoire ?",
+      "a1": "Chaque histoire est limitée à 20 phrases — 10 de vous et 10 de l'IA. Cela garde les histoires concises et agréables à lire.",
+      "q2": "Puis-je écrire dans d'autres langues que l'anglais ?",
+      "a2": "Oui ! Commencez à écrire dans n'importe quelle langue et l'IA s'adaptera. Chaîne d'Histoires fonctionne en chinois, japonais, coréen, espagnol, français, allemand et plus encore.",
+      "q3": "Puis-je sauvegarder mes histoires ?",
+      "a3": "Utilisez le bouton « Copier l'Histoire » pour copier le texte intégral dans votre presse-papiers. Vous pouvez le coller n'importe où pour le sauvegarder ou le partager.",
+      "q4": "Et si l'IA écrit quelque chose de bizarre ?",
+      "a4": "C'est le jeu ! L'IA est configurée pour être créative et imprévisible. Si l'histoire déraille, laissez-vous porter — les meilleures histoires sont souvent les plus étranges.",
+      "q5": "Chaîne d'Histoires est-il gratuit ?",
+      "a5": "Oui, entièrement gratuit. Pas besoin de compte. Commencez à écrire et l'IA se joindra à vous.",
+      "q6": "L'IA se souvient-elle des histoires précédentes ?",
+      "a6": "Non. Chaque histoire est indépendante. L'IA ne voit que les phrases de l'histoire en cours, rien des sessions précédentes."
+    },
+    "tips": {
+      "sectionTitle": "Conseils d'écriture",
+      "tip1Title": "Donnez le ton rapidement",
+      "tip1Desc": "Votre première phrase définit le genre. Commencez drôle et l'IA reste drôle. Commencez sombre et ça vire au noir.",
+      "tip2Title": "Lancez des surprises",
+      "tip2Desc": "Introduisez des éléments aléatoires en plein milieu de l'histoire. L'IA gère les retournements de situation étonnamment bien.",
+      "tip3Title": "Copiez et partagez",
+      "tip3Desc": "Utilisez le bouton « Copier l'Histoire » pour sauvegarder votre création. Les meilleures histoires méritent un public."
+    }
   }
 }

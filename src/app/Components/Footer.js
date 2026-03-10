@@ -26,8 +26,8 @@ const Footer = ({ t }) => {
 
         <div className={styles.footerSection}>
           <h3>Official</h3>
-          <a href="https://youraislopboresmegame.com">
-            youraislopboresmegame.com
+          <a href="https://youraislopbores.me">
+            youraislopbores.me
           </a>
         </div>
       </div>

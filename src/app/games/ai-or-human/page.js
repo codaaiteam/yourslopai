@@ -5,10 +5,15 @@ import Image from 'next/image';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import MoreGames from '../../Components/MoreGames';
+import QuestionFAQ from '../../Components/QuestionFAQ';
+import { useTranslations } from '@/hooks/useTranslations';
 import styles from './AiOrHuman.module.css';
 import gp from '../gamePage.module.css';
 
 export default function AiOrHumanPage() {
+  const { t } = useTranslations();
+  const g = t.aiOrHuman || {};
+
   const [snippet, setSnippet] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -57,10 +62,8 @@ export default function AiOrHumanPage() {
         <section className={gp.hero}>
           <div className={gp.heroInner}>
             <Image src="/logo-ai-or-human.png" alt="AI or Human?" width={80} height={80} className={gp.heroLogo} />
-            <h1 className={gp.heroTitle}>AI or Human?</h1>
-            <p className={gp.heroSubtitle}>
-              Can you tell who wrote it? Read a short text snippet and guess whether it was crafted by artificial intelligence or penned by a real human being.
-            </p>
+            <h1 className={gp.heroTitle}>{g.hero?.title || 'AI or Human?'}</h1>
+            <p className={gp.heroSubtitle}>{g.hero?.subtitle || 'Can you tell who wrote it?'}</p>
           </div>
         </section>
 
@@ -134,20 +137,14 @@ export default function AiOrHumanPage() {
         {/* More Games */}
         <MoreGames current="ai-or-human" />
 
-        {/* About */}
+        {/* What Is */}
         <section className={gp.aboutSection}>
           <div className={gp.container}>
-            <h2 className={gp.sectionTitle}>About AI or Human?</h2>
+            <h2 className={gp.sectionTitle}>{g.about?.sectionTitle || 'What Is AI or Human?'}</h2>
             <div className={gp.aboutContent}>
-              <p>
-                As AI-generated text becomes increasingly sophisticated, telling the difference between machine-written and human-written content is harder than ever. AI or Human? puts your detection skills to the test in a fast-paced guessing game.
-              </p>
-              <p>
-                Each round presents you with a short text snippet — some written by DeepSeek AI, others sourced from real human conversations complete with typos, slang, and personal quirks. Your job is to read carefully and make your call. Can you spot the patterns that give AI away?
-              </p>
-              <p>
-                Track your score, build your streak, and see how well you really know the difference between artificial intelligence and genuine human expression. It's harder than you think.
-              </p>
+              <p>{g.about?.p1}</p>
+              <p>{g.about?.p2}</p>
+              <p>{g.about?.p3}</p>
             </div>
           </div>
         </section>
@@ -155,51 +152,77 @@ export default function AiOrHumanPage() {
         {/* How to Play */}
         <section className={gp.howtoSection}>
           <div className={gp.container}>
-            <h2 className={gp.sectionTitle}>How to Play</h2>
+            <h2 className={gp.sectionTitle}>{g.howToPlay?.sectionTitle || 'How to Play'}</h2>
             <div className={gp.stepsGrid}>
               <div className={gp.stepCard}>
                 <div className={gp.stepNumber}>1</div>
-                <h3>Read the Text</h3>
-                <p>A short snippet appears on screen. Read it carefully — look for subtle clues.</p>
+                <h3>{g.howToPlay?.step1Title || 'Read the Text'}</h3>
+                <p>{g.howToPlay?.step1Desc}</p>
               </div>
               <div className={gp.stepCard}>
                 <div className={gp.stepNumber}>2</div>
-                <h3>Make Your Guess</h3>
-                <p>Click "AI Wrote This" or "Human Wrote This" based on your gut feeling.</p>
+                <h3>{g.howToPlay?.step2Title || 'Make Your Guess'}</h3>
+                <p>{g.howToPlay?.step2Desc}</p>
               </div>
               <div className={gp.stepCard}>
                 <div className={gp.stepNumber}>3</div>
-                <h3>See the Result</h3>
-                <p>Find out if you were right! Build your streak and aim for a perfect score.</p>
+                <h3>{g.howToPlay?.step3Title || 'See the Result'}</h3>
+                <p>{g.howToPlay?.step3Desc}</p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Why */}
+        <section className={gp.whySection}>
+          <div className={gp.container}>
+            <h2 className={gp.sectionTitle}>{g.why?.sectionTitle || 'Why Play AI or Human?'}</h2>
+            <div className={gp.whyContent}>
+              <p>{g.why?.p1}</p>
+              <p>{g.why?.p2}</p>
+              <p>{g.why?.p3}</p>
             </div>
           </div>
         </section>
 
         {/* Tips */}
-        <section className={gp.aboutSection}>
+        <section className={gp.howtoSection}>
           <div className={gp.container}>
-            <h2 className={gp.sectionTitle}>Spotting the Difference</h2>
+            <h2 className={gp.sectionTitle}>{g.tips?.sectionTitle || 'Spotting the Difference'}</h2>
             <div className={gp.featuresGrid}>
               <div className={gp.featureCard}>
                 <span className={gp.featureIcon}>🔍</span>
-                <h3>Watch for Perfection</h3>
-                <p>AI text tends to be grammatically flawless. Humans make typos and use informal language.</p>
+                <h3>{g.tips?.tip1Title || 'Watch for Perfection'}</h3>
+                <p>{g.tips?.tip1Desc}</p>
               </div>
               <div className={gp.featureCard}>
                 <span className={gp.featureIcon}>💬</span>
-                <h3>Check the Emotion</h3>
-                <p>Humans inject personal feelings, sarcasm, and lived experiences into their writing.</p>
+                <h3>{g.tips?.tip2Title || 'Check the Emotion'}</h3>
+                <p>{g.tips?.tip2Desc}</p>
               </div>
               <div className={gp.featureCard}>
                 <span className={gp.featureIcon}>🎯</span>
-                <h3>Notice the Structure</h3>
-                <p>AI often writes in balanced, symmetrical sentences. Humans ramble and jump between ideas.</p>
+                <h3>{g.tips?.tip3Title || 'Notice the Structure'}</h3>
+                <p>{g.tips?.tip3Desc}</p>
               </div>
             </div>
           </div>
         </section>
 
+        {/* FAQ */}
+        <section className={gp.faqSection}>
+          <div className={gp.container}>
+            <h2 className={gp.sectionTitle}>{g.faq?.sectionTitle || 'Frequently Asked Questions'}</h2>
+            <div className={gp.faqList}>
+              <QuestionFAQ question={g.faq?.q1} answer={g.faq?.a1} />
+              <QuestionFAQ question={g.faq?.q2} answer={g.faq?.a2} />
+              <QuestionFAQ question={g.faq?.q3} answer={g.faq?.a3} />
+              <QuestionFAQ question={g.faq?.q4} answer={g.faq?.a4} />
+              <QuestionFAQ question={g.faq?.q5} answer={g.faq?.a5} />
+              <QuestionFAQ question={g.faq?.q6} answer={g.faq?.a6} />
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

@@ -16,9 +16,17 @@ export default function Header() {
   const currentLang = params?.lang || 'en';
   const { t } = useTranslations();
 
+  const LOCALES = ['en', 'zh', 'ja', 'ko', 'es', 'fr', 'de'];
+
   const changeLanguage = (newLocale) => {
     const segments = pathname.split('/');
-    segments[1] = newLocale;
+    // If current path starts with a locale, replace it
+    if (LOCALES.includes(segments[1])) {
+      segments[1] = newLocale;
+    } else {
+      // No locale prefix — insert one after the leading empty string
+      segments.splice(1, 0, newLocale);
+    }
     router.push(segments.join('/'));
   };
 

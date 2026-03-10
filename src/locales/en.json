@@ -95,5 +95,176 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Use",
     "copyright": "© 2026 Your AI Slop Bores Me Fan Page"
+  },
+  "moreGames": {
+    "title": "More Games",
+    "subtitle": "Try other AI mini-games on the site.",
+    "mainTitle": "Your AI Slop Bores Me",
+    "mainDesc": "The original game — larp as AI, fool the judges, earn tokens.",
+    "aiOrHumanTitle": "AI or Human?",
+    "aiOrHumanDesc": "Read a snippet and guess — was it written by AI or a real person?",
+    "aiRoastTitle": "AI Roast Me",
+    "aiRoastDesc": "Describe yourself and let AI deliver the most creative roast.",
+    "storyChainTitle": "Story Chain",
+    "storyChainDesc": "Co-write a story with AI, one sentence at a time."
+  },
+  "aiOrHuman": {
+    "seoTitle": "AI or Human? – Can You Tell Who Wrote It? | Free Online Game",
+    "seoDescription": "Test your skills in AI or Human — read short text snippets and guess whether they were written by artificial intelligence or a real person. Play free online!",
+    "hero": {
+      "title": "AI or Human? — Can You Tell Who Wrote It?",
+      "subtitle": "Can you tell who wrote it? Read a short text snippet and guess whether it was crafted by artificial intelligence or penned by a real human being."
+    },
+    "about": {
+      "sectionTitle": "What Is AI or Human?",
+      "p1": "AI or Human? is a fast-paced guessing game that tests whether you can distinguish between AI-generated and human-written text. As AI language models become more sophisticated, the line between machine-written and human-written content gets blurrier every day.",
+      "p2": "Each round presents you with a short text snippet — some generated in real-time by DeepSeek AI, others sourced from genuine human conversations complete with typos, slang, and personal quirks. Your job is to read carefully and make your call.",
+      "p3": "Track your score, build your streak, and discover just how good (or bad) you are at spotting AI-generated text. With 50+ human sentences and 50+ AI topics that generate unique content every time, no two games are the same."
+    },
+    "howToPlay": {
+      "sectionTitle": "How to Play AI or Human?",
+      "step1Title": "Read the Text",
+      "step1Desc": "A short snippet appears on screen. Read it carefully — look for subtle clues in grammar, tone, and style.",
+      "step2Title": "Make Your Guess",
+      "step2Desc": "Click \"AI Wrote This\" or \"Human Wrote This\" based on your gut feeling and analysis.",
+      "step3Title": "See the Result",
+      "step3Desc": "Find out if you were right! The correct answer is revealed with a green or red highlight. Build your streak and aim for a perfect score."
+    },
+    "why": {
+      "sectionTitle": "Why Play AI or Human?",
+      "p1": "In a world where AI-generated content is everywhere — from news articles to social media posts — the ability to tell real from fake is becoming a critical skill. AI or Human? trains your eye in a fun, low-stakes environment.",
+      "p2": "The game also highlights something surprising: AI text often sounds \"too perfect.\" Real humans make typos, use slang, go off on tangents, and inject personal emotions. These beautiful imperfections are exactly what makes human writing irreplaceable.",
+      "p3": "Whether you're a writer, a teacher, a student, or just someone who spends time online, AI or Human? will sharpen your ability to think critically about the content you consume every day."
+    },
+    "faq": {
+      "sectionTitle": "Frequently Asked Questions",
+      "q1": "Is the AI text generated in real-time?",
+      "a1": "Yes! Every AI snippet is generated fresh by DeepSeek AI on a random topic with a random seed, so you'll rarely see the same text twice.",
+      "q2": "Where do the human sentences come from?",
+      "a2": "The human sentences are curated from real online conversations, social media posts, and casual writing — complete with typos, slang, and personal anecdotes that make them authentically human.",
+      "q3": "Is AI or Human? free to play?",
+      "a3": "100% free. No sign-up, no downloads. Just open the page and start guessing.",
+      "q4": "How many rounds can I play?",
+      "a4": "As many as you want! There's no limit. With 50+ human sentences and AI generating unique content each time, the game stays fresh.",
+      "q5": "What tips help spot AI writing?",
+      "a5": "Look for overly polished grammar, balanced sentence structures, and a lack of personal pronouns or emotional language. Human writing tends to be messier, more personal, and full of character.",
+      "q6": "Does it work on mobile?",
+      "a6": "Yes, AI or Human? is fully responsive and works great on phones, tablets, and desktops."
+    },
+    "tips": {
+      "sectionTitle": "Spotting the Difference",
+      "tip1Title": "Watch for Perfection",
+      "tip1Desc": "AI text tends to be grammatically flawless. Humans make typos and use informal language.",
+      "tip2Title": "Check the Emotion",
+      "tip2Desc": "Humans inject personal feelings, sarcasm, and lived experiences into their writing.",
+      "tip3Title": "Notice the Structure",
+      "tip3Desc": "AI often writes in balanced, symmetrical sentences. Humans ramble and jump between ideas."
+    }
+  },
+  "aiRoast": {
+    "seoTitle": "AI Roast Me – Get Roasted by Artificial Intelligence | Free Online",
+    "seoDescription": "Describe yourself and let AI deliver the most savage, creative roast it can. AI Roast Me is the funniest AI game on the internet. Play free!",
+    "hero": {
+      "title": "AI Roast Me — Let AI Destroy You (Lovingly)",
+      "subtitle": "Describe yourself, your life, or your situation — and let AI deliver the most creative, savage (but lovingly funny) roast it can come up with."
+    },
+    "about": {
+      "sectionTitle": "What Is AI Roast Me?",
+      "p1": "AI Roast Me is the ultimate test of whether artificial intelligence can actually be funny. Give the AI a target — yourself — and see if its roast lands or falls flat. Think of it as a comedy open mic night, except the comedian is a language model with zero stage fright.",
+      "p2": "The roasts are designed to be witty and absurd, never mean-spirited or offensive. We use carefully crafted prompts to ensure the AI punches up, not down — delivering creative burns that make you laugh, not cry. Every roast is unique, generated in real-time based on what you share.",
+      "p3": "Share your best (or worst) roasts with friends, build up a roast history, and discover just how savage AI can get when you give it permission. Works in any language — roast knows no borders."
+    },
+    "howToPlay": {
+      "sectionTitle": "How to Get Roasted",
+      "step1Title": "Describe Yourself",
+      "step1Desc": "Type a short description of yourself, your job, your habits — the more specific and honest, the better the roast.",
+      "step2Title": "Hit \"Roast Me\"",
+      "step2Desc": "The AI analyzes your description and crafts a personalized, savage (but funny) roast just for you.",
+      "step3Title": "Laugh (or Cry)",
+      "step3Desc": "Read the roast, share it with friends, and come back for more. Your roast history is saved in the session."
+    },
+    "why": {
+      "sectionTitle": "Why AI Roast Me Is So Addictive",
+      "p1": "There's something deeply satisfying about being roasted by a machine. It takes the sting out of criticism while keeping the humor — you know the AI doesn't actually mean it, which makes the savage lines even funnier.",
+      "p2": "AI Roast Me also reveals how well AI understands human insecurities and social dynamics. The best roasts aren't just random insults — they're clever observations that hit close to home while remaining playful.",
+      "p3": "Whether you're roasting yourself for fun, challenging friends to see who gets the harshest burn, or just curious how AI handles comedy, AI Roast Me delivers fresh entertainment every single time."
+    },
+    "faq": {
+      "sectionTitle": "Frequently Asked Questions",
+      "q1": "Are the roasts offensive?",
+      "a1": "No! The AI is prompted to be witty and absurd, never mean-spirited or offensive. Think playful teasing, not genuine insults.",
+      "q2": "Does AI Roast Me work in other languages?",
+      "a2": "Yes! Write your description in any language — Chinese, Japanese, Spanish, etc. — and the AI will roast you in the same language.",
+      "q3": "Is my description stored anywhere?",
+      "a3": "No. Your description is sent to the AI for processing and not stored on our servers. Roast history only exists in your browser session.",
+      "q4": "How do I get a better roast?",
+      "a4": "Be specific! \"I'm a developer\" gets a generic roast. \"I'm a developer who debugs at 3am eating cold pizza while my cat judges me\" gets comedy gold.",
+      "q5": "Is AI Roast Me free?",
+      "a5": "Completely free. No sign-up required. Just describe yourself and get roasted instantly.",
+      "q6": "Can I share my roasts?",
+      "a6": "Your roast history is displayed below each roast. You can copy the text and share it with friends on social media."
+    },
+    "tips": {
+      "sectionTitle": "Pro Tips for Better Roasts",
+      "tip1Title": "Be Specific",
+      "tip1Desc": "\"I'm a developer\" is okay. \"I'm a developer who debugs at 3am eating cold pizza\" is roast gold.",
+      "tip2Title": "Lean Into It",
+      "tip2Desc": "The more self-aware your description is, the funnier the AI's comeback will be.",
+      "tip3Title": "Any Language",
+      "tip3Desc": "Write in any language — the AI will roast you in the same language you use."
+    }
+  },
+  "storyChain": {
+    "seoTitle": "Story Chain – Co-Write a Story with AI One Sentence at a Time",
+    "seoDescription": "Write a collaborative story with AI, one sentence at a time. Take turns, add twists, and see how wild your story gets. Play Story Chain free online!",
+    "hero": {
+      "title": "Story Chain — Write a Story with AI",
+      "subtitle": "Write a story with AI, one sentence at a time. You write, AI continues. How wild, funny, or bizarre can your collaborative story get?"
+    },
+    "about": {
+      "sectionTitle": "What Is Story Chain?",
+      "p1": "Story Chain is a collaborative creative writing game where you and AI take turns building a story, one sentence at a time. Think of it as an improv comedy show — except your scene partner is a language model with a flair for the unexpected.",
+      "p2": "Every story is unique. The AI adapts to your tone, genre, and language, adding twists and turns you never saw coming. Whether you start with \"Once upon a time\" or \"The raccoon had a plan,\" the AI will roll with it and keep the story going in surprising directions.",
+      "p3": "Stories max out at 20 sentences (10 turns each), so every word counts. When you're done, copy your masterpiece and share it with friends. Some of the best stories are the ones that go completely off the rails."
+    },
+    "howToPlay": {
+      "sectionTitle": "How to Play Story Chain",
+      "step1Title": "Start the Story",
+      "step1Desc": "Type your opening sentence. Set the scene, introduce a character, or just say something weird — the tone is up to you.",
+      "step2Title": "AI Continues",
+      "step2Desc": "The AI reads everything so far and adds the next sentence. Watch the story evolve in real time with surprising twists.",
+      "step3Title": "Keep Going",
+      "step3Desc": "Take turns until 20 sentences. Then copy and share your collaborative masterpiece with friends."
+    },
+    "why": {
+      "sectionTitle": "Why Story Chain Is So Fun",
+      "p1": "There's magic in not knowing what comes next. Story Chain captures the thrill of improvisational storytelling — you set the direction, but the AI can send the narrative spinning in ways you never expected.",
+      "p2": "The best stories emerge from creative tension between human and AI. You might try to write a serious noir thriller, only for the AI to introduce a talking penguin. These unexpected collisions create genuinely hilarious and memorable stories.",
+      "p3": "Story Chain is also a surprisingly good creative writing exercise. The constraints (one sentence, 20 total) force you to be concise and intentional with every word, while the AI keeps you on your toes."
+    },
+    "faq": {
+      "sectionTitle": "Frequently Asked Questions",
+      "q1": "How many sentences can a story have?",
+      "a1": "Each story maxes out at 20 sentences — 10 from you and 10 from the AI. This keeps stories tight and readable.",
+      "q2": "Can I write in languages other than English?",
+      "a2": "Yes! Start writing in any language and the AI will match it. Story Chain works in Chinese, Japanese, Korean, Spanish, French, German, and more.",
+      "q3": "Can I save my stories?",
+      "a3": "Use the \"Copy Story\" button to copy the full text to your clipboard. You can paste it anywhere to save or share.",
+      "q4": "What if the AI writes something weird?",
+      "a4": "That's part of the fun! The AI is set to be creative and unexpected. If the story goes off the rails, lean into it — the best stories are often the weirdest ones.",
+      "q5": "Is Story Chain free?",
+      "a5": "Yes, completely free. No account needed. Just start typing and the AI will join in.",
+      "q6": "Does the AI remember previous stories?",
+      "a6": "No. Each story is independent. The AI only sees the current story's sentences, not anything from previous sessions."
+    },
+    "tips": {
+      "sectionTitle": "Story Writing Tips",
+      "tip1Title": "Set the Tone Early",
+      "tip1Desc": "Your first sentence defines the genre. Start funny and the AI stays funny. Start dark and it goes noir.",
+      "tip2Title": "Throw Curveballs",
+      "tip2Desc": "Introduce random elements mid-story. The AI handles plot twists surprisingly well.",
+      "tip3Title": "Copy & Share",
+      "tip3Desc": "Use the \"Copy Story\" button to save your creation. The best stories deserve an audience."
+    }
   }
 }

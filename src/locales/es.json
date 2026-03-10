@@ -91,5 +91,176 @@
     "privacy": "Política de Privacidad",
     "terms": "Términos de Uso",
     "copyright": "© 2026 Your AI Slop Bores Me Página de Fans"
+  },
+  "moreGames": {
+    "title": "Más Juegos",
+    "subtitle": "Prueba otros minijuegos de IA en el sitio.",
+    "mainTitle": "Your AI Slop Bores Me",
+    "mainDesc": "El juego original — hazte pasar por IA, engaña a los jueces, gana tokens.",
+    "aiOrHumanTitle": "¿IA o Humano?",
+    "aiOrHumanDesc": "Lee un fragmento y adivina — ¿lo escribió IA o una persona real?",
+    "aiRoastTitle": "AI Roast Me",
+    "aiRoastDesc": "Descríbete y deja que la IA te lance el roast más creativo.",
+    "storyChainTitle": "Story Chain",
+    "storyChainDesc": "Co-escribe una historia con IA, una oración a la vez."
+  },
+  "aiOrHuman": {
+    "seoTitle": "¿IA o Humano? — ¿Puedes Adivinar Quién lo Escribió? | Juego Online Gratis",
+    "seoDescription": "Pon a prueba tus habilidades en IA o Humano — lee fragmentos de texto cortos y adivina si fueron escritos por inteligencia artificial o por una persona real. ¡Juega gratis online!",
+    "hero": {
+      "title": "¿IA o Humano? — ¿Puedes Adivinar Quién lo Escribió?",
+      "subtitle": "¿Puedes distinguir quién lo escribió? Lee un fragmento de texto corto y adivina si fue creado por inteligencia artificial o escrito por un ser humano real."
+    },
+    "about": {
+      "sectionTitle": "¿Qué es IA o Humano?",
+      "p1": "IA o Humano es un juego de adivinanza de ritmo rápido que pone a prueba si puedes distinguir entre texto generado por IA y texto escrito por humanos. A medida que los modelos de lenguaje de IA se vuelven más sofisticados, la línea entre lo escrito por máquinas y lo escrito por personas se difumina cada día más.",
+      "p2": "Cada ronda te presenta un fragmento de texto — algunos generados en tiempo real por DeepSeek AI, otros extraídos de conversaciones humanas reales con errores tipográficos, jerga y peculiaridades personales. Tu trabajo es leer con atención y dar tu veredicto.",
+      "p3": "Sigue tu puntuación, acumula rachas y descubre lo bueno (o malo) que eres detectando texto generado por IA. Con más de 50 frases humanas y más de 50 temas de IA que generan contenido único cada vez, no hay dos partidas iguales."
+    },
+    "howToPlay": {
+      "sectionTitle": "¿Cómo Jugar a IA o Humano?",
+      "step1Title": "Lee el Texto",
+      "step1Desc": "Aparece un fragmento de texto en pantalla. Léelo con atención — busca pistas sutiles en la gramática, el tono y el estilo.",
+      "step2Title": "Haz tu Apuesta",
+      "step2Desc": "Haz clic en \"Lo escribió una IA\" o \"Lo escribió un humano\" basándote en tu instinto y análisis.",
+      "step3Title": "Ve el Resultado",
+      "step3Desc": "¡Descubre si acertaste! La respuesta correcta se revela con un resaltado verde o rojo. Acumula rachas y apunta a la puntuación perfecta."
+    },
+    "why": {
+      "sectionTitle": "¿Por Qué Jugar a IA o Humano?",
+      "p1": "En un mundo donde el contenido generado por IA está en todas partes — desde artículos de noticias hasta publicaciones en redes sociales — la capacidad de distinguir lo real de lo falso se está convirtiendo en una habilidad fundamental. IA o Humano entrena tu ojo de forma divertida y sin presiones.",
+      "p2": "El juego también revela algo sorprendente: el texto de IA a menudo suena \"demasiado perfecto\". Los humanos reales cometen errores, usan jerga, se van por las ramas e inyectan emociones personales. Estas hermosas imperfecciones son exactamente lo que hace insustituible la escritura humana.",
+      "p3": "Seas escritor, profesor, estudiante o simplemente alguien que pasa tiempo en internet, IA o Humano afilará tu capacidad de pensar críticamente sobre el contenido que consumes cada día."
+    },
+    "faq": {
+      "sectionTitle": "Preguntas Frecuentes",
+      "q1": "¿El texto de IA se genera en tiempo real?",
+      "a1": "¡Sí! Cada fragmento de IA es generado en el momento por DeepSeek AI sobre un tema aleatorio con una semilla aleatoria, así que rara vez verás el mismo texto dos veces.",
+      "q2": "¿De dónde vienen las frases humanas?",
+      "a2": "Las frases humanas están seleccionadas de conversaciones reales en internet, publicaciones en redes sociales y escritura informal — con errores tipográficos, jerga y anécdotas personales que las hacen auténticamente humanas.",
+      "q3": "¿IA o Humano es gratis?",
+      "a3": "100% gratis. Sin registro, sin descargas. Solo abre la página y empieza a adivinar.",
+      "q4": "¿Cuántas rondas puedo jugar?",
+      "a4": "¡Todas las que quieras! No hay límite. Con más de 50 frases humanas y la IA generando contenido único cada vez, el juego siempre se mantiene fresco.",
+      "q5": "¿Qué consejos ayudan a detectar la escritura de IA?",
+      "a5": "Busca gramática excesivamente pulida, estructuras de oraciones equilibradas y falta de pronombres personales o lenguaje emocional. La escritura humana tiende a ser más desordenada, más personal y llena de personalidad.",
+      "q6": "¿Funciona en móvil?",
+      "a6": "Sí, IA o Humano es totalmente responsive y funciona perfectamente en teléfonos, tabletas y ordenadores."
+    },
+    "tips": {
+      "sectionTitle": "Detectando la Diferencia",
+      "tip1Title": "Fíjate en la Perfección",
+      "tip1Desc": "El texto de IA suele ser gramaticalmente impecable. Los humanos cometen errores y usan lenguaje informal.",
+      "tip2Title": "Comprueba la Emoción",
+      "tip2Desc": "Los humanos inyectan sentimientos personales, sarcasmo y experiencias vividas en su escritura.",
+      "tip3Title": "Observa la Estructura",
+      "tip3Desc": "La IA a menudo escribe en frases equilibradas y simétricas. Los humanos divagan y saltan entre ideas."
+    }
+  },
+  "aiRoast": {
+    "seoTitle": "IA Rústame — Deja que la Inteligencia Artificial te Destroce | Gratis Online",
+    "seoDescription": "Descríbete y deja que la IA te lance el roast más salvaje y creativo que pueda. IA Rústame es el juego de IA más divertido de internet. ¡Juega gratis!",
+    "hero": {
+      "title": "IA Rústame — Deja que la IA te Destruya (con Cariño)",
+      "subtitle": "Descríbete, tu vida o tu situación — y deja que la IA prepare el roast más creativo, salvaje (pero cariñosamente divertido) que se le ocurra."
+    },
+    "about": {
+      "sectionTitle": "¿Qué es IA Rústame?",
+      "p1": "IA Rústame es la prueba definitiva de si la inteligencia artificial puede ser realmente graciosa. Dale a la IA un objetivo — tú mismo — y ve si su roast da en el blanco o cae en saco roto. Piensa en ello como una noche de micrófono abierto de comedia, pero el comediante es un modelo de lenguaje sin miedo escénico.",
+      "p2": "Los roasts están diseñados para ser ingeniosos y absurdos, nunca crueles ni ofensivos. Usamos prompts cuidadosamente diseñados para asegurar que la IA ataque hacia arriba, no hacia abajo — lanzando quemaduras creativas que te hacen reír, no llorar. Cada roast es único, generado en tiempo real basándose en lo que compartes.",
+      "p3": "Comparte tus mejores (o peores) roasts con amigos, acumula un historial de roasts y descubre lo salvaje que puede ser la IA cuando le das permiso. Funciona en cualquier idioma — el roast no conoce fronteras."
+    },
+    "howToPlay": {
+      "sectionTitle": "Cómo Ser Roasteado",
+      "step1Title": "Descríbete",
+      "step1Desc": "Escribe una breve descripción de ti mismo, tu trabajo, tus hábitos — cuanto más específico y honesto, mejor será el roast.",
+      "step2Title": "Pulsa \"Rústame\"",
+      "step2Desc": "La IA analiza tu descripción y elabora un roast personalizado, salvaje (pero gracioso) solo para ti.",
+      "step3Title": "Ríe (o Llora)",
+      "step3Desc": "Lee el roast, compártelo con amigos y vuelve a por más. Tu historial de roasts se guarda en la sesión."
+    },
+    "why": {
+      "sectionTitle": "Por Qué IA Rústame es Tan Adictivo",
+      "p1": "Hay algo profundamente satisfactorio en ser roasteado por una máquina. Quita el aguijón de la crítica pero mantiene el humor — sabes que la IA no lo dice en serio, lo que hace las líneas más salvajes aún más graciosas.",
+      "p2": "IA Rústame también revela lo bien que la IA entiende las inseguridades humanas y las dinámicas sociales. Los mejores roasts no son insultos aleatorios — son observaciones ingeniosas que dan cerca del blanco sin dejar de ser juguetones.",
+      "p3": "Ya sea que te roastees a ti mismo por diversión, retes a amigos a ver quién recibe la quemadura más fuerte, o simplemente tengas curiosidad por cómo la IA maneja la comedia, IA Rústame ofrece entretenimiento fresco cada vez."
+    },
+    "faq": {
+      "sectionTitle": "Preguntas Frecuentes",
+      "q1": "¿Los roasts son ofensivos?",
+      "a1": "¡No! La IA está programada para ser ingeniosa y absurda, nunca cruel ni ofensiva. Piensa en bromas entre amigos, no en insultos reales.",
+      "q2": "¿IA Rústame funciona en otros idiomas?",
+      "a2": "¡Sí! Escribe tu descripción en cualquier idioma — chino, japonés, español, etc. — y la IA te roasteará en el mismo idioma.",
+      "q3": "¿Mi descripción se almacena en algún sitio?",
+      "a3": "No. Tu descripción se envía a la IA para procesarla y no se almacena en nuestros servidores. El historial de roasts solo existe en tu sesión del navegador.",
+      "q4": "¿Cómo consigo un mejor roast?",
+      "a4": "¡Sé específico! \"Soy desarrollador\" genera un roast genérico. \"Soy un desarrollador que depura a las 3am comiendo pizza fría mientras mi gato me juzga\" genera oro cómico.",
+      "q5": "¿IA Rústame es gratis?",
+      "a5": "Completamente gratis. Sin registro. Solo descríbete y recibe tu roast al instante.",
+      "q6": "¿Puedo compartir mis roasts?",
+      "a6": "Tu historial de roasts se muestra debajo de cada roast. Puedes copiar el texto y compartirlo con amigos en redes sociales."
+    },
+    "tips": {
+      "sectionTitle": "Consejos Pro para Mejores Roasts",
+      "tip1Title": "Sé Específico",
+      "tip1Desc": "\"Soy desarrollador\" está bien. \"Soy un desarrollador que depura a las 3am comiendo pizza fría\" es oro para el roast.",
+      "tip2Title": "Échale Ganas",
+      "tip2Desc": "Cuanto más autoconsciente sea tu descripción, más graciosa será la respuesta de la IA.",
+      "tip3Title": "Cualquier Idioma",
+      "tip3Desc": "Escribe en cualquier idioma — la IA te roasteará en el mismo idioma que uses."
+    }
+  },
+  "storyChain": {
+    "seoTitle": "Cadena de Historias — Co-escribe una Historia con IA, Una Frase a la Vez",
+    "seoDescription": "Escribe una historia colaborativa con IA, una frase a la vez. Turnos alternos, giros inesperados y a ver qué tan loca se pone tu historia. ¡Juega Cadena de Historias gratis online!",
+    "hero": {
+      "title": "Cadena de Historias — Escribe una Historia con IA",
+      "subtitle": "Escribe una historia con IA, una frase a la vez. Tú escribes, la IA continúa. ¿Qué tan loca, divertida o absurda puede ponerse vuestra historia colaborativa?"
+    },
+    "about": {
+      "sectionTitle": "¿Qué es Cadena de Historias?",
+      "p1": "Cadena de Historias es un juego de escritura creativa colaborativa donde tú y la IA se turnan para construir una historia, una frase a la vez. Piensa en ello como un show de improvisación — excepto que tu compañero de escena es un modelo de lenguaje con talento para lo inesperado.",
+      "p2": "Cada historia es única. La IA se adapta a tu tono, género e idioma, añadiendo giros que nunca viste venir. Ya empieces con \"Érase una vez\" o \"El mapache tenía un plan\", la IA seguirá el juego y llevará la historia en direcciones sorprendentes.",
+      "p3": "Las historias tienen un máximo de 20 frases (10 turnos cada uno), así que cada palabra cuenta. Cuando termines, copia tu obra maestra y compártela con amigos. Algunas de las mejores historias son las que se salen completamente de control."
+    },
+    "howToPlay": {
+      "sectionTitle": "Cómo Jugar a Cadena de Historias",
+      "step1Title": "Empieza la Historia",
+      "step1Desc": "Escribe tu frase de apertura. Establece la escena, presenta un personaje o simplemente di algo raro — el tono lo decides tú.",
+      "step2Title": "La IA Continúa",
+      "step2Desc": "La IA lee todo lo escrito hasta ahora y añade la siguiente frase. Observa cómo la historia evoluciona en tiempo real con giros sorprendentes.",
+      "step3Title": "Sigue Adelante",
+      "step3Desc": "Turnaos hasta llegar a 20 frases. Luego copia y comparte vuestra obra maestra colaborativa con amigos."
+    },
+    "why": {
+      "sectionTitle": "Por Qué Cadena de Historias es Tan Divertido",
+      "p1": "Hay magia en no saber qué viene después. Cadena de Historias captura la emoción de la narración improvisada — tú marcas la dirección, pero la IA puede hacer girar la narrativa de maneras que nunca esperabas.",
+      "p2": "Las mejores historias surgen de la tensión creativa entre humano e IA. Puede que intentes escribir un thriller noir serio, solo para que la IA introduzca un pingüino parlante. Estas colisiones inesperadas crean historias genuinamente hilarantes y memorables.",
+      "p3": "Cadena de Historias también es un ejercicio de escritura creativa sorprendentemente bueno. Las restricciones (una frase, 20 en total) te obligan a ser conciso e intencional con cada palabra, mientras la IA te mantiene en vilo."
+    },
+    "faq": {
+      "sectionTitle": "Preguntas Frecuentes",
+      "q1": "¿Cuántas frases puede tener una historia?",
+      "a1": "Cada historia tiene un máximo de 20 frases — 10 tuyas y 10 de la IA. Esto mantiene las historias compactas y legibles.",
+      "q2": "¿Puedo escribir en idiomas que no sean inglés?",
+      "a2": "¡Sí! Empieza a escribir en cualquier idioma y la IA lo seguirá. Cadena de Historias funciona en chino, japonés, coreano, español, francés, alemán y más.",
+      "q3": "¿Puedo guardar mis historias?",
+      "a3": "Usa el botón \"Copiar Historia\" para copiar el texto completo a tu portapapeles. Puedes pegarlo en cualquier lugar para guardar o compartir.",
+      "q4": "¿Y si la IA escribe algo raro?",
+      "a4": "¡Eso es parte de la diversión! La IA está configurada para ser creativa e inesperada. Si la historia se descarrila, déjate llevar — las mejores historias suelen ser las más raras.",
+      "q5": "¿Cadena de Historias es gratis?",
+      "a5": "Sí, completamente gratis. No necesitas cuenta. Solo empieza a escribir y la IA se unirá.",
+      "q6": "¿La IA recuerda historias anteriores?",
+      "a6": "No. Cada historia es independiente. La IA solo ve las frases de la historia actual, nada de sesiones anteriores."
+    },
+    "tips": {
+      "sectionTitle": "Consejos para Escribir Historias",
+      "tip1Title": "Establece el Tono Pronto",
+      "tip1Desc": "Tu primera frase define el género. Empieza gracioso y la IA se mantiene graciosa. Empieza oscuro y se pone noir.",
+      "tip2Title": "Lanza Bolas Curvas",
+      "tip2Desc": "Introduce elementos aleatorios a mitad de la historia. La IA maneja los giros de trama sorprendentemente bien.",
+      "tip3Title": "Copia y Comparte",
+      "tip3Desc": "Usa el botón \"Copiar Historia\" para guardar tu creación. Las mejores historias merecen un público."
+    }
   }
 }

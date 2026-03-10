@@ -5,12 +5,17 @@ import Image from 'next/image';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import MoreGames from '../../Components/MoreGames';
+import QuestionFAQ from '../../Components/QuestionFAQ';
+import { useTranslations } from '@/hooks/useTranslations';
 import styles from './StoryChain.module.css';
 import gp from '../gamePage.module.css';
 
 const MAX_SENTENCES = 20;
 
 export default function StoryChainPage() {
+  const { t } = useTranslations();
+  const g = t.storyChain || {};
+
   const [sentences, setSentences] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -85,10 +90,8 @@ export default function StoryChainPage() {
         <section className={gp.hero}>
           <div className={gp.heroInner}>
             <Image src="/logo-story-chain.png" alt="Story Chain" width={80} height={80} className={gp.heroLogo} />
-            <h1 className={gp.heroTitle}>Story Chain</h1>
-            <p className={gp.heroSubtitle}>
-              Write a story with AI, one sentence at a time. You write, AI continues. How wild, funny, or bizarre can your collaborative story get?
-            </p>
+            <h1 className={gp.heroTitle}>{g.hero?.title || 'Story Chain'}</h1>
+            <p className={gp.heroSubtitle}>{g.hero?.subtitle || 'Write a story with AI, one sentence at a time.'}</p>
           </div>
         </section>
 
@@ -128,7 +131,6 @@ export default function StoryChainPage() {
                 {isFinished && !loading && (
                   <div className={styles.theEnd}>~ The End ~</div>
                 )}
-
               </div>
 
               {!isFinished && (
@@ -156,20 +158,14 @@ export default function StoryChainPage() {
         {/* More Games */}
         <MoreGames current="story-chain" />
 
-        {/* About */}
+        {/* What Is */}
         <section className={gp.aboutSection}>
           <div className={gp.container}>
-            <h2 className={gp.sectionTitle}>About Story Chain</h2>
+            <h2 className={gp.sectionTitle}>{g.about?.sectionTitle || 'What Is Story Chain?'}</h2>
             <div className={gp.aboutContent}>
-              <p>
-                Story Chain is a collaborative creative writing game where you and AI take turns building a story, one sentence at a time. Think of it as an improv comedy show — except your scene partner is a language model with a flair for the unexpected.
-              </p>
-              <p>
-                Every story is unique. The AI adapts to your tone, genre, and language, adding twists and turns you never saw coming. Whether you start with "Once upon a time" or "The raccoon had a plan," the AI will roll with it and keep the story going in surprising directions.
-              </p>
-              <p>
-                Stories max out at 20 sentences (10 turns each), so every word counts. When you're done, copy your masterpiece and share it with friends. Some of the best stories are the ones that go completely off the rails.
-              </p>
+              <p>{g.about?.p1}</p>
+              <p>{g.about?.p2}</p>
+              <p>{g.about?.p3}</p>
             </div>
           </div>
         </section>
@@ -177,51 +173,77 @@ export default function StoryChainPage() {
         {/* How to Play */}
         <section className={gp.howtoSection}>
           <div className={gp.container}>
-            <h2 className={gp.sectionTitle}>How to Play</h2>
+            <h2 className={gp.sectionTitle}>{g.howToPlay?.sectionTitle || 'How to Play'}</h2>
             <div className={gp.stepsGrid}>
               <div className={gp.stepCard}>
                 <div className={gp.stepNumber}>1</div>
-                <h3>Start the Story</h3>
-                <p>Type your opening sentence. Set the scene, introduce a character, or just say something weird.</p>
+                <h3>{g.howToPlay?.step1Title || 'Start the Story'}</h3>
+                <p>{g.howToPlay?.step1Desc}</p>
               </div>
               <div className={gp.stepCard}>
                 <div className={gp.stepNumber}>2</div>
-                <h3>AI Continues</h3>
-                <p>The AI reads everything so far and adds the next sentence. Watch the story evolve in real time.</p>
+                <h3>{g.howToPlay?.step2Title || 'AI Continues'}</h3>
+                <p>{g.howToPlay?.step2Desc}</p>
               </div>
               <div className={gp.stepCard}>
                 <div className={gp.stepNumber}>3</div>
-                <h3>Keep Going</h3>
-                <p>Take turns until 20 sentences. Then copy and share your collaborative masterpiece.</p>
+                <h3>{g.howToPlay?.step3Title || 'Keep Going'}</h3>
+                <p>{g.howToPlay?.step3Desc}</p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Why */}
+        <section className={gp.whySection}>
+          <div className={gp.container}>
+            <h2 className={gp.sectionTitle}>{g.why?.sectionTitle || 'Why Story Chain Is So Fun'}</h2>
+            <div className={gp.whyContent}>
+              <p>{g.why?.p1}</p>
+              <p>{g.why?.p2}</p>
+              <p>{g.why?.p3}</p>
             </div>
           </div>
         </section>
 
         {/* Tips */}
-        <section className={gp.aboutSection}>
+        <section className={gp.howtoSection}>
           <div className={gp.container}>
-            <h2 className={gp.sectionTitle}>Story Writing Tips</h2>
+            <h2 className={gp.sectionTitle}>{g.tips?.sectionTitle || 'Story Writing Tips'}</h2>
             <div className={gp.featuresGrid}>
               <div className={gp.featureCard}>
                 <span className={gp.featureIcon}>🎭</span>
-                <h3>Set the Tone Early</h3>
-                <p>Your first sentence defines the genre. Start funny and the AI stays funny. Start dark and it goes noir.</p>
+                <h3>{g.tips?.tip1Title || 'Set the Tone Early'}</h3>
+                <p>{g.tips?.tip1Desc}</p>
               </div>
               <div className={gp.featureCard}>
                 <span className={gp.featureIcon}>🔀</span>
-                <h3>Throw Curveballs</h3>
-                <p>Introduce random elements mid-story. The AI handles plot twists surprisingly well.</p>
+                <h3>{g.tips?.tip2Title || 'Throw Curveballs'}</h3>
+                <p>{g.tips?.tip2Desc}</p>
               </div>
               <div className={gp.featureCard}>
                 <span className={gp.featureIcon}>📋</span>
-                <h3>Copy & Share</h3>
-                <p>Use the "Copy Story" button to save your creation. The best stories deserve an audience.</p>
+                <h3>{g.tips?.tip3Title || 'Copy & Share'}</h3>
+                <p>{g.tips?.tip3Desc}</p>
               </div>
             </div>
           </div>
         </section>
 
+        {/* FAQ */}
+        <section className={gp.faqSection}>
+          <div className={gp.container}>
+            <h2 className={gp.sectionTitle}>{g.faq?.sectionTitle || 'Frequently Asked Questions'}</h2>
+            <div className={gp.faqList}>
+              <QuestionFAQ question={g.faq?.q1} answer={g.faq?.a1} />
+              <QuestionFAQ question={g.faq?.q2} answer={g.faq?.a2} />
+              <QuestionFAQ question={g.faq?.q3} answer={g.faq?.a3} />
+              <QuestionFAQ question={g.faq?.q4} answer={g.faq?.a4} />
+              <QuestionFAQ question={g.faq?.q5} answer={g.faq?.a5} />
+              <QuestionFAQ question={g.faq?.q6} answer={g.faq?.a6} />
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
 
