@@ -107,13 +107,29 @@ export default function GameMain({ t }) {
     return null;
   };
 
-  // Get a local prompt that's different from the current one
+  // Track recent prompts to avoid repeats
+  const recentPromptsRef = useRef([]);
+
+  const isRecentPrompt = (prompt) => {
+    return recentPromptsRef.current.some(p =>
+      p === prompt || prompt.includes(p.slice(0, 30)) || p.includes(prompt.slice(0, 30))
+    );
+  };
+
+  const addToRecent = (prompt) => {
+    recentPromptsRef.current.push(prompt);
+    if (recentPromptsRef.current.length > 10) {
+      recentPromptsRef.current.shift();
+    }
+  };
+
+  // Get a local prompt that's different from recent ones
   const getNewLocalPrompt = () => {
     const isDrawRound = Math.random() < 0.3;
     const type = isDrawRound ? 'draw' : 'text';
     let prompt = getRandomPrompt(type, t?.layout?.language);
     let attempts = 0;
-    while (prompt === currentPrompt && attempts < 5) {
+    while (isRecentPrompt(prompt) && attempts < 10) {
       prompt = getRandomPrompt(type, t?.layout?.language);
       attempts++;
     }
@@ -129,16 +145,25 @@ export default function GameMain({ t }) {
     setTimeLeft(TIMER_SECONDS);
     setIsActive(true);
 
-    const aiPrompt = await fetchAIPrompt();
+    // Try API prompt up to 2 times
     let prompt, type;
-    if (aiPrompt && aiPrompt.prompt !== currentPrompt) {
-      type = aiPrompt.type;
-      prompt = aiPrompt.prompt;
-    } else {
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const aiPrompt = await fetchAIPrompt();
+      if (aiPrompt && !isRecentPrompt(aiPrompt.prompt)) {
+        type = aiPrompt.type;
+        prompt = aiPrompt.prompt;
+        break;
+      }
+    }
+
+    // Fallback to local
+    if (!prompt) {
       const local = getNewLocalPrompt();
       type = local.type;
       prompt = local.prompt;
     }
+
+    addToRecent(prompt);
     setPromptType(type);
     setCurrentPrompt(prompt);
     setMessages(prev => [...prev, { type: 'prompt', text: prompt, promptType: type }]);

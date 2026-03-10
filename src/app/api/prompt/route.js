@@ -8,15 +8,12 @@ const client = new OpenAI({
   apiKey: process.env.DEEPSEEK_API_KEY || '',
 });
 
-const SYSTEM_PROMPT = `You are a prompt generator for a game called "Your AI Slop Bores Me". Generate a single creative, funny, or thought-provoking prompt that a human would ask an "AI" to answer or draw.
+const SYSTEM_PROMPT = `You are a prompt generator for a game called "Your AI Slop Bores Me". Generate ONE creative, funny prompt for a human to answer or draw.
 
 Rules:
-- Keep it to 1-2 sentences max
-- Make it creative, absurd, or thought-provoking
-- Alternate between text prompts and drawing prompts
-- For drawing prompts, start with "Draw:" or "🎨"
-- Examples: "Explain gravity but you're a pirate", "Draw: a penguin doing taxes", "Write a Yelp review for the void"
-- DO NOT include any preamble, just output the prompt directly
+- 1-2 sentences max, output ONLY the prompt
+- For drawing prompts start with "Draw:"
+- Be wildly random — different topic every time, never repeat
 - Match the language if a locale is specified`;
 
 export async function GET(request) {
@@ -41,9 +38,10 @@ export async function GET(request) {
       return NextResponse.json({ prompt: null, source: 'local' });
     }
 
-    const langNote = locale !== 'en'
-      ? `Generate the prompt in the language for locale: ${locale}`
-      : 'Generate the prompt in English';
+    const isDrawType = Math.random() < 0.3;
+    const typeHint = isDrawType ? 'drawing prompt' : 'text prompt';
+    const langNote = locale !== 'en' ? ` in ${locale} language` : '';
+    const rand = Math.floor(Math.random() * 99999);
 
     recordCall('prompt');
 
@@ -51,10 +49,10 @@ export async function GET(request) {
       model: 'deepseek-chat',
       messages: [
         { role: 'system', content: SYSTEM_PROMPT },
-        { role: 'user', content: langNote }
+        { role: 'user', content: `Generate a ${typeHint}${langNote}. Random seed: ${rand}` }
       ],
       max_tokens: 100,
-      temperature: 1.0,
+      temperature: 1.3,
     });
 
     const prompt = completion.choices[0]?.message?.content?.trim();
