@@ -4,7 +4,7 @@ import { supabase } from '@/lib/supabase';
 let cachedCount = 0;
 let cachedDate = '';
 let cachedAt = 0;
-const CACHE_MS = 5 * 60 * 1000;
+const CACHE_MS = 60 * 60 * 1000; // 1 hour
 
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
