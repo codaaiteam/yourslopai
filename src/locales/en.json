@@ -159,6 +159,31 @@
       "tip2Desc": "Humans inject personal feelings, sarcasm, and lived experiences into their writing.",
       "tip3Title": "Notice the Structure",
       "tip3Desc": "AI often writes in balanced, symmetrical sentences. Humans ramble and jump between ideas."
+    },
+    "game": {
+      "speedRound": "Speed Round",
+      "speedRoundDesc": "Read the text. Guess AI or Human. You have 2 seconds per round. One wrong answer and it's game over!",
+      "play": "Play",
+      "playAgain": "Play Again",
+      "loading": "Loading...",
+      "score": "Score",
+      "round": "Round",
+      "human": "Human",
+      "gameOver": "Game Over",
+      "timesUp": "Time's up!",
+      "wrongAnswer": "Wrong answer!",
+      "itWas": "It was",
+      "roundSurvived": "round survived",
+      "roundsSurvived": "rounds survived",
+      "personalBest": "Personal Best",
+      "newBest": "New Personal Best!",
+      "shareScore": "Share Score",
+      "submitToLeaderboard": "Submit to Leaderboard",
+      "yourName": "Your name",
+      "submit": "Submit",
+      "ranked": "Ranked",
+      "leaderboard": "Leaderboard",
+      "player": "Player"
     }
   },
   "aiRoast": {

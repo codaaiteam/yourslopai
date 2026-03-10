@@ -155,6 +155,31 @@
       "tip2Desc": "인간은 개인적 감정, 풍자, 경험을 글에 담습니다.",
       "tip3Title": "구조에 주목하세요",
       "tip3Desc": "AI는 균형 잡히고 대칭적인 문장을 쓰는 경향이 있습니다. 인간은 횡설수설하고 아이디어 사이를 오갑니다."
+    },
+    "game": {
+      "speedRound": "스피드 라운드",
+      "speedRoundDesc": "텍스트를 읽고 AI인지 사람인지 맞추세요. 문제당 2초, 틀리면 끝!",
+      "play": "시작",
+      "playAgain": "다시 하기",
+      "loading": "로딩 중...",
+      "score": "점수",
+      "round": "라운드",
+      "human": "사람",
+      "gameOver": "게임 오버",
+      "timesUp": "시간 초과!",
+      "wrongAnswer": "오답!",
+      "itWas": "정답은",
+      "roundSurvived": "라운드 생존",
+      "roundsSurvived": "라운드 생존",
+      "personalBest": "개인 최고",
+      "newBest": "새 기록!",
+      "shareScore": "점수 공유",
+      "submitToLeaderboard": "리더보드에 등록",
+      "yourName": "이름",
+      "submit": "등록",
+      "ranked": "순위",
+      "leaderboard": "리더보드",
+      "player": "플레이어"
     }
   },
   "aiRoast": {

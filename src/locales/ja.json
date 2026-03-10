@@ -159,6 +159,31 @@
       "tip2Desc": "人間は個人的な感情、皮肉、実体験を文章に込めます。",
       "tip3Title": "構造に注意",
       "tip3Desc": "AIはバランスの取れた対称的な文を書きがちです。人間は脱線し、アイデア間を飛び回ります。"
+    },
+    "game": {
+      "speedRound": "スピードラウンド",
+      "speedRoundDesc": "テキストを読んで、AIか人間かを当てよう。1問2秒、間違えたら即終了！",
+      "play": "プレイ",
+      "playAgain": "もう一度",
+      "loading": "読み込み中...",
+      "score": "スコア",
+      "round": "ラウンド",
+      "human": "人間",
+      "gameOver": "ゲームオーバー",
+      "timesUp": "時間切れ！",
+      "wrongAnswer": "不正解！",
+      "itWas": "正解は",
+      "roundSurvived": "ラウンド生存",
+      "roundsSurvived": "ラウンド生存",
+      "personalBest": "自己ベスト",
+      "newBest": "自己ベスト更新！",
+      "shareScore": "スコアを共有",
+      "submitToLeaderboard": "ランキングに登録",
+      "yourName": "名前",
+      "submit": "登録",
+      "ranked": "順位",
+      "leaderboard": "ランキング",
+      "player": "プレイヤー"
     }
   },
   "aiRoast": {

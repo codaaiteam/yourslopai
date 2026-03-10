@@ -159,6 +159,31 @@
       "tip2Desc": "人类会在写作中注入个人感受、讽刺和亲身经历。",
       "tip3Title": "观察结构",
       "tip3Desc": "AI常常写出均衡、对称的句子。人类则会东拉西扯，思维跳跃。"
+    },
+    "game": {
+      "speedRound": "极速挑战",
+      "speedRoundDesc": "阅读文字，判断是 AI 还是人类写的。每题只有 2 秒，答错即结束！",
+      "play": "开始",
+      "playAgain": "再来一局",
+      "loading": "加载中...",
+      "score": "得分",
+      "round": "第",
+      "human": "人类",
+      "gameOver": "游戏结束",
+      "timesUp": "时间到！",
+      "wrongAnswer": "答错了！",
+      "itWas": "正确答案是",
+      "roundSurvived": "轮存活",
+      "roundsSurvived": "轮存活",
+      "personalBest": "个人最佳",
+      "newBest": "新纪录！",
+      "shareScore": "分享成绩",
+      "submitToLeaderboard": "提交到排行榜",
+      "yourName": "你的名字",
+      "submit": "提交",
+      "ranked": "排名",
+      "leaderboard": "排行榜",
+      "player": "玩家"
     }
   },
   "aiRoast": {

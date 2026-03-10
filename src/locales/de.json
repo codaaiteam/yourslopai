@@ -88,7 +88,32 @@
     "howToPlay": { "sectionTitle": "Wie man Spielt", "step1Title": "Lies den Text", "step1Desc": "Ein kurzer Ausschnitt erscheint auf dem Bildschirm. Lies ihn aufmerksam — achte auf subtile Hinweise in Grammatik, Ton und Stil.", "step2Title": "Triff deine Wahl", "step2Desc": "Klicke auf \"KI hat das geschrieben\" oder \"Ein Mensch hat das geschrieben\" basierend auf deiner Analyse und Intuition.", "step3Title": "Sieh das Ergebnis", "step3Desc": "Finde heraus, ob du richtig lagst! Die richtige Antwort wird grün oder rot hervorgehoben. Baue deine Serie auf und strebe die perfekte Punktzahl an." },
     "why": { "sectionTitle": "Warum KI oder Mensch spielen?", "p1": "In einer Welt, in der KI-generierter Inhalt überall ist, wird die Fähigkeit, Echtes von Falschem zu unterscheiden, zu einer kritischen Kompetenz.", "p2": "Das Spiel zeigt auch etwas Überraschendes: KI-Text klingt oft \u201Ezu perfekt\u201C. Echte Menschen machen Tippfehler, verwenden Slang und drücken persönliche Emotionen aus.", "p3": "Ob Schriftsteller, Lehrer, Student oder einfach jemand, der Zeit online verbringt — KI oder Mensch schärft dein kritisches Denken." },
     "faq": { "sectionTitle": "Häufig gestellte Fragen", "q1": "Wird der KI-Text in Echtzeit generiert?", "a1": "Ja! Jeder KI-Ausschnitt wird sofort von DeepSeek KI mit einem zufälligen Thema und Seed generiert.", "q2": "Woher kommen die menschlichen Sätze?", "a2": "Die menschlichen Sätze stammen aus echten Online-Gesprächen, Social-Media-Posts und informellem Schreiben.", "q3": "Ist es kostenlos?", "a3": "100% kostenlos. Keine Registrierung, kein Download.", "q4": "Wie viele Runden kann ich spielen?", "a4": "So viele du willst! Es gibt kein Limit.", "q5": "Tipps zum Erkennen von KI-Texten?", "a5": "Achte auf übermäßig perfekte Grammatik, ausgewogene Satzstrukturen und fehlende persönliche oder emotionale Sprache.", "q6": "Funktioniert es auf dem Handy?", "a6": "Ja, es ist vollständig responsive und funktioniert großartig auf Handys, Tablets und Desktops." },
-    "tips": { "sectionTitle": "Den Unterschied Erkennen", "tip1Title": "Achte auf Perfektion", "tip1Desc": "KI-Text neigt zu grammatischer Makellosigkeit. Menschen machen Fehler und verwenden informelle Sprache.", "tip2Title": "Prüfe die Emotion", "tip2Desc": "Menschen bringen persönliche Gefühle, Sarkasmus und gelebte Erfahrungen in ihr Schreiben ein.", "tip3Title": "Beachte die Struktur", "tip3Desc": "KI schreibt oft in ausgewogenen, symmetrischen Sätzen. Menschen schweifen ab und springen zwischen Ideen." }
+    "tips": { "sectionTitle": "Den Unterschied Erkennen", "tip1Title": "Achte auf Perfektion", "tip1Desc": "KI-Text neigt zu grammatischer Makellosigkeit. Menschen machen Fehler und verwenden informelle Sprache.", "tip2Title": "Prüfe die Emotion", "tip2Desc": "Menschen bringen persönliche Gefühle, Sarkasmus und gelebte Erfahrungen in ihr Schreiben ein.", "tip3Title": "Beachte die Struktur", "tip3Desc": "KI schreibt oft in ausgewogenen, symmetrischen Sätzen. Menschen schweifen ab und springen zwischen Ideen." },
+    "game": {
+      "speedRound": "Schnellrunde",
+      "speedRoundDesc": "Lies den Text. Rate KI oder Mensch. Du hast 2 Sekunden pro Runde. Eine falsche Antwort und es ist vorbei!",
+      "play": "Spielen",
+      "playAgain": "Nochmal Spielen",
+      "loading": "Laden...",
+      "score": "Punkte",
+      "round": "Runde",
+      "human": "Mensch",
+      "gameOver": "Spiel Vorbei",
+      "timesUp": "Zeit abgelaufen!",
+      "wrongAnswer": "Falsche Antwort!",
+      "itWas": "Es war",
+      "roundSurvived": "Runde überlebt",
+      "roundsSurvived": "Runden überlebt",
+      "personalBest": "Persönlicher Rekord",
+      "newBest": "Neuer Rekord!",
+      "shareScore": "Ergebnis Teilen",
+      "submitToLeaderboard": "Zum Ranking Senden",
+      "yourName": "Dein Name",
+      "submit": "Senden",
+      "ranked": "Platz",
+      "leaderboard": "Rangliste",
+      "player": "Spieler"
+    }
   },
   "aiRoast": {
     "seoTitle": "KI Röste Mich — Lass dich von Künstlicher Intelligenz Rösten | Kostenlos Online",

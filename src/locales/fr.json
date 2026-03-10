@@ -131,6 +131,31 @@
       "tip2Desc": "Les humains injectent des sentiments personnels, du sarcasme et des expériences vécues dans leur écriture.",
       "tip3Title": "Observez la structure",
       "tip3Desc": "L'IA écrit souvent des phrases équilibrées et symétriques. Les humains divaguent et sautent d'une idée à l'autre."
+    },
+    "game": {
+      "speedRound": "Round Rapide",
+      "speedRoundDesc": "Lisez le texte. Devinez IA ou Humain. Vous avez 2 secondes par tour. Une mauvaise réponse et c'est fini !",
+      "play": "Jouer",
+      "playAgain": "Rejouer",
+      "loading": "Chargement...",
+      "score": "Score",
+      "round": "Tour",
+      "human": "Humain",
+      "gameOver": "Partie Terminée",
+      "timesUp": "Temps écoulé !",
+      "wrongAnswer": "Mauvaise réponse !",
+      "itWas": "C'était",
+      "roundSurvived": "tour survécu",
+      "roundsSurvived": "tours survécus",
+      "personalBest": "Record Personnel",
+      "newBest": "Nouveau Record !",
+      "shareScore": "Partager le Score",
+      "submitToLeaderboard": "Soumettre au Classement",
+      "yourName": "Votre nom",
+      "submit": "Soumettre",
+      "ranked": "Classé",
+      "leaderboard": "Classement",
+      "player": "Joueur"
     }
   },
   "aiRoast": {

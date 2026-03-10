@@ -155,6 +155,31 @@
       "tip2Desc": "Los humanos inyectan sentimientos personales, sarcasmo y experiencias vividas en su escritura.",
       "tip3Title": "Observa la Estructura",
       "tip3Desc": "La IA a menudo escribe en frases equilibradas y simétricas. Los humanos divagan y saltan entre ideas."
+    },
+    "game": {
+      "speedRound": "Ronda Rápida",
+      "speedRoundDesc": "Lee el texto. Adivina IA o Humano. Tienes 2 segundos por ronda. ¡Una respuesta incorrecta y se acabó!",
+      "play": "Jugar",
+      "playAgain": "Jugar de Nuevo",
+      "loading": "Cargando...",
+      "score": "Puntuación",
+      "round": "Ronda",
+      "human": "Humano",
+      "gameOver": "Fin del Juego",
+      "timesUp": "¡Se acabó el tiempo!",
+      "wrongAnswer": "¡Respuesta incorrecta!",
+      "itWas": "Era",
+      "roundSurvived": "ronda superada",
+      "roundsSurvived": "rondas superadas",
+      "personalBest": "Mejor Marca",
+      "newBest": "¡Nueva Mejor Marca!",
+      "shareScore": "Compartir Puntuación",
+      "submitToLeaderboard": "Enviar al Ranking",
+      "yourName": "Tu nombre",
+      "submit": "Enviar",
+      "ranked": "Posición",
+      "leaderboard": "Ranking",
+      "player": "Jugador"
     }
   },
   "aiRoast": {
