@@ -46,23 +46,6 @@ export default function Home() {
                 youraislopboresmegame.com
               </a>
             </p>
-            <div className={styles.embedSection}>
-              <h3 className={styles.embedTitle}>Embed this game</h3>
-              <div className={styles.embedRow}>
-                <label className={styles.embedLabel}>Embed URL</label>
-                <div className={styles.embedField}>
-                  <code className={styles.embedValue}>https://youraislopboresmegame.com</code>
-                  <button className={styles.embedCopy} onClick={() => { navigator.clipboard.writeText('https://youraislopboresmegame.com'); }}>Copy</button>
-                </div>
-              </div>
-              <div className={styles.embedRow}>
-                <label className={styles.embedLabel}>Embed Code</label>
-                <div className={styles.embedField}>
-                  <code className={styles.embedValue}>{`<iframe src="https://youraislopboresmegame.com" width="1280" height="720" frameborder="0" scrolling="no"></iframe>`}</code>
-                  <button className={styles.embedCopy} onClick={() => { navigator.clipboard.writeText('<iframe src="https://youraislopboresmegame.com" width="1280" height="720" frameborder="0" scrolling="no"></iframe>'); }}>Copy</button>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
