@@ -527,10 +527,10 @@ export default function GameMain({ t }) {
       {/* Top Tabs */}
       <div className={styles.topTabs}>
         <button
-          className={`${styles.tab} ${mode === 'human' ? styles.tabActive : ''} ${tokens < 10 ? styles.tabDisabled : ''}`}
-          onClick={() => tokens >= 10 && switchMode('human')}
+          className={`${styles.tab} ${mode === 'human' ? styles.tabActive : ''} ${tokens < 5 ? styles.tabDisabled : ''}`}
+          onClick={() => tokens >= 5 && switchMode('human')}
         >
-          human {tokens < 10 && `(${tokens}/10)`}
+          human {tokens < 5 && `(${tokens}/10)`}
         </button>
         <button
           className={`${styles.tab} ${mode === 'larp' ? styles.tabActive : ''}`}
@@ -725,9 +725,9 @@ export default function GameMain({ t }) {
           )}
 
           {/* Warning for human mode with no tokens */}
-          {mode === 'human' && tokens < 10 && (
+          {mode === 'human' && tokens < 5 && (
             <div className={styles.warning}>
-              Earn at least 10 tokens by larping as AI first! ({tokens}/10)
+              Earn at least 5 tokens by larping as AI first! ({tokens}/5)
             </div>
           )}
 
