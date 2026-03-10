@@ -9,7 +9,7 @@ const TIMER_SECONDS = 60;
 
 export default function GameMain({ t }) {
   // Game state
-  const [mode, setMode] = useState('human'); // 'human' | 'larp'
+  const [mode, setMode] = useState('larp'); // 'human' | 'larp'
   const [tokens, setTokens] = useState(0);
   const [currentPrompt, setCurrentPrompt] = useState('');
   const [promptType, setPromptType] = useState('text'); // 'text' | 'draw'
@@ -27,6 +27,7 @@ export default function GameMain({ t }) {
   const [stats, setStats] = useState({ answered: 0, asked: 0 });
   const [onlineCount] = useState(() => Math.floor(Math.random() * 8000) + 12000);
   const [tokenPop, setTokenPop] = useState(false);
+  const [showRules, setShowRules] = useState(false);
   const timerRef = useRef(null);
   const chatRef = useRef(null);
   const prevTokens = useRef(tokens);
@@ -37,9 +38,11 @@ export default function GameMain({ t }) {
       const saved = localStorage.getItem('slopai_state');
       if (saved) {
         const data = JSON.parse(saved);
-        setTokens(data.tokens || 0);
+        const savedTokens = data.tokens || 0;
+        setTokens(savedTokens);
         setStats(data.stats || { answered: 0, asked: 0 });
         setMessages(data.messages || []);
+        if (savedTokens >= 10) setMode('human');
       }
     } catch (e) {}
   }, []);
@@ -138,12 +141,10 @@ export default function GameMain({ t }) {
 
   // Start larp round
   const startLarp = async () => {
-    setPhase('answering');
+    setPhase('loading');
     setAnswer('');
     setDrawingData(null);
     setInputMode('text');
-    setTimeLeft(TIMER_SECONDS);
-    setIsActive(true);
 
     // Try API prompt up to 2 times
     let prompt, type;
@@ -167,24 +168,64 @@ export default function GameMain({ t }) {
     setPromptType(type);
     setCurrentPrompt(prompt);
     setMessages(prev => [...prev, { type: 'prompt', text: prompt, promptType: type }]);
+    setTimeLeft(TIMER_SECONDS);
+    setIsActive(true);
+    setPhase('answering');
   };
 
-  // Submit larp answer
-  const submitLarpAnswer = () => {
-    const response = promptType === 'draw' ? drawingData : answer;
+  // Submit larp answer — AI judges whether it earns a token
+  const submitLarpAnswer = async () => {
+    const isDrawing = promptType === 'draw';
+    const response = isDrawing ? drawingData : answer;
     if (!response || (typeof response === 'string' && !response.trim())) return;
-    if (promptType === 'text' && answer.trim().length < 10) return;
+    if (!isDrawing && answer.trim().length < 10) return;
 
     setIsActive(false);
     clearTimeout(timerRef.current);
-    setTokens(prev => prev + 1);
-    setStats(prev => ({ ...prev, answered: prev.answered + 1 }));
     setMessages(prev => [...prev, {
       type: 'answer',
-      text: promptType === 'draw' ? null : answer,
-      drawingData: promptType === 'draw' ? drawingData : null,
+      text: isDrawing ? null : answer,
+      drawingData: isDrawing ? drawingData : null,
       promptType,
     }]);
+    setPhase('judging');
+
+    // Call judge API
+    let passed = true;
+    let reason = '';
+    try {
+      const res = await fetch('/api/judge', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          prompt: currentPrompt,
+          answer: isDrawing ? '[drawing submitted]' : answer,
+          isDrawing,
+        }),
+      });
+      const data = await res.json();
+      passed = data.pass;
+      reason = data.reason || '';
+    } catch {
+      // On error, approve
+      passed = true;
+    }
+
+    if (passed) {
+      setTokens(prev => prev + 1);
+      setStats(prev => ({ ...prev, answered: prev.answered + 1 }));
+      setMessages(prev => [...prev, {
+        type: 'judge',
+        passed: true,
+        reason,
+      }]);
+    } else {
+      setMessages(prev => [...prev, {
+        type: 'judge',
+        passed: false,
+        reason,
+      }]);
+    }
     setPhase('submitted');
   };
 
@@ -218,11 +259,13 @@ export default function GameMain({ t }) {
 
   // Human mode submit - detect if asking for text or image
   const submitHumanPrompt = async () => {
-    if (!humanPrompt.trim() || tokens < 1) return;
+    if (!humanPrompt.trim()) return;
 
     const prompt = humanPrompt;
     const wantsDraw = isDrawRequest(prompt);
-    setTokens(prev => prev - 1);
+    const cost = wantsDraw ? 2 : 1;
+    if (tokens < cost) return;
+    setTokens(prev => prev - cost);
     setStats(prev => ({ ...prev, asked: prev.asked + 1 }));
     setPhase('waiting');
     setGeneratedImage(null);
@@ -484,10 +527,10 @@ export default function GameMain({ t }) {
       {/* Top Tabs */}
       <div className={styles.topTabs}>
         <button
-          className={`${styles.tab} ${mode === 'human' ? styles.tabActive : ''}`}
-          onClick={() => switchMode('human')}
+          className={`${styles.tab} ${mode === 'human' ? styles.tabActive : ''} ${tokens < 10 ? styles.tabDisabled : ''}`}
+          onClick={() => tokens >= 10 && switchMode('human')}
         >
-          human
+          human {tokens < 10 && `(${tokens}/10)`}
         </button>
         <button
           className={`${styles.tab} ${mode === 'larp' ? styles.tabActive : ''}`}
@@ -503,7 +546,10 @@ export default function GameMain({ t }) {
         <div className={styles.cardContent} key={mode}>
         {/* Card Header */}
         <div className={styles.cardHeader}>
-          <div className={styles.cardTitle}>your ai slop bores me</div>
+          <div className={styles.headerRow}>
+            <div className={styles.cardTitle}>your ai slop bores me</div>
+            <button className={styles.rulesBtn} onClick={() => setShowRules(v => !v)} title="Game Rules">?</button>
+          </div>
           {mode === 'larp' && phase === 'idle' && (
             <button className={styles.playBtn} onClick={startLarp}>▶</button>
           )}
@@ -590,6 +636,23 @@ export default function GameMain({ t }) {
                 </div>
               );
             }
+            if (msg.type === 'judge') {
+              return (
+                <div key={i} className={styles.resultNotice}>
+                  {msg.passed ? (
+                    <>
+                      <div className={styles.tokenEarned}>+1 token earned!</div>
+                      {msg.reason && <div className={styles.resultText}>{msg.reason}</div>}
+                    </>
+                  ) : (
+                    <>
+                      <div className={styles.tokenDenied}>No token this time</div>
+                      {msg.reason && <div className={styles.resultText}>{msg.reason}</div>}
+                    </>
+                  )}
+                </div>
+              );
+            }
             if (msg.type === 'ai-response') {
               const askMsg = findAskForResponse(i);
               return (
@@ -630,11 +693,13 @@ export default function GameMain({ t }) {
             </div>
           )}
 
-          {/* Submitted result */}
-          {mode === 'larp' && phase === 'submitted' && (
+          {/* Judging indicator */}
+          {mode === 'larp' && phase === 'judging' && (
             <div className={styles.resultNotice}>
-              <div className={styles.tokenEarned}>+1 token earned!</div>
-              <div className={styles.resultText}>Your response has been submitted</div>
+              <div className={styles.judgingText}>Evaluating your response...</div>
+              <div className={styles.loadingDots}>
+                <span>.</span><span>.</span><span>.</span>
+              </div>
             </div>
           )}
         </div>
@@ -660,9 +725,9 @@ export default function GameMain({ t }) {
           )}
 
           {/* Warning for human mode with no tokens */}
-          {mode === 'human' && tokens < 1 && (
+          {mode === 'human' && tokens < 10 && (
             <div className={styles.warning}>
-              You haven&apos;t larped as an AI enough
+              Earn at least 10 tokens by larping as AI first! ({tokens}/10)
             </div>
           )}
 
@@ -690,7 +755,7 @@ export default function GameMain({ t }) {
               </div>
               <div className={styles.charInfo}>
                 <span>{humanPrompt.length}/300</span>
-                <span>costs 1 token</span>
+                <span>{inputMode === 'draw' || isDrawRequest(humanPrompt) ? 'costs 2 tokens (image)' : 'costs 1 token'}</span>
               </div>
             </>
           )}
@@ -741,6 +806,22 @@ export default function GameMain({ t }) {
             </div>
           )}
 
+          {/* Larp loading prompt */}
+          {mode === 'larp' && phase === 'loading' && (
+            <div className={styles.loadingPrompt}>
+              <div className={styles.loadingSpinner} />
+              <span>Finding a prompt...</span>
+            </div>
+          )}
+
+          {/* Larp judging */}
+          {mode === 'larp' && phase === 'judging' && (
+            <div className={styles.loadingPrompt}>
+              <div className={styles.loadingSpinner} />
+              <span>AI is judging...</span>
+            </div>
+          )}
+
           {/* Larp submitted */}
           {mode === 'larp' && phase === 'submitted' && (
             <div style={{ textAlign: 'center', padding: '0.25rem' }}>
@@ -765,6 +846,32 @@ export default function GameMain({ t }) {
         <p>humans make mistakes because that&apos;s what makes us human</p>
         <p><span className={styles.onlineCount}>{onlineCount.toLocaleString()}</span> online</p>
       </div>
+
+      {/* Rules Modal */}
+      {showRules && (
+        <div className={styles.rulesOverlay} onClick={() => setShowRules(false)}>
+          <div className={styles.rulesModal} onClick={(e) => e.stopPropagation()}>
+            <h2 className={styles.rulesModalTitle}>your ai slop bores me</h2>
+            <p className={styles.rulesIntro}>
+              in a world looming with the threat of ai stealing your job, save humanity by stealing ai&apos;s job.
+            </p>
+            <ul className={styles.rulesList}>
+              <li>each text prompt costs <strong>1 token</strong>. image prompts cost <strong>2 tokens</strong>.</li>
+              <li>to earn tokens, switch to the <strong>larp as ai</strong> tab and answer someone else&apos;s prompt within 60 seconds.</li>
+              <li>you can answer with text or draw a picture — both earn 1 token.</li>
+              <li>if you&apos;re broke, keep larping until you&apos;ve earned enough tokens.</li>
+              <li>send in a prompt and revel in your (relatively negligible) water waste.</li>
+              <li>be nice. this is not grok. hate speech and general unkindness will result in bans.</li>
+            </ul>
+            <button className={styles.rulesGotIt} onClick={() => setShowRules(false)}>
+              got it
+            </button>
+            <p className={styles.rulesDisclaimer}>
+              youraislopboresmegame.com does NOT endorse any crypto tokens under its name.
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
