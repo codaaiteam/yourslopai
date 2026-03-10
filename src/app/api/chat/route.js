@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import { rateLimit, validateOrigin } from '@/lib/rateLimit';
+import { recordCall } from '@/lib/apiStats';
 
 const client = new OpenAI({
   baseURL: 'https://api.deepseek.com',
@@ -29,6 +31,19 @@ Examples of BAD responses (DO NOT write like this):
 - "Let me access my database... computing..."`;
 
 export async function POST(request) {
+  if (!validateOrigin(request)) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+  }
+
+  // Rate limit: 10/IP/min + 500 global/hour
+  const { success } = rateLimit(request, {
+    limit: 10, windowMs: 60000, prefix: 'chat',
+    globalLimit: 500, globalWindowMs: 3600000,
+  });
+  if (!success) {
+    return NextResponse.json({ response: 'Whoa, slow down there. Even humans need a breather.', source: 'ratelimit' });
+  }
+
   try {
     const { prompt, locale } = await request.json();
 
@@ -46,6 +61,8 @@ export async function POST(request) {
     const langInstruction = locale && locale !== 'en'
       ? `\nRespond in the same language as the user's prompt.`
       : '';
+
+    recordCall('chat');
 
     const completion = await client.chat.completions.create({
       model: 'deepseek-chat',

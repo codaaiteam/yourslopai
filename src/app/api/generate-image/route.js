@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+import { rateLimit, validateOrigin } from '@/lib/rateLimit';
+import { recordCall } from '@/lib/apiStats';
 
 const KIE_API_URL = 'https://api.kie.ai/api/v1/jobs';
 const KIE_API_KEY = process.env.KIE_API_KEY || '';
@@ -58,6 +60,20 @@ async function pollTask(taskId) {
 }
 
 export async function POST(request) {
+  // Origin check — block external callers
+  if (!validateOrigin(request)) {
+    return NextResponse.json({ error: 'Forbidden', imageUrl: null }, { status: 403 });
+  }
+
+  // Rate limit: 5/IP/min + 200 global/hour
+  const { success } = rateLimit(request, {
+    limit: 5, windowMs: 60000, prefix: 'img',
+    globalLimit: 200, globalWindowMs: 3600000,
+  });
+  if (!success) {
+    return NextResponse.json({ error: 'Too many requests. Try again later.', imageUrl: null }, { status: 429 });
+  }
+
   try {
     const { prompt } = await request.json();
 
@@ -74,6 +90,8 @@ export async function POST(request) {
 
     // Prepend style instruction to make it look like a human's rough doodle
     const styledPrompt = `crude simple hand-drawn doodle sketch on white paper, messy wobbly lines, childlike MS Paint style, low effort funny drawing, stick figures, no shading, no details, amateur scribble: ${prompt}`;
+
+    recordCall('image');
 
     // Create task
     const taskId = await createTask(styledPrompt);

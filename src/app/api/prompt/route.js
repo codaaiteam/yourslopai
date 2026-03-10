@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import { rateLimit, validateOrigin } from '@/lib/rateLimit';
+import { recordCall } from '@/lib/apiStats';
 
 const client = new OpenAI({
   baseURL: 'https://api.deepseek.com',
@@ -18,6 +20,19 @@ Rules:
 - Match the language if a locale is specified`;
 
 export async function GET(request) {
+  if (!validateOrigin(request)) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+  }
+
+  // Rate limit: 15/IP/min + 500 global/hour
+  const { success } = rateLimit(request, {
+    limit: 15, windowMs: 60000, prefix: 'prompt',
+    globalLimit: 500, globalWindowMs: 3600000,
+  });
+  if (!success) {
+    return NextResponse.json({ prompt: null, source: 'ratelimit' });
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     const locale = searchParams.get('locale') || 'en';
@@ -29,6 +44,8 @@ export async function GET(request) {
     const langNote = locale !== 'en'
       ? `Generate the prompt in the language for locale: ${locale}`
       : 'Generate the prompt in English';
+
+    recordCall('prompt');
 
     const completion = await client.chat.completions.create({
       model: 'deepseek-chat',
