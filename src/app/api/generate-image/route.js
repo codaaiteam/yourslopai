@@ -221,7 +221,7 @@ export async function POST(request) {
     }
 
     // Generate new image
-    const styledPrompt = `crude simple hand-drawn doodle sketch on white paper, messy wobbly lines, childlike MS Paint style, low effort funny drawing, stick figures, no shading, no details, amateur scribble: ${prompt}`;
+    const styledPrompt = `crude simple hand-drawn doodle sketch on white paper, messy wobbly lines, childlike MS Paint style, low effort funny drawing, stick figures, no shading, no details, amateur scribble, absolutely no text or words or letters on the image, only draw the subject: ${prompt}`;
 
     recordCall('image');
 
