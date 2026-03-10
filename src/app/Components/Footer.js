@@ -29,6 +29,9 @@ const Footer = ({ t }) => {
           <a href="https://youraislopbores.me">
             youraislopbores.me
           </a>
+          <a href="mailto:contact@youraislopboresmegame.com">
+            contact@youraislopboresmegame.com
+          </a>
         </div>
       </div>
 
