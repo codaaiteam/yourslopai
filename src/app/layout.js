@@ -67,6 +67,20 @@ export default function RootLayout({ children, params }) {
       </head>
       <body className={inter.className}>
         {children}
+        <noscript>
+          <div style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto', fontFamily: 'sans-serif' }}>
+            <h1>Your AI Slop Bores Me — Play the Viral Human vs AI Game Online Free</h1>
+            <p>Your AI Slop Bores Me is a free browser-based game where you pretend to be an AI. Answer real prompts from real people within 60 seconds. Prove that humans still do it better than any AI slop out there. No downloads, no sign-ups — just open and play.</p>
+            <h2>How to Play</h2>
+            <p>Choose Larp as AI mode to answer prompts and earn tokens. Write or draw your response within 60 seconds. An AI judge evaluates whether your answer sounds like real AI — if it passes, you earn a token. Spend tokens in Human mode to ask questions and get responses. Text prompts cost 1 token, image generation costs 2 tokens.</p>
+            <h2>About the Game</h2>
+            <p>Your AI Slop Bores Me was created by developer Mihir Maroju (mikidoodle) and went viral across Hacker News, Kotaku, and social media. The game captures a growing sentiment: people are tired of low-quality AI-generated content flooding the internet. By making humans play the role of AI, it highlights everything that makes human communication special — humor, empathy, creativity, and beautiful imperfection.</p>
+            <h2>Mini-Games</h2>
+            <p>AI or Human? — A speed round guessing game. Read text snippets and guess whether they were written by AI or a human. You have 2 seconds per round. One wrong answer and it is game over.</p>
+            <p>AI Roast Me — Describe yourself and let AI deliver the most creative, savage roast it can come up with. Share your best roasts with friends.</p>
+            <p>Story Chain — Co-write a story with AI, one sentence at a time. Take turns and see how wild your collaborative story gets.</p>
+          </div>
+        </noscript>
       </body>
     </html>
   )

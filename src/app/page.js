@@ -10,15 +10,7 @@ import AdSense from './Components/AdSense';
 import { useTranslations } from '@/hooks/useTranslations';
 
 export default function Home() {
-  const { t, isLoading } = useTranslations();
-
-  if (isLoading) {
-    return (
-      <div className={styles.loadingScreen}>
-        <div className={styles.loadingSpinner}></div>
-      </div>
-    );
-  }
+  const { t } = useTranslations();
 
   return (
     <>
