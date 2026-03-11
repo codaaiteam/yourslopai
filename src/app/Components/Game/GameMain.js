@@ -805,7 +805,7 @@ export default function GameMain({ t }) {
               <button className={styles.nextBtn} onClick={startLarp}>
                 Get a Prompt ▶
               </button>
-              <a href="https://youraislopboresmegame.com" target="_blank" rel="noopener noreferrer" className={styles.fullVersionLink}>
+              <a href="https://youraislopboresmegame.com/?utm_source=embed&utm_medium=game_ui&utm_campaign=open_full_game" target="_blank" rel="noopener noreferrer" className={styles.fullVersionLink}>
                 Open Full Game ↗
               </a>
             </div>
@@ -833,7 +833,7 @@ export default function GameMain({ t }) {
               <button className={styles.nextBtn} onClick={startLarp}>
                 Next Prompt →
               </button>
-              <a href="https://youraislopboresmegame.com" target="_blank" rel="noopener noreferrer" className={styles.fullVersionLink}>
+              <a href="https://youraislopboresmegame.com/?utm_source=embed&utm_medium=game_ui&utm_campaign=open_full_game" target="_blank" rel="noopener noreferrer" className={styles.fullVersionLink}>
                 Open Full Game ↗
               </a>
             </div>
@@ -852,7 +852,7 @@ export default function GameMain({ t }) {
       {/* Footer */}
       <div className={styles.gameFooter}>
         <p>humans make mistakes because that&apos;s what makes us human</p>
-        <p><span className={styles.onlineCount}>{onlineCount.toLocaleString()}</span> online (<a href="https://youraislopboresmegame.com" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>youraislopboresmegame.com</a>)</p>
+        <p><span className={styles.onlineCount}>{onlineCount.toLocaleString()}</span> online (<a href="https://youraislopboresmegame.com/?utm_source=embed&utm_medium=game_footer&utm_campaign=site_link" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>youraislopboresmegame.com</a>)</p>
       </div>
 
       {/* Rules Modal */}

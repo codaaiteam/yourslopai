@@ -318,7 +318,7 @@ export default function AiOrHumanGame() {
       )}
 
       <div className={styles.siteLink}>
-        <a href="https://youraislopboresmegame.com/games/ai-or-human" target="_blank" rel="noopener noreferrer">
+        <a href="https://youraislopboresmegame.com/games/ai-or-human?utm_source=embed&utm_medium=game_ui&utm_campaign=site_link" target="_blank" rel="noopener noreferrer">
           Full version → youraislopboresmegame.com
         </a>
       </div>

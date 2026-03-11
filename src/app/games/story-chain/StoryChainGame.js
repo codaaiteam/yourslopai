@@ -142,7 +142,7 @@ export default function StoryChainGame() {
       </div>
 
       <div className={styles.siteLink}>
-        <a href="https://youraislopboresmegame.com/games/story-chain" target="_blank" rel="noopener noreferrer">
+        <a href="https://youraislopboresmegame.com/games/story-chain?utm_source=embed&utm_medium=game_ui&utm_campaign=site_link" target="_blank" rel="noopener noreferrer">
           Full version → youraislopboresmegame.com
         </a>
       </div>

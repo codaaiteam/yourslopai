@@ -124,7 +124,7 @@ export default function AiRoastGame() {
       )}
 
       <div className={styles.siteLink}>
-        <a href="https://youraislopboresmegame.com/games/ai-roast" target="_blank" rel="noopener noreferrer">
+        <a href="https://youraislopboresmegame.com/games/ai-roast?utm_source=embed&utm_medium=game_ui&utm_campaign=site_link" target="_blank" rel="noopener noreferrer">
           Full version → youraislopboresmegame.com
         </a>
       </div>
