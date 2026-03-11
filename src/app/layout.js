@@ -11,16 +11,16 @@ const translations = { en, zh, ja, ko, es }
 const locales = Object.keys(translations)
 const inter = Inter({ subsets: ['latin'] })
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://youraislopboresmegame.com'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.youraislopboresmegame.com'
 
 export async function generateMetadata({ params }) {
   const locale = params?.lang || 'en'
   const t = translations[locale] || translations['en']
 
-  const currentUrl = `${BASE_URL}/${locale}`
+  const currentUrl = locale === 'en' ? BASE_URL : `${BASE_URL}/${locale}`
 
   const languageAlternates = locales.reduce((acc, lang) => {
-    acc[lang] = `${BASE_URL}/${lang}`
+    acc[lang] = lang === 'en' ? BASE_URL : `${BASE_URL}/${lang}`
     return acc
   }, {})
 

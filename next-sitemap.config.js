@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 const languages = ['en', 'zh', 'ja', 'ko', 'es', 'fr', 'de'];
-const baseUrl = 'https://youraislopboresmegame.com';
+const baseUrl = 'https://www.youraislopboresmegame.com';
 
 const gamePages = [
   '/games/ai-or-human',
