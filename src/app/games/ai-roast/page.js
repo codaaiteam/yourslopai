@@ -4,6 +4,7 @@ import Footer from '../../Components/Footer';
 import MoreGames from '../../Components/MoreGames';
 import QuestionFAQ from '../../Components/QuestionFAQ';
 import AdSense from '../../Components/AdSense';
+import EmbedDetect from '../../Components/EmbedDetect';
 import AiRoastGame from './AiRoastGame';
 import en from '@/locales/en.json';
 import { getTranslation } from '@/lib/i18n';
@@ -17,21 +18,22 @@ export default async function AiRoastPage({ params }) {
   return (
     <>
       <AdSense />
+      <EmbedDetect />
       <Header />
       <main className={gp.pageWrapper}>
+        {/* Game — first for iframe visibility */}
+        <section className={gp.gameSection}>
+          <div className={gp.container}>
+            <AiRoastGame />
+          </div>
+        </section>
+
         {/* Hero */}
         <section className={gp.hero}>
           <div className={gp.heroInner}>
             <Image src="/logo-ai-roast.png" alt="AI Roast Me" width={80} height={80} className={gp.heroLogo} />
             <h1 className={gp.heroTitle}>{g.hero?.title || 'AI Roast Me'}</h1>
             <p className={gp.heroSubtitle}>{g.hero?.subtitle || 'Describe yourself and let AI roast you.'}</p>
-          </div>
-        </section>
-
-        {/* Game */}
-        <section className={gp.gameSection}>
-          <div className={gp.container}>
-            <AiRoastGame />
           </div>
         </section>
 

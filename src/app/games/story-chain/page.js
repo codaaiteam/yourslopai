@@ -4,6 +4,7 @@ import Footer from '../../Components/Footer';
 import MoreGames from '../../Components/MoreGames';
 import QuestionFAQ from '../../Components/QuestionFAQ';
 import AdSense from '../../Components/AdSense';
+import EmbedDetect from '../../Components/EmbedDetect';
 import StoryChainGame from './StoryChainGame';
 import en from '@/locales/en.json';
 import { getTranslation } from '@/lib/i18n';
@@ -17,21 +18,22 @@ export default async function StoryChainPage({ params }) {
   return (
     <>
       <AdSense />
+      <EmbedDetect />
       <Header />
       <main className={gp.pageWrapper}>
+        {/* Game — first for iframe visibility */}
+        <section className={gp.gameSection}>
+          <div className={gp.container}>
+            <StoryChainGame />
+          </div>
+        </section>
+
         {/* Hero */}
         <section className={gp.hero}>
           <div className={gp.heroInner}>
             <Image src="/logo-story-chain.png" alt="Story Chain" width={80} height={80} className={gp.heroLogo} />
             <h1 className={gp.heroTitle}>{g.hero?.title || 'Story Chain'}</h1>
             <p className={gp.heroSubtitle}>{g.hero?.subtitle || 'Write a story with AI, one sentence at a time.'}</p>
-          </div>
-        </section>
-
-        {/* Game */}
-        <section className={gp.gameSection}>
-          <div className={gp.container}>
-            <StoryChainGame />
           </div>
         </section>
 

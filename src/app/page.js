@@ -5,6 +5,7 @@ import QuestionFAQ from './Components/QuestionFAQ';
 import GameMain from './Components/Game/GameMain';
 import MoreGames from './Components/MoreGames';
 import AdSense from './Components/AdSense';
+import EmbedDetect from './Components/EmbedDetect';
 import en from '@/locales/en.json';
 import { getTranslation } from '@/lib/i18n';
 
@@ -15,31 +16,23 @@ export default async function Home({ params }) {
   return (
     <>
       <AdSense />
+      <EmbedDetect />
       <Header />
       <main className={styles.mainContent}>
+        {/* Game Section — first for iframe/embed visibility */}
+        <section id="game" className={styles.gameSection}>
+          <div className={styles.container}>
+            <div className={styles.gameWrapper}>
+              <GameMain t={t} />
+            </div>
+          </div>
+        </section>
+
         {/* Hero */}
         <section className={styles.hero}>
           <div className={styles.heroInner}>
             <h1 className={styles.heroTitle}>{t.hero.title}</h1>
             <p className={styles.heroSubtitle}>{t.hero.subtitle}</p>
-            <a href="#game" className={styles.ctaBtn}>{t.hero.cta}</a>
-          </div>
-        </section>
-
-        {/* Game Section */}
-        <section id="game" className={styles.gameSection}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>{t.game.sectionTitle}</h2>
-            <p className={styles.sectionDesc}>{t.game.desc}</p>
-            <div className={styles.gameWrapper}>
-              <GameMain t={t} />
-            </div>
-            <p className={styles.gameTip}>
-              💡 Play the full game on the official site →{' '}
-              <a href="https://youraislopboresmegame.com">
-                youraislopboresmegame.com
-              </a>
-            </p>
           </div>
         </section>
 
