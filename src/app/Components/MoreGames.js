@@ -11,7 +11,7 @@ const ALL_GAMES = [
   { slug: 'ai-or-human', path: '/games/ai-or-human', logo: '/logo-ai-or-human.png', titleKey: 'aiOrHumanTitle', descKey: 'aiOrHumanDesc' },
   { slug: 'ai-roast', path: '/games/ai-roast', logo: '/logo-ai-roast.png', titleKey: 'aiRoastTitle', descKey: 'aiRoastDesc' },
   { slug: 'story-chain', path: '/games/story-chain', logo: '/logo-story-chain.png', titleKey: 'storyChainTitle', descKey: 'storyChainDesc' },
-  { slug: 'ai-banana', path: 'https://aibanana.net/', logo: '/logo-ai-banana.png', titleKey: 'aiBananaTitle', descKey: 'aiBananaDesc', external: true },
+  { slug: 'ai-banana', path: 'https://aibanana.net/?utm_source=youraislopboresmegame&utm_medium=referral&utm_campaign=more_games', logo: '/logo-ai-banana.png', titleKey: 'aiBananaTitle', descKey: 'aiBananaDesc', external: true },
 ];
 
 const FALLBACK = {
