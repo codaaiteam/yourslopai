@@ -1,73 +1,18 @@
-'use client';
-
-import { useState, useRef } from 'react';
 import Image from 'next/image';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import MoreGames from '../../Components/MoreGames';
 import QuestionFAQ from '../../Components/QuestionFAQ';
 import AdSense from '../../Components/AdSense';
-import { useTranslations } from '@/hooks/useTranslations';
-import { shareCard } from '@/lib/shareImage';
-import styles from './AiRoast.module.css';
+import AiRoastGame from './AiRoastGame';
+import en from '@/locales/en.json';
+import { getTranslation } from '@/lib/i18n';
 import gp from '../gamePage.module.css';
 
-const WAITING_TEXTS = [
-  'Charging up the insults...',
-  'Consulting the burn ward...',
-  'Sharpening the wit...',
-  'Loading savage mode...',
-  'Warming up the roast pit...',
-];
-
-export default function AiRoastPage() {
-  const { t } = useTranslations();
+export default async function AiRoastPage({ params }) {
+  const locale = params?.lang || 'en';
+  const t = locale === 'en' ? en : (await getTranslation(locale)) || en;
   const g = t.aiRoast || {};
-
-  const [description, setDescription] = useState('');
-  const [roast, setRoast] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [waitingText, setWaitingText] = useState('');
-  const [history, setHistory] = useState([]);
-  const resultRef = useRef(null);
-
-  const handleRoast = async () => {
-    if (!description.trim() || loading) return;
-    setLoading(true);
-    setRoast(null);
-    setWaitingText(WAITING_TEXTS[Math.floor(Math.random() * WAITING_TEXTS.length)]);
-
-    try {
-      const res = await fetch('/api/roast', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ description: description.trim() }),
-      });
-      const data = await res.json();
-      if (data.roast) {
-        setRoast(data.roast);
-        setHistory((prev) => [
-          { description: description.trim(), roast: data.roast, timestamp: Date.now() },
-          ...prev,
-        ]);
-      } else {
-        setRoast('The roast machine broke. Even AI has off days.');
-      }
-    } catch {
-      setRoast('The roast machine broke. Even AI has off days.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleReset = () => {
-    setDescription('');
-    setRoast(null);
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) handleRoast();
-  };
 
   return (
     <>
@@ -86,70 +31,7 @@ export default function AiRoastPage() {
         {/* Game */}
         <section className={gp.gameSection}>
           <div className={gp.container}>
-            <div className={styles.gameArea}>
-              <textarea
-                className={styles.textarea}
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="e.g. I'm a 28-year-old developer who talks to rubber ducks more than people..."
-                rows={4}
-                maxLength={500}
-                disabled={loading}
-              />
-              <div className={styles.inputFooter}>
-                <span className={styles.charCount}>{description.length}/500</span>
-                {!roast ? (
-                  <button
-                    className={styles.roastBtn}
-                    onClick={handleRoast}
-                    disabled={loading || !description.trim()}
-                  >
-                    {loading ? waitingText : 'Roast Me'}
-                  </button>
-                ) : (
-                  <button className={styles.resetBtn} onClick={handleReset}>
-                    Roast Again
-                  </button>
-                )}
-              </div>
-
-              {loading && (
-                <div className={styles.loadingSection}>
-                  <div className={styles.spinner} />
-                  <p className={styles.loadingText}>{waitingText}</p>
-                </div>
-              )}
-
-              {roast && !loading && (
-                <div className={styles.roastCard} ref={resultRef}>
-                  <div className={styles.fireDecor}>&#x1F525;</div>
-                  <p className={styles.roastText}>{roast}</p>
-                  <div className={styles.fireDecor}>&#x1F525;</div>
-                  <button className={styles.shareBtn} onClick={() => shareCard({
-                    title: 'AI Roast Me',
-                    blocks: [
-                      { label: 'I said...', text: description.trim(), color: '#f5f5f0' },
-                      { label: '🔥 AI roasted me', text: roast, color: '#fff3e0', bold: true },
-                    ],
-                  })}>Share Roast</button>
-                </div>
-              )}
-
-              {history.length > 0 && (
-                <div className={styles.historySection}>
-                  <h3 className={styles.historyTitle}>Roast History</h3>
-                  <div className={styles.historyList}>
-                    {history.map((item) => (
-                      <div key={item.timestamp} className={styles.historyItem}>
-                        <p className={styles.historyDescription}>&ldquo;{item.description}&rdquo;</p>
-                        <p className={styles.historyRoast}>{item.roast}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
+            <AiRoastGame />
           </div>
         </section>
 
@@ -243,7 +125,7 @@ export default function AiRoastPage() {
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer t={t} />
     </>
   );
 }

@@ -1,5 +1,3 @@
-'use client'
-
 import styles from './page.module.css';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
@@ -7,10 +5,12 @@ import QuestionFAQ from './Components/QuestionFAQ';
 import GameMain from './Components/Game/GameMain';
 import MoreGames from './Components/MoreGames';
 import AdSense from './Components/AdSense';
-import { useTranslations } from '@/hooks/useTranslations';
+import en from '@/locales/en.json';
+import { getTranslation } from '@/lib/i18n';
 
-export default function Home() {
-  const { t } = useTranslations();
+export default async function Home({ params }) {
+  const locale = params?.lang || 'en';
+  const t = locale === 'en' ? en : (await getTranslation(locale)) || en;
 
   return (
     <>
