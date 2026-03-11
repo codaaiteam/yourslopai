@@ -106,7 +106,9 @@
     "aiRoastTitle": "AIロースト",
     "aiRoastDesc": "自分を説明して、AIに最もクリエイティブなローストをしてもらおう。",
     "storyChainTitle": "ストーリーチェーン",
-    "storyChainDesc": "AIと一文ずつ交代で物語を書こう。"
+    "storyChainDesc": "AIと一文ずつ交代で物語を書こう。",
+    "aiBananaTitle": "無料AI画像ジェネレーター",
+    "aiBananaDesc": "無料でオリジナルのAIミーム画像を作成しよう。"
   },
   "aiOrHuman": {
     "seoTitle": "AIか人間か？— 誰が書いたか見分けられますか？| 無料オンラインゲーム",

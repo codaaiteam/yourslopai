@@ -11,6 +11,7 @@ const ALL_GAMES = [
   { slug: 'ai-or-human', path: '/games/ai-or-human', logo: '/logo-ai-or-human.png', titleKey: 'aiOrHumanTitle', descKey: 'aiOrHumanDesc' },
   { slug: 'ai-roast', path: '/games/ai-roast', logo: '/logo-ai-roast.png', titleKey: 'aiRoastTitle', descKey: 'aiRoastDesc' },
   { slug: 'story-chain', path: '/games/story-chain', logo: '/logo-story-chain.png', titleKey: 'storyChainTitle', descKey: 'storyChainDesc' },
+  { slug: 'ai-banana', path: 'https://aibanana.net/', logo: '/logo-ai-banana.png', titleKey: 'aiBananaTitle', descKey: 'aiBananaDesc', external: true },
 ];
 
 const FALLBACK = {
@@ -24,6 +25,8 @@ const FALLBACK = {
   aiRoastDesc: 'Describe yourself and let AI deliver the most creative roast.',
   storyChainTitle: 'Story Chain',
   storyChainDesc: 'Co-write a story with AI, one sentence at a time.',
+  aiBananaTitle: 'Free AI Image Generator',
+  aiBananaDesc: 'Create your own meme AI images for free.',
 };
 
 export default function MoreGames({ current }) {
@@ -42,9 +45,11 @@ export default function MoreGames({ current }) {
         <p className={styles.subtitle}>{mg.subtitle || FALLBACK.subtitle}</p>
         <div className={styles.grid}>
           {games.map((game) => {
-            const href = game.slug === 'main' ? `${prefix || '/'}#game` : `${prefix}${game.path}`;
+            const href = game.external ? game.path : game.slug === 'main' ? `${prefix || '/'}#game` : `${prefix}${game.path}`;
+            const CardTag = game.external ? 'a' : Link;
+            const extraProps = game.external ? { target: '_blank', rel: 'noopener noreferrer' } : {};
             return (
-              <Link key={game.slug} href={href} className={styles.card}>
+              <CardTag key={game.slug} href={href} className={styles.card} {...extraProps}>
                 <div className={styles.logoWrap}>
                   <Image
                     src={game.logo}
@@ -56,7 +61,7 @@ export default function MoreGames({ current }) {
                 </div>
                 <h3>{mg[game.titleKey] || FALLBACK[game.titleKey]}</h3>
                 <p>{mg[game.descKey] || FALLBACK[game.descKey]}</p>
-              </Link>
+              </CardTag>
             );
           })}
         </div>

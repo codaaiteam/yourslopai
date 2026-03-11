@@ -106,7 +106,9 @@
     "aiRoastTitle": "AI 吐槽我",
     "aiRoastDesc": "描述你自己，让 AI 给你最有创意的吐槽。",
     "storyChainTitle": "故事接龙",
-    "storyChainDesc": "和 AI 一人一句，共同创作一个故事。"
+    "storyChainDesc": "和 AI 一人一句，共同创作一个故事。",
+    "aiBananaTitle": "免费 AI 图片生成器",
+    "aiBananaDesc": "免费创建属于你的 AI 梗图。"
   },
   "aiOrHuman": {
     "seoTitle": "AI还是人类？— 你能分辨出谁写的吗？| 免费在线游戏",

@@ -78,7 +78,9 @@
     "aiRoastTitle": "AI Roast Me",
     "aiRoastDesc": "Décrivez-vous et laissez l'IA vous servir le roast le plus créatif.",
     "storyChainTitle": "Story Chain",
-    "storyChainDesc": "Co-écrivez une histoire avec l'IA, une phrase à la fois."
+    "storyChainDesc": "Co-écrivez une histoire avec l'IA, une phrase à la fois.",
+    "aiBananaTitle": "Générateur d'images IA gratuit",
+    "aiBananaDesc": "Créez vos propres images de mèmes IA gratuitement."
   },
   "aiOrHuman": {
     "seoTitle": "IA ou Humain ? — Saurez-vous deviner qui l'a écrit ? | Jeu en ligne gratuit",

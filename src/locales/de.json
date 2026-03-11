@@ -78,7 +78,9 @@
     "aiRoastTitle": "AI Roast Me",
     "aiRoastDesc": "Beschreibe dich und lass die KI den kreativsten Roast liefern.",
     "storyChainTitle": "Story Chain",
-    "storyChainDesc": "Schreibe mit KI eine Geschichte, einen Satz nach dem anderen."
+    "storyChainDesc": "Schreibe mit KI eine Geschichte, einen Satz nach dem anderen.",
+    "aiBananaTitle": "Kostenloser KI-Bildgenerator",
+    "aiBananaDesc": "Erstelle kostenlos deine eigenen KI-Meme-Bilder."
   },
   "aiOrHuman": {
     "seoTitle": "KI oder Mensch? — Kannst du erkennen, wer es geschrieben hat? | Kostenloses Online-Spiel",
