@@ -316,6 +316,12 @@ export default function AiOrHumanGame() {
           </div>
         </div>
       )}
+
+      <div className={styles.siteLink}>
+        <a href="https://youraislopboresmegame.com/games/ai-or-human" target="_blank" rel="noopener noreferrer">
+          Full version → youraislopboresmegame.com
+        </a>
+      </div>
     </div>
   );
 }

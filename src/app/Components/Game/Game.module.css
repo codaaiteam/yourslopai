@@ -913,3 +913,21 @@
     height: 220px;
   }
 }
+
+/* Site link below game */
+.siteLink {
+  text-align: center;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+}
+
+.siteLink a {
+  color: var(--text-secondary, #666);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.siteLink a:hover {
+  color: var(--text-primary, #1a1a1a);
+  text-decoration: underline;
+}

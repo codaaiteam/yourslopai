@@ -141,6 +141,12 @@ export default function StoryChainGame() {
         )}
       </div>
 
+      <div className={styles.siteLink}>
+        <a href="https://youraislopboresmegame.com/games/story-chain" target="_blank" rel="noopener noreferrer">
+          Full version → youraislopboresmegame.com
+        </a>
+      </div>
+
       {copied && <div className={styles.toast}>Copied to clipboard</div>}
     </>
   );

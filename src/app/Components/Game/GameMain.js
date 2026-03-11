@@ -874,6 +874,13 @@ export default function GameMain({ t }) {
           </div>
         </div>
       )}
+
+      {/* Site link — visible in iframes */}
+      <div className={styles.siteLink}>
+        <a href="https://youraislopboresmegame.com" target="_blank" rel="noopener noreferrer">
+          Full version → youraislopboresmegame.com
+        </a>
+      </div>
     </div>
   );
 }
