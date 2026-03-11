@@ -805,6 +805,9 @@ export default function GameMain({ t }) {
               <button className={styles.nextBtn} onClick={startLarp}>
                 Get a Prompt ▶
               </button>
+              <a href="https://youraislopboresmegame.com" target="_blank" rel="noopener noreferrer" className={styles.fullVersionLink}>
+                Open Full Game ↗
+              </a>
             </div>
           )}
 
@@ -830,6 +833,9 @@ export default function GameMain({ t }) {
               <button className={styles.nextBtn} onClick={startLarp}>
                 Next Prompt →
               </button>
+              <a href="https://youraislopboresmegame.com" target="_blank" rel="noopener noreferrer" className={styles.fullVersionLink}>
+                Open Full Game ↗
+              </a>
             </div>
           )}
 
@@ -846,7 +852,7 @@ export default function GameMain({ t }) {
       {/* Footer */}
       <div className={styles.gameFooter}>
         <p>humans make mistakes because that&apos;s what makes us human</p>
-        <p><span className={styles.onlineCount}>{onlineCount.toLocaleString()}</span> online</p>
+        <p><span className={styles.onlineCount}>{onlineCount.toLocaleString()}</span> online (<a href="https://youraislopboresmegame.com" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>youraislopboresmegame.com</a>)</p>
       </div>
 
       {/* Rules Modal */}
@@ -875,12 +881,6 @@ export default function GameMain({ t }) {
         </div>
       )}
 
-      {/* Site link — visible in iframes */}
-      <div className={styles.siteLink}>
-        <a href="https://youraislopboresmegame.com" target="_blank" rel="noopener noreferrer">
-          Full version → youraislopboresmegame.com
-        </a>
-      </div>
     </div>
   );
 }

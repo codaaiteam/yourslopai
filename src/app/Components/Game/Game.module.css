@@ -722,6 +722,30 @@
   font-weight: 600;
 }
 
+.footerLink {
+  color: #bbb;
+  text-decoration: none;
+}
+
+.footerLink:hover {
+  color: #999;
+  text-decoration: underline;
+}
+
+.fullVersionLink {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 14px;
+  color: #6b7280;
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+.fullVersionLink:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
 /* ---- Loading ---- */
 .loadingDots {
   display: inline-flex;
@@ -914,20 +938,3 @@
   }
 }
 
-/* Site link below game */
-.siteLink {
-  text-align: center;
-  margin-top: 0.75rem;
-  font-size: 0.8rem;
-}
-
-.siteLink a {
-  color: var(--text-secondary, #666);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.siteLink a:hover {
-  color: var(--text-primary, #1a1a1a);
-  text-decoration: underline;
-}
