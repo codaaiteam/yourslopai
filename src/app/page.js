@@ -6,6 +6,7 @@ import Footer from './Components/Footer';
 import QuestionFAQ from './Components/QuestionFAQ';
 import GameMain from './Components/Game/GameMain';
 import MoreGames from './Components/MoreGames';
+import AdSense from './Components/AdSense';
 import { useTranslations } from '@/hooks/useTranslations';
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
 
   return (
     <>
+      <AdSense />
       <Header />
       <main className={styles.mainContent}>
         {/* Hero */}

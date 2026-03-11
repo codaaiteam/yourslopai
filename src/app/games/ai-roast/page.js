@@ -6,6 +6,7 @@ import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import MoreGames from '../../Components/MoreGames';
 import QuestionFAQ from '../../Components/QuestionFAQ';
+import AdSense from '../../Components/AdSense';
 import { useTranslations } from '@/hooks/useTranslations';
 import { shareCard } from '@/lib/shareImage';
 import styles from './AiRoast.module.css';
@@ -70,6 +71,7 @@ export default function AiRoastPage() {
 
   return (
     <>
+      <AdSense />
       <Header />
       <main className={gp.pageWrapper}>
         {/* Hero */}
