@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { shareCard } from '@/lib/shareImage';
+import GameFrame from '../../Components/GameFrame';
 import styles from './StoryChain.module.css';
 
 const MAX_SENTENCES = 20;
@@ -74,7 +75,14 @@ export default function StoryChainGame() {
   }, [sentences]);
 
   return (
-    <>
+    <GameFrame
+      logo="/logo-story-chain.png"
+      title="Story Chain"
+      subtitle="Co-write a story with AI, one sentence at a time. Take turns and see how wild it gets!"
+      score={sentences.length > 0 ? `${sentences.length}/${MAX_SENTENCES}` : null}
+      scoreLabel="Turns"
+      siteLink="https://youraislopboresmegame.com/games/story-chain?utm_source=embed&utm_medium=game_cover&utm_campaign=play_btn"
+    >
       <div className={styles.gameCard}>
         <div className={styles.toolbar}>
           <button className={styles.toolBtn} onClick={handleReset}>New Story</button>
@@ -141,13 +149,7 @@ export default function StoryChainGame() {
         )}
       </div>
 
-      <div className={styles.siteLink}>
-        <a href="https://youraislopboresmegame.com/games/story-chain?utm_source=embed&utm_medium=game_ui&utm_campaign=site_link" target="_blank" rel="noopener noreferrer">
-          Full version → youraislopboresmegame.com
-        </a>
-      </div>
-
       {copied && <div className={styles.toast}>Copied to clipboard</div>}
-    </>
+    </GameFrame>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { shareCard } from '@/lib/shareImage';
+import GameFrame from '../../Components/GameFrame';
 import styles from './AiRoast.module.css';
 
 const WAITING_TEXTS = [
@@ -59,75 +60,78 @@ export default function AiRoastGame() {
   };
 
   return (
-    <div className={styles.gameArea}>
-      <textarea
-        className={styles.textarea}
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        onKeyDown={handleKeyDown}
-        placeholder="e.g. I'm a 28-year-old developer who talks to rubber ducks more than people..."
-        rows={4}
-        maxLength={500}
-        disabled={loading}
-      />
-      <div className={styles.inputFooter}>
-        <span className={styles.charCount}>{description.length}/500</span>
-        {!roast ? (
-          <button
-            className={styles.roastBtn}
-            onClick={handleRoast}
-            disabled={loading || !description.trim()}
-          >
-            {loading ? waitingText : 'Roast Me'}
-          </button>
-        ) : (
-          <button className={styles.resetBtn} onClick={handleReset}>
-            Roast Again
-          </button>
+    <GameFrame
+      logo="/logo-ai-roast.png"
+      title="AI Roast Me"
+      subtitle="Describe yourself and let AI deliver the most creative, savage roast it can come up with."
+      score={history.length > 0 ? history.length : null}
+      scoreLabel="Roasts"
+      siteLink="https://youraislopboresmegame.com/games/ai-roast?utm_source=embed&utm_medium=game_cover&utm_campaign=play_btn"
+    >
+      <div className={styles.gameArea}>
+        <textarea
+          className={styles.textarea}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder="e.g. I'm a 28-year-old developer who talks to rubber ducks more than people..."
+          rows={4}
+          maxLength={500}
+          disabled={loading}
+        />
+        <div className={styles.inputFooter}>
+          <span className={styles.charCount}>{description.length}/500</span>
+          {!roast ? (
+            <button
+              className={styles.roastBtn}
+              onClick={handleRoast}
+              disabled={loading || !description.trim()}
+            >
+              {loading ? waitingText : 'Roast Me'}
+            </button>
+          ) : (
+            <button className={styles.resetBtn} onClick={handleReset}>
+              Roast Again
+            </button>
+          )}
+        </div>
+
+        {loading && (
+          <div className={styles.loadingSection}>
+            <div className={styles.spinner} />
+            <p className={styles.loadingText}>{waitingText}</p>
+          </div>
+        )}
+
+        {roast && !loading && (
+          <div className={styles.roastCard} ref={resultRef}>
+            <div className={styles.fireDecor}>&#x1F525;</div>
+            <p className={styles.roastText}>{roast}</p>
+            <div className={styles.fireDecor}>&#x1F525;</div>
+            <button className={styles.shareBtn} onClick={() => shareCard({
+              title: 'AI Roast Me',
+              blocks: [
+                { label: 'I said...', text: description.trim(), color: '#f5f5f0' },
+                { label: '🔥 AI roasted me', text: roast, color: '#fff3e0', bold: true },
+              ],
+            })}>Share Roast</button>
+          </div>
+        )}
+
+        {history.length > 0 && (
+          <div className={styles.historySection}>
+            <h3 className={styles.historyTitle}>Roast History</h3>
+            <div className={styles.historyList}>
+              {history.map((item) => (
+                <div key={item.timestamp} className={styles.historyItem}>
+                  <p className={styles.historyDescription}>&ldquo;{item.description}&rdquo;</p>
+                  <p className={styles.historyRoast}>{item.roast}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         )}
       </div>
-
-      {loading && (
-        <div className={styles.loadingSection}>
-          <div className={styles.spinner} />
-          <p className={styles.loadingText}>{waitingText}</p>
-        </div>
-      )}
-
-      {roast && !loading && (
-        <div className={styles.roastCard} ref={resultRef}>
-          <div className={styles.fireDecor}>&#x1F525;</div>
-          <p className={styles.roastText}>{roast}</p>
-          <div className={styles.fireDecor}>&#x1F525;</div>
-          <button className={styles.shareBtn} onClick={() => shareCard({
-            title: 'AI Roast Me',
-            blocks: [
-              { label: 'I said...', text: description.trim(), color: '#f5f5f0' },
-              { label: '🔥 AI roasted me', text: roast, color: '#fff3e0', bold: true },
-            ],
-          })}>Share Roast</button>
-        </div>
-      )}
-
-      {history.length > 0 && (
-        <div className={styles.historySection}>
-          <h3 className={styles.historyTitle}>Roast History</h3>
-          <div className={styles.historyList}>
-            {history.map((item) => (
-              <div key={item.timestamp} className={styles.historyItem}>
-                <p className={styles.historyDescription}>&ldquo;{item.description}&rdquo;</p>
-                <p className={styles.historyRoast}>{item.roast}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      <div className={styles.siteLink}>
-        <a href="https://youraislopboresmegame.com/games/ai-roast?utm_source=embed&utm_medium=game_ui&utm_campaign=site_link" target="_blank" rel="noopener noreferrer">
-          Full version → youraislopboresmegame.com
-        </a>
-      </div>
-    </div>
+    </GameFrame>
   );
 }

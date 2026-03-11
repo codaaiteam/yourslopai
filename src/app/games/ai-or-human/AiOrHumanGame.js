@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { shareCard } from '@/lib/shareImage';
 import { useTranslations } from '@/hooks/useTranslations';
+import GameFrame from '../../Components/GameFrame';
 import styles from './AiOrHuman.module.css';
 
 const TIME_LIMIT = 2000;
@@ -165,163 +166,155 @@ export default function AiOrHumanGame() {
   const currentBest = Math.max(bestScore, score);
 
   return (
-    <div className={styles.gameArea}>
-      {phase === 'idle' && !loading && (
-        <div className={styles.startScreen}>
-          <div className={styles.startIcon}>⚡</div>
-          <h2 className={styles.startTitle}>{g.game?.speedRound || 'Speed Round'}</h2>
-          <p className={styles.startDesc}>{g.game?.speedRoundDesc || 'Read the text. Guess AI or Human. You have 2 seconds per round. One wrong answer and it\'s game over!'}</p>
-          {currentBest > 0 && (
-            <div className={styles.bestBadge}>{g.game?.personalBest || 'Personal Best'}: {currentBest}</div>
-          )}
-          <button className={styles.playBtn} onClick={startGame}>{g.game?.play || 'Play'}</button>
-        </div>
-      )}
-
-      {loading && (
-        <div className={styles.loading}>
-          <div className={styles.spinner} />
-          <div>{g.game?.loading || 'Loading...'}</div>
-        </div>
-      )}
-
-      {phase === 'playing' && !loading && snippet && (
-        <>
-          <div className={styles.hud}>
-            <span className={styles.hudScore}>{g.game?.score || 'Score'}: {score}</span>
-            <span className={styles.hudRound}>{g.game?.round || 'Round'} {round}</span>
+    <GameFrame
+      logo="/logo-ai-or-human.png"
+      title="AI or Human?"
+      subtitle="Read the text. Guess AI or Human. You have 2 seconds per round. One wrong answer and it's game over!"
+      score={phase !== 'idle' ? score : (currentBest > 0 ? currentBest : null)}
+      scoreLabel={phase !== 'idle' ? 'Score' : 'Best'}
+      onPlay={startGame}
+      siteLink="https://youraislopboresmegame.com/games/ai-or-human?utm_source=embed&utm_medium=game_cover&utm_campaign=play_btn"
+    >
+      <div className={styles.gameArea}>
+        {loading && (
+          <div className={styles.loading}>
+            <div className={styles.spinner} />
+            <div>{g.game?.loading || 'Loading...'}</div>
           </div>
+        )}
 
-          <div className={styles.timerBar}>
-            <div
-              className={styles.timerFill}
-              style={{ width: `${timerPercent}%`, background: timerColor }}
-            />
-          </div>
+        {phase === 'playing' && !loading && snippet && (
+          <>
+            <div className={styles.hud}>
+              <span className={styles.hudScore}>{g.game?.score || 'Score'}: {score}</span>
+              <span className={styles.hudRound}>{g.game?.round || 'Round'} {round}</span>
+            </div>
 
-          <div className={styles.card}>
-            <p className={styles.snippetText}>{snippet.text}</p>
-          </div>
+            <div className={styles.timerBar}>
+              <div
+                className={styles.timerFill}
+                style={{ width: `${timerPercent}%`, background: timerColor }}
+              />
+            </div>
 
-          <div className={styles.buttonRow}>
-            <button
-              className={`${styles.choiceBtn} ${lastResult === 'correct' ? styles.choiceBtnFlash : ''}`}
-              onClick={() => handleChoice('ai')}
-              disabled={lastResult !== null}
-            >
-              AI
-            </button>
-            <button
-              className={`${styles.choiceBtn} ${lastResult === 'correct' ? styles.choiceBtnFlash : ''}`}
-              onClick={() => handleChoice('human')}
-              disabled={lastResult !== null}
-            >
-              {g.game?.human || 'Human'}
-            </button>
-          </div>
+            <div className={styles.card}>
+              <p className={styles.snippetText}>{snippet.text}</p>
+            </div>
 
-          {lastResult === 'correct' && (
-            <div className={styles.flashCorrect}>✓</div>
-          )}
-        </>
-      )}
+            <div className={styles.buttonRow}>
+              <button
+                className={`${styles.choiceBtn} ${lastResult === 'correct' ? styles.choiceBtnFlash : ''}`}
+                onClick={() => handleChoice('ai')}
+                disabled={lastResult !== null}
+              >
+                AI
+              </button>
+              <button
+                className={`${styles.choiceBtn} ${lastResult === 'correct' ? styles.choiceBtnFlash : ''}`}
+                onClick={() => handleChoice('human')}
+                disabled={lastResult !== null}
+              >
+                {g.game?.human || 'Human'}
+              </button>
+            </div>
 
-      {phase === 'gameover' && (
-        <div className={styles.gameOver}>
-          <div className={styles.goIcon}>
-            {lastResult === 'timeout' ? '⏰' : '💀'}
-          </div>
-          <h2 className={styles.goTitle}>{g.game?.gameOver || 'Game Over'}</h2>
-          <p className={styles.goReason}>
-            {lastResult === 'timeout' ? (g.game?.timesUp || "Time's up!") : (g.game?.wrongAnswer || 'Wrong answer!')}
-            {snippet && lastResult === 'wrong' && (
-              <> {g.game?.itWas || 'It was'} <strong>{snippet.answer === 'ai' ? 'AI' : (g.game?.human || 'Human')}</strong>.</>
+            {lastResult === 'correct' && (
+              <div className={styles.flashCorrect}>✓</div>
             )}
-          </p>
+          </>
+        )}
 
-          <div className={styles.goScore}>
-            <div className={styles.goScoreNum}>{score}</div>
-            <div className={styles.goScoreLabel}>
-              {score === 1 ? (g.game?.roundSurvived || 'round survived') : (g.game?.roundsSurvived || 'rounds survived')}
+        {phase === 'gameover' && (
+          <div className={styles.gameOver}>
+            <div className={styles.goIcon}>
+              {lastResult === 'timeout' ? '⏰' : '💀'}
             </div>
-          </div>
-
-          {score > bestScore - 1 && score > 0 && (
-            <div className={styles.newBest}>{g.game?.newBest || 'New Personal Best!'}</div>
-          )}
-
-          <div className={styles.goActions}>
-            <button className={styles.playBtn} onClick={startGame}>{g.game?.playAgain || 'Play Again'}</button>
-            <button className={styles.shareBtn} onClick={() => shareCard({
-              title: 'AI or Human? — Speed Round',
-              blocks: [
-                { text: `${g.game?.shareText || `I survived ${score} rounds in AI or Human speed mode! Can you beat my score?`}`, color: '#f5f5f0', bold: true },
-                { text: `${lastResult === 'timeout' ? (g.game?.timesUp || "Time's up!") : (g.game?.wrongAnswer || 'Wrong answer!')} | Best: ${currentBest}`, color: '#ffebee' },
-              ],
-            })}>{g.game?.shareScore || 'Share Score'}</button>
-          </div>
-
-          {score >= 1 && (
-            <div className={styles.submitSection}>
-              {!showNameInput && submitStatus !== 'done' ? (
-                <button className={styles.submitScoreBtn} onClick={() => setShowNameInput(true)}>
-                  {g.game?.submitToLeaderboard || 'Submit to Leaderboard'}
-                </button>
-              ) : submitStatus !== 'done' ? (
-                <div className={styles.nameInputRow}>
-                  <input
-                    className={styles.nameInput}
-                    type="text"
-                    placeholder={g.game?.yourName || 'Your name'}
-                    value={playerName}
-                    onChange={(e) => setPlayerName(e.target.value)}
-                    maxLength={16}
-                    onKeyDown={(e) => e.key === 'Enter' && submitToLeaderboard()}
-                    autoFocus
-                  />
-                  <button
-                    className={styles.submitBtn}
-                    onClick={submitToLeaderboard}
-                    disabled={!playerName.trim() || submitStatus === 'submitting'}
-                  >
-                    {submitStatus === 'submitting' ? '...' : (g.game?.submit || 'Submit')}
-                  </button>
-                </div>
-              ) : (
-                playerRank && <div className={styles.rankMsg}>{g.game?.ranked || 'Ranked'} #{playerRank}!</div>
+            <h2 className={styles.goTitle}>{g.game?.gameOver || 'Game Over'}</h2>
+            <p className={styles.goReason}>
+              {lastResult === 'timeout' ? (g.game?.timesUp || "Time's up!") : (g.game?.wrongAnswer || 'Wrong answer!')}
+              {snippet && lastResult === 'wrong' && (
+                <> {g.game?.itWas || 'It was'} <strong>{snippet.answer === 'ai' ? 'AI' : (g.game?.human || 'Human')}</strong>.</>
               )}
-            </div>
-          )}
-        </div>
-      )}
+            </p>
 
-      {leaderboard.length > 0 && (phase === 'idle' || phase === 'gameover') && (
-        <div className={styles.leaderboard}>
-          <h3 className={styles.lbTitle}>{g.game?.leaderboard || 'Leaderboard'}</h3>
-          <div className={styles.lbTable}>
-            <div className={styles.lbHeader}>
-              <span>#</span>
-              <span>{g.game?.player || 'Player'}</span>
-              <span>{g.game?.score || 'Score'}</span>
-            </div>
-            {leaderboard.map((entry, i) => (
-              <div key={i} className={`${styles.lbRow} ${i < 3 ? styles.lbRowTop : ''}`}>
-                <span className={styles.lbRank}>
-                  {i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : i + 1}
-                </span>
-                <span className={styles.lbName}>{entry.name}</span>
-                <span className={styles.lbStreak}>{entry.streak}</span>
+            <div className={styles.goScore}>
+              <div className={styles.goScoreNum}>{score}</div>
+              <div className={styles.goScoreLabel}>
+                {score === 1 ? (g.game?.roundSurvived || 'round survived') : (g.game?.roundsSurvived || 'rounds survived')}
               </div>
-            ))}
-          </div>
-        </div>
-      )}
+            </div>
 
-      <div className={styles.siteLink}>
-        <a href="https://youraislopboresmegame.com/games/ai-or-human?utm_source=embed&utm_medium=game_ui&utm_campaign=site_link" target="_blank" rel="noopener noreferrer">
-          Full version → youraislopboresmegame.com
-        </a>
+            {score > bestScore - 1 && score > 0 && (
+              <div className={styles.newBest}>{g.game?.newBest || 'New Personal Best!'}</div>
+            )}
+
+            <div className={styles.goActions}>
+              <button className={styles.playBtn} onClick={startGame}>{g.game?.playAgain || 'Play Again'}</button>
+              <button className={styles.shareBtn} onClick={() => shareCard({
+                title: 'AI or Human? — Speed Round',
+                blocks: [
+                  { text: `${g.game?.shareText || `I survived ${score} rounds in AI or Human speed mode! Can you beat my score?`}`, color: '#f5f5f0', bold: true },
+                  { text: `${lastResult === 'timeout' ? (g.game?.timesUp || "Time's up!") : (g.game?.wrongAnswer || 'Wrong answer!')} | Best: ${currentBest}`, color: '#ffebee' },
+                ],
+              })}>{g.game?.shareScore || 'Share Score'}</button>
+            </div>
+
+            {score >= 1 && (
+              <div className={styles.submitSection}>
+                {!showNameInput && submitStatus !== 'done' ? (
+                  <button className={styles.submitScoreBtn} onClick={() => setShowNameInput(true)}>
+                    {g.game?.submitToLeaderboard || 'Submit to Leaderboard'}
+                  </button>
+                ) : submitStatus !== 'done' ? (
+                  <div className={styles.nameInputRow}>
+                    <input
+                      className={styles.nameInput}
+                      type="text"
+                      placeholder={g.game?.yourName || 'Your name'}
+                      value={playerName}
+                      onChange={(e) => setPlayerName(e.target.value)}
+                      maxLength={16}
+                      onKeyDown={(e) => e.key === 'Enter' && submitToLeaderboard()}
+                      autoFocus
+                    />
+                    <button
+                      className={styles.submitBtn}
+                      onClick={submitToLeaderboard}
+                      disabled={!playerName.trim() || submitStatus === 'submitting'}
+                    >
+                      {submitStatus === 'submitting' ? '...' : (g.game?.submit || 'Submit')}
+                    </button>
+                  </div>
+                ) : (
+                  playerRank && <div className={styles.rankMsg}>{g.game?.ranked || 'Ranked'} #{playerRank}!</div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
+        {leaderboard.length > 0 && (phase === 'idle' || phase === 'gameover') && (
+          <div className={styles.leaderboard}>
+            <h3 className={styles.lbTitle}>{g.game?.leaderboard || 'Leaderboard'}</h3>
+            <div className={styles.lbTable}>
+              <div className={styles.lbHeader}>
+                <span>#</span>
+                <span>{g.game?.player || 'Player'}</span>
+                <span>{g.game?.score || 'Score'}</span>
+              </div>
+              {leaderboard.map((entry, i) => (
+                <div key={i} className={`${styles.lbRow} ${i < 3 ? styles.lbRowTop : ''}`}>
+                  <span className={styles.lbRank}>
+                    {i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : i + 1}
+                  </span>
+                  <span className={styles.lbName}>{entry.name}</span>
+                  <span className={styles.lbStreak}>{entry.streak}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
-    </div>
+    </GameFrame>
   );
 }
