@@ -31,6 +31,11 @@ export default async function StoryChainPage({ params }) {
           </GameWithSidebarAds>
         </section>
 
+        {/* More Games */}
+        <MoreGames current="story-chain" />
+
+        <AdsterraNativeBanner />
+
         {/* Hero */}
         <section className={gp.hero}>
           <div className={gp.heroInner}>
@@ -40,15 +45,10 @@ export default async function StoryChainPage({ params }) {
           </div>
         </section>
 
-        {/* Adsterra Banner 300x250 - between Hero and MoreGames */}
+        {/* Adsterra Banner 300x250 */}
         <div style={{ display: 'flex', justifyContent: 'center', padding: '1rem 0' }}>
           <AdsterraBanner300x250 />
         </div>
-
-        {/* More Games */}
-        <MoreGames current="story-chain" />
-
-        <AdsterraNativeBanner />
 
         {/* What Is */}
         <section className={gp.aboutSection}>

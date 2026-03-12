@@ -31,6 +31,12 @@ export default async function Home({ params }) {
           </GameWithSidebarAds>
         </section>
 
+        {/* More Games */}
+        <MoreGames current="main" />
+
+        {/* Adsterra Native Banner */}
+        <AdsterraNativeBanner />
+
         {/* Hero */}
         <section className={styles.hero}>
           <div className={styles.heroInner}>
@@ -39,16 +45,10 @@ export default async function Home({ params }) {
           </div>
         </section>
 
-        {/* Adsterra Banner 300x250 - between Hero and MoreGames */}
+        {/* Adsterra Banner 300x250 */}
         <div style={{ display: 'flex', justifyContent: 'center', padding: '1rem 0' }}>
           <AdsterraBanner300x250 />
         </div>
-
-        {/* More Games */}
-        <MoreGames current="main" />
-
-        {/* Adsterra Native Banner */}
-        <AdsterraNativeBanner />
 
         {/* About */}
         <section id="about" className={styles.aboutSection}>

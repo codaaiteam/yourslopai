@@ -2,7 +2,6 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import AdsterraSocialBar from './Components/AdsterraSocialBar'
 import AdsterraMobileSticky from './Components/AdsterraMobileSticky'
-import AdsterraPopunder from './Components/AdsterraPopunder'
 
 import en from '../locales/en.json'
 import zh from '../locales/zh.json'
@@ -70,7 +69,6 @@ export default function RootLayout({ children, params }) {
       </head>
       <body className={inter.className}>
         {children}
-        <AdsterraPopunder />
         <AdsterraSocialBar />
         <AdsterraMobileSticky />
         <noscript>
