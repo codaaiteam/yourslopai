@@ -4,15 +4,16 @@ import { useEffect, useRef } from 'react';
 
 export default function AdsterraSidebar() {
   const containerRef = useRef(null);
+  const loaded = useRef(false);
 
   useEffect(() => {
-    if (!containerRef.current) return;
-    if (containerRef.current.querySelector('script')) return;
+    if (!containerRef.current || loaded.current) return;
+    loaded.current = true;
 
     const configScript = document.createElement('script');
     configScript.type = 'text/javascript';
     configScript.text = `
-      atOptions = {
+      var atOptions = {
         'key' : '021efbaf73e34cc02d08f88b0f002f5d',
         'format' : 'iframe',
         'height' : 600,
