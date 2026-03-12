@@ -26,6 +26,8 @@ export default function GameMain({ t }) {
   const [isGeneratingImage, setIsGeneratingImage] = useState(false);
   const [stats, setStats] = useState({ answered: 0, asked: 0, images: 0 });
   const [onlineCount] = useState(() => Math.floor(Math.random() * 8000) + 12000);
+  const [votedPrompts, setVotedPrompts] = useState({});
+  const [reportedPrompts, setReportedPrompts] = useState({});
   const [tokenPop, setTokenPop] = useState(false);
   const [showRules, setShowRules] = useState(false);
   const timerRef = useRef(null);
@@ -44,6 +46,10 @@ export default function GameMain({ t }) {
         setMessages(data.messages || []);
         if (savedTokens >= 10) setMode('human');
       }
+      const savedVotes = localStorage.getItem('slopai_votes');
+      if (savedVotes) setVotedPrompts(JSON.parse(savedVotes));
+      const savedReports = localStorage.getItem('slopai_reports');
+      if (savedReports) setReportedPrompts(JSON.parse(savedReports));
     } catch (e) {}
   }, []);
 
@@ -73,6 +79,13 @@ export default function GameMain({ t }) {
     }
   }, [messages, phase]);
 
+  // Cleanup polling on unmount
+  useEffect(() => {
+    return () => {
+      if (pollRef.current) clearInterval(pollRef.current);
+    };
+  }, []);
+
   // Timer
   useEffect(() => {
     if (isActive && timeLeft > 0) {
@@ -95,7 +108,29 @@ export default function GameMain({ t }) {
     }
   }, [answer, drawingData]);
 
-  // Fetch AI-generated prompt
+  // Track the current prompt's DB id (null if local/system prompt)
+  const currentPromptIdRef = useRef(null);
+  // Track seen prompt IDs to avoid repeats
+  const seenPromptIdsRef = useRef([]);
+
+  // Fetch a real human prompt from DB
+  const fetchHumanPrompt = async () => {
+    try {
+      const exclude = seenPromptIdsRef.current.join(',');
+      const res = await fetch(`/api/prompts/waiting?exclude=${exclude}&t=${Date.now()}`);
+      const data = await res.json();
+      if (data.prompt) {
+        seenPromptIdsRef.current.push(data.prompt.id);
+        if (seenPromptIdsRef.current.length > 20) seenPromptIdsRef.current.shift();
+        return data.prompt; // { id, text, type }
+      }
+    } catch (e) {
+      console.error('Failed to fetch human prompt:', e);
+    }
+    return null;
+  };
+
+  // Fetch AI-generated prompt (fallback)
   const fetchAIPrompt = async () => {
     try {
       const res = await fetch(`/api/prompt?locale=${t?.layout?.language || 'en'}&t=${Date.now()}`);
@@ -139,14 +174,68 @@ export default function GameMain({ t }) {
     return { prompt, type };
   };
 
-  // Start larp round
+  // Skip current prompt — release claim and load next
+  const skipPrompt = () => {
+    setIsActive(false);
+    clearTimeout(timerRef.current);
+    setAnswer('');
+    setDrawingData(null);
+
+    // Release the claimed prompt so others can pick it up
+    const promptId = currentPromptIdRef.current;
+    if (promptId) {
+      fetch(`/api/prompts/waiting`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt_id: promptId }),
+      }).catch(() => {});
+    }
+
+    // Load next prompt
+    startLarp();
+  };
+
+  // Upload drawing to R2
+  const uploadDrawing = async (dataUrl) => {
+    try {
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ dataUrl }),
+      });
+      const data = await res.json();
+      return data.url || null;
+    } catch (e) {
+      console.error('Upload drawing error:', e);
+      return null;
+    }
+  };
+
+  // Start larp round — prefer real human prompts
   const startLarp = async () => {
     setPhase('loading');
     setAnswer('');
     setDrawingData(null);
     setInputMode('text');
+    currentPromptIdRef.current = null;
 
-    // Try API prompt up to 2 times
+    // 1. Try to get a real human prompt from DB
+    const humanPromptData = await fetchHumanPrompt();
+    if (humanPromptData) {
+      currentPromptIdRef.current = humanPromptData.id;
+      const type = humanPromptData.type || 'text';
+      const prompt = humanPromptData.text;
+      addToRecent(prompt);
+      setPromptType(type);
+      setCurrentPrompt(prompt);
+      setMessages(prev => [...prev, { type: 'prompt', text: prompt, promptType: type, isReal: true }]);
+      setTimeLeft(TIMER_SECONDS);
+      setIsActive(true);
+      setPhase('answering');
+      return;
+    }
+
+    // 2. Fallback: Try API prompt
     let prompt, type;
     for (let attempt = 0; attempt < 2; attempt++) {
       const aiPrompt = await fetchAIPrompt();
@@ -157,7 +246,7 @@ export default function GameMain({ t }) {
       }
     }
 
-    // Fallback to local
+    // 3. Fallback: local prompt
     if (!prompt) {
       const local = getNewLocalPrompt();
       type = local.type;
@@ -173,10 +262,12 @@ export default function GameMain({ t }) {
     setPhase('answering');
   };
 
-  // Submit larp answer — AI judges whether it earns a token
-  const submitLarpAnswer = async () => {
-    const isDrawing = promptType === 'draw';
-    const response = isDrawing ? drawingData : answer;
+  // Submit larp answer — AI judges + if real human prompt, save to DB
+  // drawingDataOverride: pass drawing data directly since setState is async
+  const submitLarpAnswer = async (drawingDataOverride) => {
+    const actualDrawing = drawingDataOverride || drawingData;
+    const isDrawing = !!(actualDrawing);
+    const response = isDrawing ? actualDrawing : answer;
     if (!response || (typeof response === 'string' && !response.trim())) return;
     if (!isDrawing && answer.trim().length < 10) return;
 
@@ -185,12 +276,12 @@ export default function GameMain({ t }) {
     setMessages(prev => [...prev, {
       type: 'answer',
       text: isDrawing ? null : answer,
-      drawingData: isDrawing ? drawingData : null,
+      drawingData: isDrawing ? actualDrawing : null,
       promptType,
     }]);
     setPhase('judging');
 
-    // Call judge API
+    // 1. Judge first — only save to DB if it passes
     let passed = true;
     let reason = '';
     try {
@@ -208,8 +299,48 @@ export default function GameMain({ t }) {
       passed = data.pass;
       reason = data.reason || '';
     } catch {
-      // On error, approve
       passed = true;
+    }
+
+    // 2. Only save to DB if judge approved (quality gate)
+    if (passed) {
+      try {
+        let imageUrl = null;
+        if (isDrawing && actualDrawing) {
+          imageUrl = await uploadDrawing(actualDrawing);
+        }
+
+        let promptId = currentPromptIdRef.current;
+
+        // If no promptId (system/local prompt), create one first
+        if (!promptId) {
+          const createRes = await fetch('/api/prompts', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              prompt_text: currentPrompt,
+              ask_type: isDrawing ? 'image' : 'text',
+            }),
+          });
+          const createData = await createRes.json();
+          promptId = createData.id;
+        }
+
+        if (promptId) {
+          await fetch('/api/prompts/answer', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              prompt_id: promptId,
+              text: isDrawing ? null : answer,
+              image_url: imageUrl,
+              source: 'human',
+            }),
+          });
+        }
+      } catch (e) {
+        console.error('Failed to save answer to DB:', e);
+      }
     }
 
     if (passed) {
@@ -259,13 +390,16 @@ export default function GameMain({ t }) {
     return null;
   };
 
-  // Human mode submit - detect if asking for text or image
+  // Polling ref for cleanup
+  const pollRef = useRef(null);
+
+  // Human mode submit — write to DB, poll for human answer, AI fallback
   const submitHumanPrompt = async () => {
     if (!humanPrompt.trim()) return;
 
     const prompt = humanPrompt;
     const wantsDraw = isDrawRequest(prompt);
-    const cost = wantsDraw ? 2 : 1;
+    const cost = 1;
     if (tokens < cost) return;
     setTokens(prev => prev - cost);
     setStats(prev => ({ ...prev, asked: prev.asked + 1 }));
@@ -279,26 +413,121 @@ export default function GameMain({ t }) {
     setHumanPrompt('');
 
     try {
-      const textPromise = fetch('/api/chat', {
+      // 1. Submit prompt to DB
+      const createRes = await fetch('/api/prompts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          prompt,
-          locale: t?.layout?.language || 'en'
-        })
-      }).then(r => r.json());
+          prompt_text: prompt,
+          ask_type: wantsDraw ? 'image' : 'text',
+        }),
+      });
+      const createData = await createRes.json();
+      const promptId = createData.id;
 
-      const imagePromise = wantsDraw ? generateImage(prompt) : Promise.resolve(null);
-      const [textData, imageUrl] = await Promise.all([textPromise, imagePromise]);
+      if (!promptId) throw new Error('Failed to create prompt');
 
-      const response = textData.response || getRandomAIResponse(t?.layout?.language);
+      // 2. Poll for human answer (every 2s, max 15s)
+      const humanAnswer = await new Promise((resolve) => {
+        let elapsed = 0;
+        const interval = setInterval(async () => {
+          elapsed += 2000;
+          try {
+            const res = await fetch(`/api/prompts?id=${promptId}&t=${Date.now()}`);
+            const data = await res.json();
+            if (data.answered) {
+              clearInterval(interval);
+              resolve(data);
+              return;
+            }
+          } catch {}
+          if (elapsed >= 15000) {
+            clearInterval(interval);
+            resolve(null);
+          }
+        }, 2000);
+        pollRef.current = interval;
+      });
+
+      // 3. If human answered, show it
+      if (humanAnswer) {
+        setReceivedResponse(humanAnswer.text || '');
+        setMessages(prev => [...prev, {
+          type: 'ai-response',
+          text: humanAnswer.text || '',
+          imageUrl: humanAnswer.image_url || null,
+          source: humanAnswer.source || 'human',
+          promptId,
+        }]);
+        setPhase('received');
+        return;
+      }
+
+      // 4. No human answered — AI fallback (try cached DB response first, then API)
+      let response = null;
+      let imageUrl = null;
+      let fallbackSource = 'ai-fallback';
+
+      try {
+        // Check DB for a pre-cached AI response + search community image pool
+        const typeParam = wantsDraw ? 'image' : 'text';
+        const cacheRes = await fetch(`/api/prompts/fallback?type=${typeParam}&prompt=${encodeURIComponent(prompt)}&t=${Date.now()}`);
+        const cacheData = await cacheRes.json();
+        if (cacheData.text) {
+          response = cacheData.text;
+          imageUrl = cacheData.image_url || null;
+          fallbackSource = 'ai-cached';
+        }
+      } catch {}
+
+      // For draw requests, always generate an image (even if we got cached text)
+      if (wantsDraw && !imageUrl) {
+        try {
+          const imgUrl = await generateImage(prompt);
+          if (imgUrl) imageUrl = imgUrl;
+        } catch {}
+      }
+
+      // If no cached text response, call the chat API
+      if (!response) {
+        try {
+          const textRes = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              prompt,
+              locale: t?.layout?.language || 'en'
+            })
+          }).then(r => r.json());
+
+          response = textRes.response || getRandomAIResponse(t?.layout?.language);
+        } catch {
+          response = getRandomAIResponse(t?.layout?.language);
+        }
+      }
+
       setReceivedResponse(response);
+
+      // Save AI fallback answer to DB
+      try {
+        await fetch('/api/prompts/answer', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            prompt_id: promptId,
+            text: response,
+            image_url: imageUrl || null,
+            source: 'ai',
+          }),
+        });
+      } catch {}
 
       setMessages(prev => [...prev, {
         type: 'ai-response',
         text: response,
         imageUrl: imageUrl || null,
-        source: textData.source || 'unknown',
+        source: fallbackSource,
+        promptId,
       }]);
       setPhase('received');
     } catch (error) {
@@ -489,6 +718,49 @@ export default function GameMain({ t }) {
   };
 
   // Switch modes
+  // Vote on an answer
+  const voteAnswer = async (promptId, vote) => {
+    if (!promptId || votedPrompts[promptId]) return;
+
+    // Optimistic update
+    const newVoted = { ...votedPrompts, [promptId]: vote };
+    setVotedPrompts(newVoted);
+    try {
+      localStorage.setItem('slopai_votes', JSON.stringify(newVoted));
+    } catch {}
+
+    try {
+      await fetch('/api/prompts/vote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt_id: promptId, vote }),
+      });
+    } catch (e) {
+      console.error('Vote failed:', e);
+    }
+  };
+
+  // Report an answer
+  const reportAnswer = async (promptId) => {
+    if (!promptId || reportedPrompts[promptId]) return;
+
+    const newReported = { ...reportedPrompts, [promptId]: true };
+    setReportedPrompts(newReported);
+    try {
+      localStorage.setItem('slopai_reports', JSON.stringify(newReported));
+    } catch {}
+
+    try {
+      await fetch('/api/prompts/report', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt_id: promptId }),
+      });
+    } catch (e) {
+      console.error('Report failed:', e);
+    }
+  };
+
   const switchMode = (newMode) => {
     if (newMode === mode) return;
     setMode(newMode);
@@ -581,8 +853,11 @@ export default function GameMain({ t }) {
           {/* Larp: show prompt */}
           {mode === 'larp' && phase === 'answering' && (
             <div className={styles.promptDisplay}>
-              <div className={styles.promptTag}>
-                {promptType === 'draw' ? '🎨 draw this' : '💬 human asks'}
+              <div className={styles.promptHeader}>
+                <div className={styles.promptTag}>
+                  {promptType === 'draw' ? '🎨 draw this' : '💬 human asks'}
+                </div>
+                <button className={styles.skipBtn} onClick={skipPrompt}>skip</button>
               </div>
               <p className={styles.promptContent}>{currentPrompt}</p>
             </div>
@@ -658,6 +933,7 @@ export default function GameMain({ t }) {
             }
             if (msg.type === 'ai-response') {
               const askMsg = findAskForResponse(i);
+              const voted = msg.promptId ? votedPrompts[msg.promptId] : null;
               return (
                 <div key={i} className={styles.bubbleWrapLeft}>
                   <div className={styles.bubbleAICard}>
@@ -667,15 +943,41 @@ export default function GameMain({ t }) {
                     )}
                     {msg.text && <div className={styles.bubbleAIText}>{msg.text}</div>}
                     <div className={styles.bubbleActions}>
+                      {msg.promptId && (
+                        <div className={styles.voteGroup}>
+                          <button
+                            className={`${styles.voteBtn} ${voted === 'up' ? styles.voteBtnActive : ''}`}
+                            onClick={() => voteAnswer(msg.promptId, 'up')}
+                            disabled={!!voted}
+                            title="Good answer"
+                          >
+                            👍
+                          </button>
+                          <button
+                            className={`${styles.voteBtn} ${voted === 'down' ? styles.voteBtnActive : ''}`}
+                            onClick={() => voteAnswer(msg.promptId, 'down')}
+                            disabled={!!voted}
+                            title="Bad answer"
+                          >
+                            👎
+                          </button>
+                        </div>
+                      )}
                       <button
                         className={styles.shareBtn}
                         onClick={() => askMsg && shareExchange(askMsg, msg)}
                       >
                         share
                       </button>
-                      <button className={styles.reportBtn}>
-                        report
-                      </button>
+                      {msg.promptId && (
+                        <button
+                          className={`${styles.reportBtn} ${reportedPrompts[msg.promptId] ? styles.reportBtnDone : ''}`}
+                          onClick={() => reportAnswer(msg.promptId)}
+                          disabled={!!reportedPrompts[msg.promptId]}
+                        >
+                          {reportedPrompts[msg.promptId] ? 'reported' : 'report'}
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -758,7 +1060,7 @@ export default function GameMain({ t }) {
               </div>
               <div className={styles.charInfo}>
                 <span>{humanPrompt.length}/300</span>
-                <span>{inputMode === 'draw' || isDrawRequest(humanPrompt) ? 'costs 2 tokens (image)' : 'costs 1 token'}</span>
+                <span>costs 1 token</span>
               </div>
             </>
           )}
@@ -795,7 +1097,7 @@ export default function GameMain({ t }) {
           {/* Larp mode - draw input */}
           {mode === 'larp' && phase === 'answering' && inputMode === 'draw' && (
             <DrawingCanvas
-              onSave={(data) => { setDrawingData(data); submitLarpAnswer(); }}
+              onSave={(data) => { setDrawingData(data); submitLarpAnswer(data); }}
               disabled={false}
             />
           )}
@@ -865,7 +1167,7 @@ export default function GameMain({ t }) {
               in a world looming with the threat of ai stealing your job, save humanity by stealing ai&apos;s job.
             </p>
             <ul className={styles.rulesList}>
-              <li>each text prompt costs <strong>1 token</strong>. image prompts cost <strong>2 tokens</strong>.</li>
+              <li>each prompt costs <strong>1 token</strong>.</li>
               <li>to earn tokens, switch to the <strong>larp as ai</strong> tab and answer someone else&apos;s prompt within 60 seconds.</li>
               <li>you can answer with text or draw a picture — both earn 1 token.</li>
               <li>if you&apos;re broke, keep larping until you&apos;ve earned enough tokens.</li>
