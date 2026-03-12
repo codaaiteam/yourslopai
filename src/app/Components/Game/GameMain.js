@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import styles from './Game.module.css';
 import DrawingCanvas from './DrawingCanvas';
 import { getRandomPrompt, getRandomAIResponse } from './prompts';
-import { triggerPopunder } from '../AdsterraPopunder';
+import AdsterraPopunder from '../AdsterraPopunder';
 const TIMER_SECONDS = 60;
 
 export default function GameMain({ t }) {
@@ -491,7 +491,6 @@ export default function GameMain({ t }) {
   // Switch modes
   const switchMode = (newMode) => {
     if (newMode === mode) return;
-    triggerPopunder();
     setMode(newMode);
     setPhase('idle');
     setCurrentPrompt('');
@@ -527,6 +526,7 @@ export default function GameMain({ t }) {
   // ============ RENDER ============
   return (
     <div className={styles.game}>
+      <AdsterraPopunder />
       {/* Top Tabs */}
       <div className={styles.topTabs}>
         <button
