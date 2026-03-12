@@ -4,8 +4,6 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import styles from './Game.module.css';
 import DrawingCanvas from './DrawingCanvas';
 import { getRandomPrompt, getRandomAIResponse } from './prompts';
-import AdsterraPopunder from '../AdsterraPopunder';
-
 const TIMER_SECONDS = 60;
 
 export default function GameMain({ t }) {
@@ -527,7 +525,6 @@ export default function GameMain({ t }) {
   // ============ RENDER ============
   return (
     <div className={styles.game}>
-      <AdsterraPopunder />
       {/* Top Tabs */}
       <div className={styles.topTabs}>
         <button
