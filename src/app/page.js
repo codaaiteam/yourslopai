@@ -5,6 +5,9 @@ import QuestionFAQ from './Components/QuestionFAQ';
 import GameMain from './Components/Game/GameMain';
 import MoreGames from './Components/MoreGames';
 import AdSense from './Components/AdSense';
+import AdsterraNativeBanner from './Components/AdsterraNativeBanner';
+import AdsterraBanner300x250 from './Components/AdsterraBanner300x250';
+import GameWithSidebarAds from './Components/GameWithSidebarAds';
 import EmbedDetect from './Components/EmbedDetect';
 import en from '@/locales/en.json';
 import { getTranslation } from '@/lib/i18n';
@@ -21,11 +24,11 @@ export default async function Home({ params }) {
       <main className={styles.mainContent}>
         {/* Game Section — first for iframe/embed visibility */}
         <section id="game" className={styles.gameSection}>
-          <div className={styles.container}>
+          <GameWithSidebarAds>
             <div className={styles.gameWrapper}>
               <GameMain t={t} />
             </div>
-          </div>
+          </GameWithSidebarAds>
         </section>
 
         {/* Hero */}
@@ -38,6 +41,9 @@ export default async function Home({ params }) {
 
         {/* More Games */}
         <MoreGames current="main" />
+
+        {/* Adsterra Native Banner */}
+        <AdsterraNativeBanner />
 
         {/* About */}
         <section id="about" className={styles.aboutSection}>
@@ -115,6 +121,11 @@ export default async function Home({ params }) {
             </div>
           </div>
         </section>
+
+        {/* Adsterra Banner 300x250 */}
+        <div style={{ display: 'flex', justifyContent: 'center', padding: '1rem 0' }}>
+          <AdsterraBanner300x250 />
+        </div>
 
         {/* FAQ */}
         <section id="faq" className={styles.faqSection}>

@@ -4,6 +4,9 @@ import Footer from '../../Components/Footer';
 import MoreGames from '../../Components/MoreGames';
 import QuestionFAQ from '../../Components/QuestionFAQ';
 import AdSense from '../../Components/AdSense';
+import AdsterraNativeBanner from '../../Components/AdsterraNativeBanner';
+import AdsterraBanner300x250 from '../../Components/AdsterraBanner300x250';
+import GameWithSidebarAds from '../../Components/GameWithSidebarAds';
 import EmbedDetect from '../../Components/EmbedDetect';
 import StoryChainGame from './StoryChainGame';
 import en from '@/locales/en.json';
@@ -23,9 +26,9 @@ export default async function StoryChainPage({ params }) {
       <main className={gp.pageWrapper}>
         {/* Game — first for iframe visibility */}
         <section className={gp.gameSection}>
-          <div className={gp.container}>
+          <GameWithSidebarAds>
             <StoryChainGame />
-          </div>
+          </GameWithSidebarAds>
         </section>
 
         {/* Hero */}
@@ -39,6 +42,8 @@ export default async function StoryChainPage({ params }) {
 
         {/* More Games */}
         <MoreGames current="story-chain" />
+
+        <AdsterraNativeBanner />
 
         {/* What Is */}
         <section className={gp.aboutSection}>
@@ -111,6 +116,10 @@ export default async function StoryChainPage({ params }) {
             </div>
           </div>
         </section>
+
+        <div style={{ display: 'flex', justifyContent: 'center', padding: '1rem 0' }}>
+          <AdsterraBanner300x250 />
+        </div>
 
         {/* FAQ */}
         <section className={gp.faqSection}>
