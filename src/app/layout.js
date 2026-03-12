@@ -1,5 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import AdsterraSocialBar from './Components/AdsterraSocialBar'
+import AdsterraMobileSticky from './Components/AdsterraMobileSticky'
 
 import en from '../locales/en.json'
 import zh from '../locales/zh.json'
@@ -67,6 +69,8 @@ export default function RootLayout({ children, params }) {
       </head>
       <body className={inter.className}>
         {children}
+        <AdsterraSocialBar />
+        <AdsterraMobileSticky />
         <noscript>
           <div style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto', fontFamily: 'sans-serif' }}>
             <h1>Your AI Slop Bores Me — Play the Viral Human vs AI Game Online Free</h1>

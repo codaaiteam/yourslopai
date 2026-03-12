@@ -40,6 +40,11 @@ export default async function StoryChainPage({ params }) {
           </div>
         </section>
 
+        {/* Adsterra Banner 300x250 - between Hero and MoreGames */}
+        <div style={{ display: 'flex', justifyContent: 'center', padding: '1rem 0' }}>
+          <AdsterraBanner300x250 />
+        </div>
+
         {/* More Games */}
         <MoreGames current="story-chain" />
 
