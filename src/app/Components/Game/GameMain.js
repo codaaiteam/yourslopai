@@ -269,7 +269,8 @@ export default function GameMain({ t }) {
   // Submit larp answer — AI judges + if real human prompt, save to DB
   // drawingDataOverride: pass drawing data directly since setState is async
   const submitLarpAnswer = async (drawingDataOverride) => {
-    const actualDrawing = drawingDataOverride || drawingData;
+    // Only treat as drawing if explicitly passed override OR user is in draw mode
+    const actualDrawing = drawingDataOverride || (inputMode === 'draw' ? drawingData : null);
     const isDrawing = !!(actualDrawing);
     const response = isDrawing ? actualDrawing : answer;
     if (!response || (typeof response === 'string' && !response.trim())) return;
@@ -1021,13 +1022,13 @@ export default function GameMain({ t }) {
             <div className={styles.inputToggle}>
               <button
                 className={`${styles.toggleBtn} ${inputMode === 'text' ? styles.toggleActive : ''}`}
-                onClick={() => setInputMode('text')}
+                onClick={() => { setInputMode('text'); setDrawingData(null); }}
               >
                 write something
               </button>
               <button
                 className={`${styles.toggleBtn} ${inputMode === 'draw' ? styles.toggleActive : ''}`}
-                onClick={() => setInputMode('draw')}
+                onClick={() => { setInputMode('draw'); setAnswer(''); }}
               >
                 draw something
               </button>
