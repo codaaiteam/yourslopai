@@ -21,11 +21,48 @@
   font-size: 1rem;
 }
 
+.hudLevel {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #e8b04a;
+}
+
 .hudRound {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--text-muted);
+}
+
+/* Timer */
+.timerBar {
+  height: 4px;
+  background: var(--border-color);
+  border-radius: 2px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.timerFill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 50ms linear;
+}
+
+/* Flash wrong */
+.flashWrong {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #e53935;
+  animation: popIn 0.3s ease;
+}
+
+/* Next level hint */
+.nextLevelHint {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin: 0 0 1.25rem;
 }
 
 /* Image card */
