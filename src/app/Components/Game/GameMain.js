@@ -204,6 +204,10 @@ export default function GameMain({ t }) {
         body: JSON.stringify({ dataUrl }),
       });
       const data = await res.json();
+      if (!res.ok) {
+        console.error('Upload failed:', data.error);
+        return null;
+      }
       return data.url || null;
     } catch (e) {
       console.error('Upload drawing error:', e);

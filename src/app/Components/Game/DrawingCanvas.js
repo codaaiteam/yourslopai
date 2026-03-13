@@ -72,7 +72,8 @@ export default function DrawingCanvas({ onSave, disabled }) {
 
   const saveDrawing = () => {
     const canvas = canvasRef.current;
-    const dataUrl = canvas.toDataURL('image/png');
+    // Use JPEG at 0.7 quality to keep file size under 1MB for upload
+    const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
     onSave(dataUrl);
   };
 

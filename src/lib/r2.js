@@ -28,6 +28,10 @@ function getClient() {
  * @returns {string} public URL
  */
 export async function uploadToR2(buffer, key, contentType = 'image/png') {
+  if (!process.env.R2_ACCESS_KEY_ID || !process.env.R2_SECRET_ACCESS_KEY) {
+    console.error('R2 credentials not configured - R2_ACCESS_KEY_ID or R2_SECRET_ACCESS_KEY missing');
+    throw new Error('R2 credentials not configured');
+  }
   const s3 = getClient();
   await s3.send(new PutObjectCommand({
     Bucket: R2_BUCKET,
