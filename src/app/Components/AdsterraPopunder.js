@@ -6,33 +6,50 @@ const COOLDOWN_MS = 30 * 60 * 1000; // 30 minutes
 const SCRIPT_URL = 'https://pl28902335.effectivegatecpm.com/29/9c/67/299c67d28688eaa2294a6cefddc9863c.js';
 
 export default function AdsterraPopunder() {
-  const loaded = useRef(false);
+  const fired = useRef(false);
 
   useEffect(() => {
-    if (loaded.current) return;
+    if (fired.current) return;
 
     // Check 30-min cooldown
     const lastPop = localStorage.getItem('adsterra_pop_ts');
     if (lastPop && Date.now() - Number(lastPop) < COOLDOWN_MS) return;
 
-    // Only load the popunder script on first click, then remove the listener
-    // so Adsterra's script only gets one click to trigger on
     function onFirstClick() {
       document.removeEventListener('click', onFirstClick, true);
-      if (loaded.current) return;
-      loaded.current = true;
+      if (fired.current) return;
+      fired.current = true;
       localStorage.setItem('adsterra_pop_ts', String(Date.now()));
 
+      // Load Adsterra script — it will register click handlers on document
       const script = document.createElement('script');
       script.src = SCRIPT_URL;
       script.type = 'text/javascript';
       document.head.appendChild(script);
 
-      // Remove the script after a short delay so it can't attach
-      // persistent click handlers for subsequent clicks
+      // After the first user click triggers the popunder, we need to nuke
+      // all of Adsterra's click handlers. The only reliable way is to replace
+      // the document's click event target by cloning the node.
+      // But document/body can't be cloned, so instead we override window.open
+      // after the first popup to prevent any more from opening.
       setTimeout(() => {
-        script.remove();
-      }, 3000);
+        const realOpen = window.open;
+        let popCount = 0;
+        window.open = function (...args) {
+          popCount++;
+          if (popCount > 1) {
+            // Block subsequent popunders
+            return null;
+          }
+          return realOpen.apply(window, args);
+        };
+
+        // Restore original window.open after cooldown period
+        // so other legitimate window.open calls aren't affected
+        setTimeout(() => {
+          window.open = realOpen;
+        }, 10000);
+      }, 500);
     }
 
     document.addEventListener('click', onFirstClick, true);
