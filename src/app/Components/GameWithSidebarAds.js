@@ -33,15 +33,15 @@ export default function GameWithSidebarAds({ children }) {
       }}>
         {screen === 'desktop' && (
           <div style={{ position: 'sticky', top: '60px', flexShrink: 0 }}>
-            <AdsterraSidebar side="left" />
+            <AdsterraSidebar />
           </div>
         )}
         <div style={{ flex: '1 1 auto', maxWidth: '650px', width: '100%' }}>
           {children}
         </div>
         {screen === 'desktop' && (
-          <div style={{ position: 'sticky', top: '60px', flexShrink: 0 }}>
-            <AdsterraSidebar side="right" />
+          <div style={{ position: 'sticky', top: '60px', flexShrink: 0, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', width: 160, minHeight: 600 }}>
+            <AdsterraBanner300x250 />
           </div>
         )}
       </div>
