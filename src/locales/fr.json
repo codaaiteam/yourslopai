@@ -79,8 +79,53 @@
     "aiRoastDesc": "Décrivez-vous et laissez l'IA vous servir le roast le plus créatif.",
     "storyChainTitle": "Story Chain",
     "storyChainDesc": "Co-écrivez une histoire avec l'IA, une phrase à la fois.",
+    "guessPromptTitle": "Devine le Prompt",
+    "guessPromptDesc": "Regardez un dessin humain et devinez quel prompt ils essayaient de dessiner.",
     "aiBananaTitle": "Générateur d'images IA gratuit",
     "aiBananaDesc": "Créez vos propres images de mèmes IA gratuitement."
+  },
+  "guessPrompt": {
+    "seoTitle": "Devine le Prompt — Regardez le Dessin, Devinez ce qu'ils Essayaient de Dessiner | Jeu en Ligne Gratuit",
+    "seoDescription": "Regardez un dessin fait par un humain et devinez quel prompt il essayait de dessiner. Choisissez parmi 4 options. Jouez gratuitement en ligne !",
+    "hero": {
+      "title": "Devine le Prompt",
+      "subtitle": "Regardez un dessin humain et devinez quel prompt ils essayaient de dessiner !"
+    },
+    "about": {
+      "sectionTitle": "Qu'est-ce que Devine le Prompt ?",
+      "p1": "Devine le Prompt est un jeu de devinettes visuelles où vous voyez un dessin fait par un vrai joueur humain et essayez de deviner quel prompt lui avait été donné.",
+      "p2": "Chaque manche comprend 10 questions avec 4 choix chacune. Répondez correctement aux 10 pour monter de niveau ! Les niveaux supérieurs ajoutent un chronomètre de plus en plus court.",
+      "p3": "Tous les dessins proviennent de vrais joueurs de Your AI Slop Bores Me, rendant chaque manche unique, hilarante et imprévisible."
+    },
+    "howToPlay": {
+      "sectionTitle": "Comment Jouer",
+      "step1Title": "Regardez le Dessin",
+      "step1Desc": "Chaque manche vous montre un dessin fait à la main par un vrai joueur de la communauté.",
+      "step2Title": "Choisissez le Prompt",
+      "step2Desc": "Lisez les 4 options et devinez quel prompt le joueur essayait de dessiner.",
+      "step3Title": "Montez de Niveau",
+      "step3Desc": "Répondez correctement aux 10 pour avancer. Les niveaux supérieurs ont des chronomètres plus courts !"
+    },
+    "tips": {
+      "sectionTitle": "Astuces pour Deviner",
+      "tip1Title": "Cherchez les Détails",
+      "tip1Desc": "Même dans les dessins brouillons, certaines formes ou objets donnent des indices sur la bonne réponse.",
+      "tip2Title": "Pensez Comme l'Artiste",
+      "tip2Desc": "Que dessineriez-VOUS avec ce prompt ? Associez le dessin au choix le plus logique.",
+      "tip3Title": "Éliminez les Options",
+      "tip3Desc": "Si vous hésitez, écartez les prompts qui ne correspondent clairement pas à ce que vous voyez."
+    },
+    "faq": {
+      "sectionTitle": "Questions Fréquentes",
+      "q1": "D'où viennent les dessins ?",
+      "a1": "Tous les dessins sont faits à la main par de vrais joueurs humains de Your AI Slop Bores Me — ils avaient 60 secondes pour dessiner selon un prompt.",
+      "q2": "Combien de manches puis-je jouer ?",
+      "a2": "Chaque niveau a 10 manches. Répondez correctement à toutes pour passer au niveau suivant avec un chronomètre plus difficile.",
+      "q3": "C'est gratuit ?",
+      "a3": "Oui, entièrement gratuit. Aucune inscription requise.",
+      "q4": "Puis-je soumettre mes propres dessins ?",
+      "a4": "Oui ! Jouez au jeu principal Your AI Slop Bores Me et vos dessins pourront apparaître dans les manches de Devine le Prompt."
+    }
   },
   "aiOrHuman": {
     "seoTitle": "IA ou Humain ? — Saurez-vous deviner qui l'a écrit ? | Jeu en ligne gratuit",

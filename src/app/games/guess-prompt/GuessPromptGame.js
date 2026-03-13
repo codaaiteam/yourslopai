@@ -225,7 +225,7 @@ export default function GuessPromptGame() {
     <GameFrame
       logo="/logo-guess-prompt.png"
       title="Guess the Prompt"
-      subtitle="See the image. Pick the prompt that created it. 10 rounds per level — get them all right to level up!"
+      subtitle="See a human drawing. Guess which prompt they were trying to draw. 10 rounds per level — get them all right to level up!"
       score={phase !== 'idle' ? score : (currentBest > 0 ? currentBest : null)}
       scoreLabel={phase !== 'idle' ? 'Score' : 'Best'}
       onPlay={startGame}

@@ -79,8 +79,53 @@
     "aiRoastDesc": "Beschreibe dich und lass die KI den kreativsten Roast liefern.",
     "storyChainTitle": "Story Chain",
     "storyChainDesc": "Schreibe mit KI eine Geschichte, einen Satz nach dem anderen.",
+    "guessPromptTitle": "Errate den Prompt",
+    "guessPromptDesc": "Sieh dir eine menschliche Zeichnung an und errate, welchen Prompt sie zeichnen wollten.",
     "aiBananaTitle": "Kostenloser KI-Bildgenerator",
     "aiBananaDesc": "Erstelle kostenlos deine eigenen KI-Meme-Bilder."
+  },
+  "guessPrompt": {
+    "seoTitle": "Errate den Prompt — Sieh die Zeichnung, Errate was sie Zeichnen Wollten | Kostenloses Online-Spiel",
+    "seoDescription": "Sieh dir eine Zeichnung eines echten Spielers an und errate, welchen Prompt er zeichnen wollte. Wähle aus 4 Optionen. Kostenlos online spielen!",
+    "hero": {
+      "title": "Errate den Prompt",
+      "subtitle": "Sieh dir eine menschliche Zeichnung an und errate, welchen Prompt sie zeichnen wollten!"
+    },
+    "about": {
+      "sectionTitle": "Was ist Errate den Prompt?",
+      "p1": "Errate den Prompt ist ein visuelles Ratespiel, bei dem du eine Zeichnung eines echten menschlichen Spielers siehst und versuchst herauszufinden, welchen Prompt er zum Zeichnen bekommen hat.",
+      "p2": "Jede Runde besteht aus 10 Fragen mit je 4 Auswahlmöglichkeiten. Beantworte alle 10 richtig, um aufzusteigen! Höhere Level fügen einen immer kürzeren Countdown-Timer hinzu.",
+      "p3": "Alle Zeichnungen stammen von echten Spielern von Your AI Slop Bores Me, was jede Runde einzigartig, lustig und unvorhersehbar macht."
+    },
+    "howToPlay": {
+      "sectionTitle": "So wird gespielt",
+      "step1Title": "Zeichnung ansehen",
+      "step1Desc": "Jede Runde zeigt dir eine handgezeichnete Zeichnung eines echten Spielers aus der Community.",
+      "step2Title": "Prompt wählen",
+      "step2Desc": "Lies die 4 Optionen und errate, welchen Prompt der Spieler zu zeichnen versuchte.",
+      "step3Title": "Level aufsteigen",
+      "step3Desc": "Alle 10 richtig beantwortet? Weiter zum nächsten Level mit kürzerem Timer!"
+    },
+    "tips": {
+      "sectionTitle": "Tipps zum Raten",
+      "tip1Title": "Auf Details achten",
+      "tip1Desc": "Selbst in chaotischen Zeichnungen geben bestimmte Formen oder Objekte oft Hinweise auf die richtige Antwort.",
+      "tip2Title": "Denke wie der Künstler",
+      "tip2Desc": "Was würdest DU zeichnen, wenn du diesen Prompt bekämst? Verbinde die Zeichnung mit der logischsten Option.",
+      "tip3Title": "Optionen ausschließen",
+      "tip3Desc": "Wenn du unsicher bist, schließe Prompts aus, die offensichtlich nicht zur Zeichnung passen."
+    },
+    "faq": {
+      "sectionTitle": "Häufig gestellte Fragen",
+      "q1": "Woher kommen die Zeichnungen?",
+      "a1": "Alle Zeichnungen werden von echten menschlichen Spielern in Your AI Slop Bores Me von Hand gezeichnet — sie hatten 60 Sekunden, um nach einem Prompt zu zeichnen.",
+      "q2": "Wie viele Runden kann ich spielen?",
+      "a2": "Jedes Level hat 10 Runden. Beantworte alle richtig, um zum nächsten Level mit härterem Timer zu gelangen.",
+      "q3": "Ist es kostenlos?",
+      "a3": "Ja, komplett kostenlos. Keine Registrierung nötig.",
+      "q4": "Kann ich eigene Zeichnungen einreichen?",
+      "a4": "Ja! Spiele das Hauptspiel Your AI Slop Bores Me und deine Zeichnungen könnten in Errate den Prompt-Runden erscheinen."
+    }
   },
   "aiOrHuman": {
     "seoTitle": "KI oder Mensch? — Kannst du erkennen, wer es geschrieben hat? | Kostenloses Online-Spiel",

@@ -107,8 +107,53 @@
     "aiRoastDesc": "Describe yourself and let AI deliver the most creative roast.",
     "storyChainTitle": "Story Chain",
     "storyChainDesc": "Co-write a story with AI, one sentence at a time.",
+    "guessPromptTitle": "Guess the Prompt",
+    "guessPromptDesc": "See a human drawing and guess which prompt they were trying to draw.",
     "aiBananaTitle": "Free AI Image Generator",
     "aiBananaDesc": "Create your own meme AI images for free."
+  },
+  "guessPrompt": {
+    "seoTitle": "Guess the Prompt – See the Drawing, Guess What They Were Drawing | Free Online Game",
+    "seoDescription": "See a human drawing and guess which prompt they were trying to draw. Pick the right prompt from 4 choices. Play free online!",
+    "hero": {
+      "title": "Guess the Prompt",
+      "subtitle": "See a human drawing and guess which prompt they were trying to draw!"
+    },
+    "about": {
+      "sectionTitle": "What Is Guess the Prompt?",
+      "p1": "Guess the Prompt is a visual guessing game where you see a drawing made by a real human player and try to figure out which prompt they were given to draw.",
+      "p2": "Each round consists of 10 questions with 4 choices each. Get all 10 right to level up! Higher levels add a countdown timer that gets shorter.",
+      "p3": "All drawings come from real players of Your AI Slop Bores Me, making every round unique, hilarious, and unpredictable."
+    },
+    "howToPlay": {
+      "sectionTitle": "How to Play",
+      "step1Title": "Look at the Drawing",
+      "step1Desc": "Each round shows you a hand-drawn image from a real player in the community.",
+      "step2Title": "Pick the Prompt",
+      "step2Desc": "Read the 4 options and choose which prompt you think the player was trying to draw.",
+      "step3Title": "Level Up",
+      "step3Desc": "Get all 10 right to advance. Higher levels bring shorter timers!"
+    },
+    "tips": {
+      "sectionTitle": "Tips for Guessing",
+      "tip1Title": "Look for Details",
+      "tip1Desc": "Even in messy drawings, specific shapes or objects often hint at the correct prompt.",
+      "tip2Title": "Think Like the Artist",
+      "tip2Desc": "What would YOU draw if given this prompt? Match the drawing to the most logical choice.",
+      "tip3Title": "Eliminate Options",
+      "tip3Desc": "If you're unsure, rule out prompts that clearly don't match what you see."
+    },
+    "faq": {
+      "sectionTitle": "Frequently Asked Questions",
+      "q1": "Where do the drawings come from?",
+      "a1": "All drawings are made by real human players in 'Your AI Slop Bores Me' — they had 60 seconds to draw their answer to a prompt.",
+      "q2": "How many rounds can I play?",
+      "a2": "Each level has 10 rounds. Get all 10 correct to advance to the next level with a harder timer.",
+      "q3": "Is this free to play?",
+      "a3": "Yes, completely free. No sign-up required.",
+      "q4": "Can I submit my own drawings?",
+      "a4": "Yes! Play the main game 'Your AI Slop Bores Me' and your drawings may appear in Guess the Prompt rounds."
+    }
   },
   "aiOrHuman": {
     "seoTitle": "AI or Human? – Can You Tell Who Wrote It? | Free Online Game",

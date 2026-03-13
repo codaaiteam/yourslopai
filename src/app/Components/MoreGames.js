@@ -29,7 +29,7 @@ const FALLBACK = {
   storyChainTitle: 'Story Chain',
   storyChainDesc: 'Co-write a story with AI, one sentence at a time.',
   guessPromptTitle: 'Guess the Prompt',
-  guessPromptDesc: 'See an image and guess which prompt created it from 4 choices.',
+  guessPromptDesc: 'See a human drawing and guess which prompt they were trying to draw.',
   aiBananaTitle: 'Free AI Image Generator',
   aiBananaDesc: 'Create your own meme AI images for free.',
 };

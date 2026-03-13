@@ -103,8 +103,53 @@
     "aiRoastDesc": "Descríbete y deja que la IA te lance el roast más creativo.",
     "storyChainTitle": "Story Chain",
     "storyChainDesc": "Co-escribe una historia con IA, una oración a la vez.",
+    "guessPromptTitle": "Adivina el Prompt",
+    "guessPromptDesc": "Mira un dibujo humano y adivina qué prompt intentaban dibujar.",
     "aiBananaTitle": "Generador de imágenes IA gratis",
     "aiBananaDesc": "Crea tus propias imágenes de memes con IA gratis."
+  },
+  "guessPrompt": {
+    "seoTitle": "Adivina el Prompt — Mira el Dibujo, Adivina Qué Intentaban Dibujar | Juego Online Gratis",
+    "seoDescription": "Mira un dibujo hecho por un humano y adivina qué prompt intentaban dibujar. Elige entre 4 opciones. ¡Juega gratis online!",
+    "hero": {
+      "title": "Adivina el Prompt",
+      "subtitle": "¡Mira un dibujo humano y adivina qué prompt intentaban dibujar!"
+    },
+    "about": {
+      "sectionTitle": "¿Qué es Adivina el Prompt?",
+      "p1": "Adivina el Prompt es un juego visual de adivinanzas donde ves un dibujo hecho por un jugador humano real e intentas adivinar qué prompt le dieron para dibujar.",
+      "p2": "Cada ronda tiene 10 preguntas con 4 opciones cada una. ¡Acierta las 10 para subir de nivel! Los niveles más altos añaden un temporizador cada vez más corto.",
+      "p3": "Todos los dibujos provienen de jugadores reales de Your AI Slop Bores Me, haciendo cada ronda única, divertida e impredecible."
+    },
+    "howToPlay": {
+      "sectionTitle": "Cómo Jugar",
+      "step1Title": "Mira el Dibujo",
+      "step1Desc": "Cada ronda muestra un dibujo a mano de un jugador real de la comunidad.",
+      "step2Title": "Elige el Prompt",
+      "step2Desc": "Lee las 4 opciones y elige qué prompt crees que el jugador intentaba dibujar.",
+      "step3Title": "Sube de Nivel",
+      "step3Desc": "¡Acierta las 10 para avanzar. Los niveles más altos traen temporizadores más cortos!"
+    },
+    "tips": {
+      "sectionTitle": "Consejos para Adivinar",
+      "tip1Title": "Busca Detalles",
+      "tip1Desc": "Incluso en dibujos desordenados, ciertas formas u objetos suelen dar pistas sobre la respuesta correcta.",
+      "tip2Title": "Piensa Como el Artista",
+      "tip2Desc": "¿Qué dibujarías TÚ si te dieran este prompt? Relaciona el dibujo con la opción más lógica.",
+      "tip3Title": "Elimina Opciones",
+      "tip3Desc": "Si no estás seguro, descarta los prompts que claramente no coinciden con lo que ves."
+    },
+    "faq": {
+      "sectionTitle": "Preguntas Frecuentes",
+      "q1": "¿De dónde vienen los dibujos?",
+      "a1": "Todos los dibujos son hechos a mano por jugadores humanos reales en Your AI Slop Bores Me — tuvieron 60 segundos para dibujar según un prompt.",
+      "q2": "¿Cuántas rondas puedo jugar?",
+      "a2": "Cada nivel tiene 10 rondas. Acierta todas para avanzar al siguiente nivel con un temporizador más difícil.",
+      "q3": "¿Es gratis?",
+      "a3": "Sí, completamente gratis. Sin registro necesario.",
+      "q4": "¿Puedo enviar mis propios dibujos?",
+      "a4": "¡Sí! Juega al juego principal Your AI Slop Bores Me y tus dibujos pueden aparecer en las rondas de Adivina el Prompt."
+    }
   },
   "aiOrHuman": {
     "seoTitle": "¿IA o Humano? — ¿Puedes Adivinar Quién lo Escribió? | Juego Online Gratis",
