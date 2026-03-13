@@ -10,8 +10,8 @@ export default function GameWithSidebarAds({ children }) {
   useEffect(() => {
     const check = () => {
       const w = window.innerWidth;
-      if (w >= 1024) setScreen('desktop');
-      else if (w >= 768) setScreen('tablet');
+      if (w >= 768) setScreen('desktop');
+      else if (w >= 480) setScreen('tablet');
       else setScreen('mobile');
     };
     check();
