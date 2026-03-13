@@ -6,7 +6,6 @@ import AdsterraBanner300x250 from './AdsterraBanner300x250';
 
 export default function GameWithSidebarAds({ children }) {
   const [screen, setScreen] = useState('mobile');
-  const [showRightAd, setShowRightAd] = useState(false);
 
   useEffect(() => {
     const check = () => {
@@ -19,15 +18,6 @@ export default function GameWithSidebarAds({ children }) {
     window.addEventListener('resize', check);
     return () => window.removeEventListener('resize', check);
   }, []);
-
-  // Delay right side ad to avoid global atOptions conflict
-  useEffect(() => {
-    if (screen === 'desktop') {
-      const timer = setTimeout(() => setShowRightAd(true), 3000);
-      return () => clearTimeout(timer);
-    }
-    setShowRightAd(false);
-  }, [screen]);
 
   return (
     <>
@@ -50,8 +40,8 @@ export default function GameWithSidebarAds({ children }) {
           {children}
         </div>
         {screen === 'desktop' && (
-          <div style={{ position: 'sticky', top: '60px', flexShrink: 0, width: 160, minHeight: 600, display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}>
-            {showRightAd && <AdsterraBanner300x250 />}
+          <div style={{ position: 'sticky', top: '60px', flexShrink: 0 }}>
+            <AdsterraSidebar />
           </div>
         )}
       </div>

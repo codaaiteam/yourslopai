@@ -2,34 +2,42 @@
 
 import { useEffect, useRef } from 'react';
 
+const AD_KEY = '021efbaf73e34cc02d08f88b0f002f5d';
+
 export default function AdsterraSidebar() {
-  const containerRef = useRef(null);
+  const iframeRef = useRef(null);
   const loaded = useRef(false);
 
   useEffect(() => {
-    if (!containerRef.current || loaded.current) return;
+    if (!iframeRef.current || loaded.current) return;
     loaded.current = true;
 
-    const configScript = document.createElement('script');
-    configScript.type = 'text/javascript';
-    configScript.text = `
-      var atOptions = {
-        'key' : '021efbaf73e34cc02d08f88b0f002f5d',
-        'format' : 'iframe',
-        'height' : 600,
-        'width' : 160,
-        'params' : {}
-      };
-    `;
-    containerRef.current.appendChild(configScript);
-
-    const invokeScript = document.createElement('script');
-    invokeScript.type = 'text/javascript';
-    invokeScript.src = 'https://www.highperformanceformat.com/021efbaf73e34cc02d08f88b0f002f5d/invoke.js';
-    containerRef.current.appendChild(invokeScript);
+    const iframe = iframeRef.current;
+    const doc = iframe.contentDocument || iframe.contentWindow.document;
+    doc.open();
+    doc.write(`<!DOCTYPE html>
+<html><head><style>body{margin:0;overflow:hidden;}</style></head>
+<body>
+<script type="text/javascript">
+  var atOptions = {
+    'key' : '${AD_KEY}',
+    'format' : 'iframe',
+    'height' : 600,
+    'width' : 160,
+    'params' : {}
+  };
+</script>
+<script type="text/javascript" src="https://www.highperformanceformat.com/${AD_KEY}/invoke.js"></script>
+</body></html>`);
+    doc.close();
   }, []);
 
   return (
-    <div ref={containerRef} style={{ width: 160, minHeight: 600, flexShrink: 0 }} />
+    <iframe
+      ref={iframeRef}
+      style={{ width: 160, height: 600, border: 'none', overflow: 'hidden' }}
+      scrolling="no"
+      title="Ad"
+    />
   );
 }
