@@ -6,6 +6,7 @@ const gamePages = [
   '/games/ai-or-human',
   '/games/ai-roast',
   '/games/story-chain',
+  '/games/guess-prompt',
 ];
 
 const staticPages = [

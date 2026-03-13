@@ -13,6 +13,7 @@ const ALL_GAMES = [
   { slug: 'ai-or-human', path: '/games/ai-or-human', logo: '/logo-ai-or-human.png', titleKey: 'aiOrHumanTitle', descKey: 'aiOrHumanDesc' },
   { slug: 'ai-roast', path: '/games/ai-roast', logo: '/logo-ai-roast.png', titleKey: 'aiRoastTitle', descKey: 'aiRoastDesc' },
   { slug: 'story-chain', path: '/games/story-chain', logo: '/logo-story-chain.png', titleKey: 'storyChainTitle', descKey: 'storyChainDesc' },
+  { slug: 'guess-prompt', path: '/games/guess-prompt', logo: '/logo-guess-prompt.png', titleKey: 'guessPromptTitle', descKey: 'guessPromptDesc' },
   { slug: 'ai-banana', path: 'https://aibanana.net/?utm_source=youraislopboresmegame&utm_medium=referral&utm_campaign=more_games', logo: '/logo-ai-banana.png', titleKey: 'aiBananaTitle', descKey: 'aiBananaDesc', external: true },
 ];
 
@@ -27,6 +28,8 @@ const FALLBACK = {
   aiRoastDesc: 'Describe yourself and let AI deliver the most creative roast.',
   storyChainTitle: 'Story Chain',
   storyChainDesc: 'Co-write a story with AI, one sentence at a time.',
+  guessPromptTitle: 'Guess the Prompt',
+  guessPromptDesc: 'See an image and guess which prompt created it from 4 choices.',
   aiBananaTitle: 'Free AI Image Generator',
   aiBananaDesc: 'Create your own meme AI images for free.',
 };
