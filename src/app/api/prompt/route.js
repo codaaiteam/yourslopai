@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { rateLimit, validateOrigin } from '@/lib/rateLimit';
 import { recordCall } from '@/lib/apiStats';
+import { supabase } from '@/lib/supabase';
 
 const client = new OpenAI({
   baseURL: 'https://api.deepseek.com',
@@ -56,6 +57,23 @@ export async function GET(request) {
     });
 
     const prompt = completion.choices[0]?.message?.content?.trim();
+
+    // Save AI-generated prompt to DB for future reuse
+    if (prompt && supabase) {
+      const isDraw = prompt.startsWith('Draw:') || prompt.startsWith('🎨');
+      try {
+        await supabase
+          .from('youraislop_prompts')
+          .insert({
+            prompt_text: prompt.slice(0, 500),
+            ask_type: isDraw ? 'image' : 'text',
+            status: 'waiting',
+            prompt_source: 'ai',
+          });
+      } catch (e) {
+        console.error('Failed to save AI prompt to DB:', e);
+      }
+    }
 
     return NextResponse.json({
       prompt: prompt || null,

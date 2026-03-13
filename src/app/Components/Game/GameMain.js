@@ -215,7 +215,7 @@ export default function GameMain({ t }) {
     }
   };
 
-  // Start larp round — prefer real human prompts
+  // Start larp round — priority: DB waiting → DB reusable → AI generate → local
   const startLarp = async () => {
     setPhase('loading');
     setAnswer('');
@@ -223,23 +223,23 @@ export default function GameMain({ t }) {
     setInputMode('text');
     currentPromptIdRef.current = null;
 
-    // 1. Try to get a real human prompt from DB
-    const humanPromptData = await fetchHumanPrompt();
-    if (humanPromptData) {
-      currentPromptIdRef.current = humanPromptData.id;
-      const type = humanPromptData.type || 'text';
-      const prompt = humanPromptData.text;
+    // 1. Try DB prompts (waiting human prompts first, then reusable answered ones)
+    const dbPrompt = await fetchHumanPrompt();
+    if (dbPrompt && !isRecentPrompt(dbPrompt.text)) {
+      currentPromptIdRef.current = dbPrompt.id;
+      const type = dbPrompt.type || 'text';
+      const prompt = dbPrompt.text;
       addToRecent(prompt);
       setPromptType(type);
       setCurrentPrompt(prompt);
-      setMessages(prev => [...prev, { type: 'prompt', text: prompt, promptType: type, isReal: true }]);
+      setMessages(prev => [...prev, { type: 'prompt', text: prompt, promptType: type, isReal: !!dbPrompt.isReal }]);
       setTimeLeft(TIMER_SECONDS);
       setIsActive(true);
       setPhase('answering');
       return;
     }
 
-    // 2. Fallback: Try API prompt
+    // 2. AI generate new prompt (saved to DB automatically)
     let prompt, type;
     for (let attempt = 0; attempt < 2; attempt++) {
       const aiPrompt = await fetchAIPrompt();
@@ -250,7 +250,7 @@ export default function GameMain({ t }) {
       }
     }
 
-    // 3. Fallback: local prompt
+    // 3. Last resort: local prompt
     if (!prompt) {
       const local = getNewLocalPrompt();
       type = local.type;
@@ -324,6 +324,7 @@ export default function GameMain({ t }) {
             body: JSON.stringify({
               prompt_text: currentPrompt,
               ask_type: isDrawing ? 'image' : 'text',
+              prompt_source: 'ai',
             }),
           });
           const createData = await createRes.json();

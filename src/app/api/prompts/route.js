@@ -12,7 +12,7 @@ export async function POST(req) {
   }
 
   try {
-    const { prompt_text, ask_type } = await req.json();
+    const { prompt_text, ask_type, prompt_source } = await req.json();
 
     if (!prompt_text || prompt_text.trim().length < 2) {
       return NextResponse.json({ error: 'Prompt too short' }, { status: 400 });
@@ -21,12 +21,15 @@ export async function POST(req) {
       return NextResponse.json({ error: 'Prompt too long' }, { status: 400 });
     }
 
+    const validSource = prompt_source === 'ai' ? 'ai' : 'human';
+
     const { data, error } = await supabase
       .from('youraislop_prompts')
       .insert({
         prompt_text: prompt_text.trim(),
         ask_type: ask_type || 'text',
         status: 'waiting',
+        prompt_source: validSource,
       })
       .select('id')
       .single();

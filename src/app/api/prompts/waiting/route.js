@@ -4,8 +4,10 @@ import { rateLimit } from '@/lib/rateLimit';
 
 export const dynamic = 'force-dynamic';
 
-// GET: Fetch a random waiting prompt for "larp as AI" users
-// Uses claimed_at to avoid giving the same prompt to multiple users
+const MAX_DAILY_USE = 10;
+
+// GET: Fetch a prompt for "larp as AI" users
+// Priority: 1) real human waiting prompts  2) reusable answered prompts (<10 uses/day)
 export async function GET(req) {
   const rl = rateLimit(req, { limit: 20, windowMs: 60000, prefix: 'prompts-waiting' });
   if (!rl.success) {
@@ -13,7 +15,6 @@ export async function GET(req) {
   }
 
   const { searchParams } = new URL(req.url);
-  // Exclude prompts the user recently saw (comma-separated IDs)
   const excludeIds = searchParams.get('exclude') || '';
   const excludeList = excludeIds
     .split(',')
@@ -21,11 +22,12 @@ export async function GET(req) {
     .filter(id => !isNaN(id));
 
   try {
-    // Find prompts that are waiting and not claimed (or claim expired > 90s ago)
     const now = new Date().toISOString();
+    const today = new Date().toISOString().slice(0, 10);
     const expiry = new Date(Date.now() - 90 * 1000).toISOString();
 
-    let query = supabase
+    // 1. Try real human waiting prompts first (highest priority)
+    const { data: waitingData, error: wErr } = await supabase
       .from('youraislop_prompts')
       .select('id, prompt_text, ask_type, created_at')
       .eq('status', 'waiting')
@@ -34,36 +36,76 @@ export async function GET(req) {
       .order('created_at', { ascending: true })
       .limit(10);
 
-    const { data, error } = await query;
-    if (error) throw error;
+    if (wErr) throw wErr;
 
-    if (!data || data.length === 0) {
-      return NextResponse.json({ prompt: null });
+    if (waitingData && waitingData.length > 0) {
+      const available = waitingData.filter(p => !excludeList.includes(p.id));
+      if (available.length > 0) {
+        const picked = available[Math.floor(Math.random() * available.length)];
+        await supabase
+          .from('youraislop_prompts')
+          .update({ claimed_at: now })
+          .eq('id', picked.id)
+          .eq('status', 'waiting');
+
+        return NextResponse.json({
+          prompt: {
+            id: picked.id,
+            text: picked.prompt_text,
+            type: picked.ask_type || 'text',
+            isReal: true,
+          },
+        });
+      }
     }
 
-    // Filter out excluded IDs and pick one
-    const available = data.filter(p => !excludeList.includes(p.id));
-    if (available.length === 0) {
-      return NextResponse.json({ prompt: null });
-    }
-
-    // Pick random from available
-    const picked = available[Math.floor(Math.random() * available.length)];
-
-    // Claim it (set claimed_at so others don't get it for 90s)
-    await supabase
+    // 2. Reuse answered prompts that haven't hit daily limit
+    // Get prompts where last_use_date != today OR daily_use_count < MAX
+    const { data: reusable, error: rErr } = await supabase
       .from('youraislop_prompts')
-      .update({ claimed_at: now })
-      .eq('id', picked.id)
-      .eq('status', 'waiting');
+      .select('id, prompt_text, ask_type')
+      .eq('status', 'answered')
+      .lt('reported', 3)
+      .or(`last_use_date.is.null,last_use_date.neq.${today},daily_use_count.lt.${MAX_DAILY_USE}`)
+      .order('daily_use_count', { ascending: true })
+      .limit(20);
 
-    return NextResponse.json({
-      prompt: {
-        id: picked.id,
-        text: picked.prompt_text,
-        type: picked.ask_type || 'text',
-      },
-    });
+    if (rErr) throw rErr;
+
+    if (reusable && reusable.length > 0) {
+      const available = reusable.filter(p => !excludeList.includes(p.id));
+      if (available.length > 0) {
+        const picked = available[Math.floor(Math.random() * Math.min(available.length, 10))];
+
+        // Increment daily use count (reset if new day)
+        const { data: current } = await supabase
+          .from('youraislop_prompts')
+          .select('daily_use_count, last_use_date')
+          .eq('id', picked.id)
+          .single();
+
+        const isNewDay = !current?.last_use_date || current.last_use_date !== today;
+        await supabase
+          .from('youraislop_prompts')
+          .update({
+            daily_use_count: isNewDay ? 1 : (current?.daily_use_count || 0) + 1,
+            last_use_date: today,
+          })
+          .eq('id', picked.id);
+
+        return NextResponse.json({
+          prompt: {
+            id: picked.id,
+            text: picked.prompt_text,
+            type: picked.ask_type || 'text',
+            isReuse: true,
+          },
+        });
+      }
+    }
+
+    // 3. Nothing available
+    return NextResponse.json({ prompt: null });
   } catch (error) {
     console.error('Fetch waiting prompt error:', error);
     return NextResponse.json({ error: 'Failed to fetch prompt' }, { status: 500 });
