@@ -10,7 +10,7 @@ export default function GameWithSidebarAds({ children }) {
   useEffect(() => {
     const check = () => {
       const w = window.innerWidth;
-      if (w >= 1200) setScreen('desktop');
+      if (w >= 1024) setScreen('desktop');
       else if (w >= 768) setScreen('tablet');
       else setScreen('mobile');
     };
@@ -27,7 +27,7 @@ export default function GameWithSidebarAds({ children }) {
         alignItems: 'flex-start',
         gap: '1rem',
         width: '100%',
-        maxWidth: screen === 'desktop' ? '1100px' : '650px',
+        maxWidth: screen === 'desktop' ? '1020px' : '650px',
         margin: '0 auto',
         padding: '0 1rem',
       }}>
