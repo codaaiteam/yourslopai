@@ -43,6 +43,11 @@ const Footer = ({ t }) => {
       <div className={styles.copyright}>
         {t?.footer?.copyright || '© 2026 Your AI Slop Bores Me Fan Page'}
       </div>
+        <span>·</span>
+        <a href="https://7-0-game.com/" target="_blank" rel="noopener noreferrer">
+        7-0 Game
+        </a>
+
     </footer>
   );
 };
