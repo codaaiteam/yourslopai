@@ -17,6 +17,7 @@ const Footer = ({ t }) => {
           <Link href="/games/ai-roast">AI Roast Me</Link>
           <Link href="/games/story-chain">Story Chain</Link>
           <a href="https://www.82-0-challenge.com" target="_blank" rel="noopener">82-0 Challenge — NBA Team Builder</a>
+          <a href="https://17-0-game.com/" target="_blank" rel="noopener">17-0 Challenge — NFL Team Builder</a>
         </div>
 
         <div className={styles.footerSection}>
