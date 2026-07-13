@@ -2,6 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import AdsterraSocialBar from './Components/AdsterraSocialBar'
 import AdsterraMobileSticky from './Components/AdsterraMobileSticky'
+import AdsterraSidebar from './Components/AdsterraSidebar'
 
 import en from '../locales/en.json'
 import zh from '../locales/zh.json'
@@ -68,6 +69,12 @@ export default function RootLayout({ children, params }) {
         <script defer data-domain="youraislopboresmegame.com" src="https://app.pageview.app/js/script.js"></script>
       </head>
       <body className={inter.className}>
+        <aside className="global-ad-rail global-ad-rail-left" aria-label="Advertisement">
+          <AdsterraSidebar />
+        </aside>
+        <aside className="global-ad-rail global-ad-rail-right" aria-label="Advertisement">
+          <AdsterraSidebar />
+        </aside>
         {children}
         <AdsterraSocialBar />
         <AdsterraMobileSticky />

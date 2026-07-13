@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import AdsterraSidebar from './AdsterraSidebar';
 import AdsterraBanner300x250 from './AdsterraBanner300x250';
 
 export default function GameWithSidebarAds({ children }) {
@@ -22,28 +21,12 @@ export default function GameWithSidebarAds({ children }) {
   return (
     <>
       <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'flex-start',
-        gap: '1rem',
         width: '100%',
-        maxWidth: screen === 'desktop' ? '1020px' : '650px',
+        maxWidth: screen === 'desktop' ? '760px' : '650px',
         margin: '0 auto',
         padding: '0 1rem',
       }}>
-        {screen === 'desktop' && (
-          <div style={{ position: 'sticky', top: '60px', flexShrink: 0 }}>
-            <AdsterraSidebar />
-          </div>
-        )}
-        <div style={{ flex: '1 1 auto', maxWidth: '650px', width: '100%' }}>
-          {children}
-        </div>
-        {screen === 'desktop' && (
-          <div style={{ position: 'sticky', top: '60px', flexShrink: 0 }}>
-            <AdsterraSidebar />
-          </div>
-        )}
+        {children}
       </div>
       {screen === 'tablet' && (
         <div style={{ display: 'flex', justifyContent: 'center', padding: '1rem 0' }}>
